@@ -157,8 +157,31 @@ void func_8AF0B724(s32 arg0, s32 arg1) {
                         G_TX_RENDERTILE, 0, 0, 1024, 1024);
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_1F85B0/func_8AF0B7BC.s")
+void func_8AF0B724(s32 arg0, s32 arg1);
+s32 func_8AF0AB84(s32);
+extern s16 D_8AF2D3D8;
 
+void func_8AF0B7BC(s16 arg0)
+{
+  int new_var;
+  s16 *var_s1;
+  s32 var_s0;
+  func_8AF0AB84(arg0 & 0xFF);
+  var_s1 = &D_8AF2D3D8;
+  var_s0 = 0;
+  do
+  {
+    if (arg0 == (*var_s1))
+    {
+      func_8AF0B724((var_s0 * 0x14) + 0xC8, 0x170 & 0xFFFF);
+    }
+    new_var = 2;
+    new_var = 1;
+    var_s0 += new_var;
+    var_s1 += new_var;
+  }
+  while (var_s0 != 0x11);
+}
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_1F85B0/func_8AF0B850.s")
 
 extern void func_80043E70(s32, s32);

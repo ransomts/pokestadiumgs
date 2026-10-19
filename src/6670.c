@@ -112,5 +112,47 @@ void Cont_NoBlockEepromQueue(void) { extern OSMesgQueue D_800CE150; osSendMesg(&
 
 void Cont_InitEepromQueue(void) { extern OSMesgQueue D_800CE150; extern OSMesg D_800CE14C; osCreateMesgQueue(&D_800CE150, &D_800CE14C, 1); osSendMesg(&D_800CE150, NULL, OS_MESG_NOBLOCK); }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/6670/func_8000644C.s")
+extern void osCreateMesgQueue(OSMesgQueue *, OSMesg *, s32);
+extern void osSetEventMesg(OSEvent, OSMesgQueue *, OSMesg);
+extern s32 osContInit(OSMesgQueue *, u8 *, OSContStatus *);
+extern s32 osEepromProbe(OSMesgQueue *);
+extern OSMesgQueue D_800CE100;
+void Cont_InitEepromQueue(void);
+void Cont_InitEepromQueue(void);
+s32 func_80005A70();
+extern OSMesgQueue D_800CE100;
+extern OSContStatus D_800CE120;
+extern void *D_800CE148;
+
+u8 func_8000644C(void)
+{
+  OSContStatus *new_var2;
+  OSContStatus *var_a0;
+  s32 var_v1;
+  u8 *new_var;
+  int new_var3;
+  new_var = &D_800CE118;
+  Cont_InitEepromQueue();
+  osCreateMesgQueue(&D_800CE100, &D_800CE148, 1);
+  osSetEventMesg(5U, &D_800CE100, NULL);
+  new_var2 = &D_800CE120;
+  osContInit(&D_800CE100, new_var, new_var2);
+  var_a0 = new_var2;
+  var_v1 = 0;
+  do
+  {
+    new_var3 = 1;
+    if ((var_a0->type & 0x1F07) != 5)
+    {
+      D_800CE118 &= ~(1 << var_v1);
+    }
+    var_v1 += new_var3;
+    var_a0 += new_var3;
+  }
+  while (var_v1 != (new_var3 = 4));
+  D_800CE119 = osEepromProbe(&D_800CE100);
+  func_80005A70();
+  return D_800CE118;
+}
+#pragma C_FUNCTION_PADDING(16)
 #endif
