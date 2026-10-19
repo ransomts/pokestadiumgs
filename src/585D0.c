@@ -1085,7 +1085,7 @@ void func_8005BECC(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 #ifdef VERSION_US
 u8 *func_8005B280();
 
-u8 func_8005BF78(void) {
+u8 func_8005BF78() {
     u8 *temp_v0;
     u8 var_v1;
 
@@ -1100,7 +1100,16 @@ u8 func_8005BF78(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005BFA8.s")
+/* mkdraft:GbSave_GetBoxEntryCount begin */
+extern s32 func_8005BF28(s32 arg0, s32 arg1);
+
+s32 GbSave_GetBoxEntryCount(s32 arg0, s32 arg1) {
+    if (func_80057A80(arg0) != 0) {
+        return func_8005BF28(arg0, arg1);
+    }
+    return func_8005BF78(arg0, arg1);
+}
+/* mkdraft:GbSave_GetBoxEntryCount end */
 #endif
 
 #ifdef VERSION_US
@@ -1208,7 +1217,16 @@ void func_8005C22C(s32 arg0, s32 arg1, s32 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005C2B4.s")
+/* mkdraft:func_8005C2B4 begin */
+void func_8005C2B4(s32 arg0, s32 arg1, s32 arg2) {
+    typedef struct { u8 first; u8 second; } Pair;
+    s32 temp_v0;
+    temp_v0 = *(s32 *)(D_801285D0 + arg1 * 112);
+    if ((arg2 >= 0) && (arg2 < 50)) {
+        ((Pair *)(temp_v0 + 0x267))[arg2] = *(Pair *)arg0;
+    }
+}
+/* mkdraft:func_8005C2B4 end */
 #endif
 
 #ifdef VERSION_US
@@ -1418,12 +1436,28 @@ s32 func_8005CB38(s32 arg0, s32 arg1) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005CBA0.s")
+/* mkdraft:func_8005CBA0 begin */
+s32 func_8005CBA0(s32 arg0) {
+    s32 result = 0;
+    switch (arg0) {
+    case 0x20: result = 0x58; break;
+    case 0x21: result = 0x58; break;
+    case 0x22: result = 0x2; break;
+    case 0x23: result = 0x98; break;
+    case 0x24: result = 0x76; break;
+    case 0x25: result = 0x76; break;
+    case 0x26: result = 0x44; break;
+    case 0x27: result = 0x490; break;
+    case 0x28: result = 0x1B5; break;
+    }
+    return result;
+}
+/* mkdraft:func_8005CBA0 end */
 #endif
 
 #ifdef VERSION_US
 extern u8 D_801285D0[];
-extern s32 func_8005BFA8(s32, s32);
+extern s32 GbSave_GetBoxEntryCount(s32, s32);
 extern s32 func_8005CAA4(s32);
 s32 func_8005CC14(s32 arg0, s32 arg1, s32 arg2) {
     s32 result = 0;
@@ -1435,7 +1469,7 @@ s32 func_8005CC14(s32 arg0, s32 arg1, s32 arg2) {
         result = *(u8 *)(record + 0x9AC);
         break;
     case 0x21:
-        result = func_8005BFA8(arg1, arg2);
+        result = GbSave_GetBoxEntryCount(arg1, arg2);
         break;
     case 0x22:
         result = *(u8 *)(record + 0x266);
@@ -1462,7 +1496,72 @@ s32 func_8005CC14(s32 arg0, s32 arg1, s32 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005CDDC.s")
+/* mkdraft:func_8005CDDC begin */
+extern u8 D_80128570[];
+extern s32 D_80128730[];
+extern u8 D_80128744[];
+extern s32 GbSave_GetBoxEntryCount(s32, s32);
+extern s32 func_8005CAA4(s32);
+
+s32 func_8005CDDC(s32 arg0, s32 arg1, s32 arg2) {
+    s32 result = 0;
+    s32 base = *(s32 *)(D_80128570 + arg1 * 112 + 0x60);
+    s32 data = *(s32 *)(D_80128570 + arg1 * 112 + 0x68);
+    s32 ret;
+
+    switch (arg0) {
+    case 0x20:
+        result = *(u8 *)(base + 0x865);
+        break;
+    case 0x21:
+        result = GbSave_GetBoxEntryCount(arg1, arg2);
+        break;
+    case 0x22:
+        result = *(u8 *)(base + 0x47F);
+        break;
+    case 0x23:
+        result = 1;
+        break;
+    case 0x24:
+        result = *(u8 *)(data + 0x40B);
+        if (result >= 0xB) {
+            result = 0;
+        }
+        break;
+    case 0x25:
+        result = 6;
+        break;
+    case 0x26:
+        result = *(u8 *)(D_80128730[arg1] + 1);
+        break;
+    case 0x27:
+        result = *(u8 *)D_80128730[arg1];
+        break;
+    case 0x28:
+        result = D_80128744[arg1];
+        break;
+    case 0x2A:
+        result = 0x39;
+        break;
+    case 0x2B:
+        result = *(u8 *)(base + 0x420);
+        break;
+    case 0x2C:
+        result = *(u8 *)(base + 0x44A);
+        break;
+    case 0x2D:
+        result = *(u8 *)(base + 0x465);
+        break;
+    }
+
+    if (result < func_8005CAA4(arg0)) {
+        ret = result;
+    } else {
+        ret = func_8005CAA4(arg0);
+    }
+    return ret;
+}
+/* mkdraft:func_8005CDDC end */
 #endif
 
 #ifdef VERSION_US
@@ -1638,7 +1737,38 @@ void func_8005D418(s32 arg0, s32 arg1, s32 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005D4FC.s")
+/* mkdraft:GbSave_AppendEntry begin */
+void GbSave_AppendEntry(s32 arg0, s32 arg1, s32 arg2) {
+    s32 base = *(s32 *)(D_80128570 + arg1 * 112 + 0x60);
+    s32 data = *(s32 *)(D_80128570 + arg1 * 112 + 0x68);
+    s32 result = func_8005CDDC(arg0, arg1, arg2);
+    if (result < func_8005CAA4(arg0)) {
+        result++;
+        switch (arg0) {
+        case 0x20:
+            *(u8 *)(base + 0x865) = result;
+            *(u8 *)(base + result + 0x866) = 0xFF;
+            break;
+        case 0x21:
+            func_8005C060(arg1, arg2, result);
+            break;
+        case 0x22:
+            *(u8 *)(base + 0x47F) = result;
+            *(u8 *)(base + result * 2 + 0x480) = 0xFF;
+            break;
+        case 0x24:
+            *(u8 *)(data + 0x40B) = result;
+            break;
+        case 0x26:
+            *(u8 *)(D_80128730[arg1] + 1) = result;
+            break;
+        case 0x27:
+            *(u8 *)(D_80128730[arg1]) = result;
+            break;
+        }
+    }
+}
+/* mkdraft:GbSave_AppendEntry end */
 #endif
 
 #ifdef VERSION_US
@@ -1646,7 +1776,7 @@ extern u8 func_8005D92C(s32 index);
 
 extern void func_8005D348(s32, s32, s32);
 extern void func_8005D418(s32, s32, s32);
-extern void func_8005D4FC(s32, s32, s32);
+extern void GbSave_AppendEntry(s32, s32, s32);
 void func_8005D610(s32 arg0, s32 arg1, s32 arg2) {
     s32 state = func_8005D92C(arg1);
     switch (state) {
@@ -1661,7 +1791,7 @@ void func_8005D610(s32 arg0, s32 arg1, s32 arg2) {
         func_8005D418(arg0, arg1, arg2);
         break;
     case 7:
-        func_8005D4FC(arg0, arg1, arg2);
+        GbSave_AppendEntry(arg0, arg1, arg2);
         break;
     }
 }
@@ -2353,11 +2483,37 @@ void func_8005F9F4(s32 arg0, u16 arg1) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005FAB4.s")
+/* mkdraft:func_8005FAB4 begin */
+s32 func_8005FAB4(s32 arg0) {
+    if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) == 0) {
+        return 0;
+    }
+    switch ((u32)func_8005D92C(arg0)) {
+    case 5:
+    case 6:
+        return *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + 0x86B);
+    case 7:
+        return *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + 0x846);
+    }
+}
+/* mkdraft:func_8005FAB4 end */
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005FB40.s")
+/* mkdraft:func_8005FB40 begin */
+s32 func_8005FB40(s32 arg0) {
+    if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) == 0) {
+        return 0;
+    }
+    switch ((u32)func_8005D92C(arg0)) {
+    case 5:
+    case 6:
+        return *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + 0x86A);
+    case 7:
+        return *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + 0x845);
+    }
+}
+/* mkdraft:func_8005FB40 end */
 #endif
 
 #ifdef VERSION_US
@@ -2381,7 +2537,21 @@ void func_8005FBCC(s32 arg0, u8 arg1, u8 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005FC7C.s")
+/* mkdraft:func_8005FC7C begin */
+void func_8005FC7C(s32 arg0, u8 arg1, u8 arg2) {
+    if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) != 0) {
+        switch ((u32)func_8005D92C(arg0)) {
+        case 5:
+        case 6:
+            *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + arg1 + 0x86C) = arg2;
+            break;
+        case 7:
+            *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + arg1 + 0x847) = arg2;
+            break;
+        }
+    }
+}
+/* mkdraft:func_8005FC7C end */
 #endif
 
 #ifdef VERSION_US
@@ -2389,7 +2559,21 @@ void func_8005FBCC(s32 arg0, u8 arg1, u8 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005FDB0.s")
+/* mkdraft:func_8005FDB0 begin */
+void func_8005FDB0(s32 arg0, u8 arg1, u8 arg2) {
+    if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) != 0) {
+        switch ((u32)func_8005D92C(arg0)) {
+        case 5:
+        case 6:
+            *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + arg1 + 0x3AD) = arg2;
+            break;
+        case 7:
+            *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + arg1 + 0x3AC) = arg2;
+            break;
+        }
+    }
+}
+/* mkdraft:func_8005FDB0 end */
 #endif
 
 #ifdef VERSION_US
@@ -2397,7 +2581,23 @@ void func_8005FBCC(s32 arg0, u8 arg1, u8 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005FF0C.s")
+/* mkdraft:GbSave_GetMapObjectPtr begin */
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+
+u8 *GbSave_GetMapObjectPtr(s32 arg0, u8 arg1) {
+    if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) == 0) {
+        return 0;
+    }
+    switch ((u32)func_8005D92C(arg0)) {
+    case 5:
+    case 6:
+        return *(u8 **)(D_80128570 + arg0 * 112 + 0x60) + arg1 * 0x10 + 0x2AD;
+    case 7:
+        return *(u8 **)(D_80128570 + arg0 * 112 + 0x60) + arg1 * 0x10 + 0x2AC;
+    }
+}
+/* mkdraft:GbSave_GetMapObjectPtr end */
 #endif
 
 #ifdef VERSION_US
@@ -2423,7 +2623,106 @@ s32 func_80060110(s32 arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_800601A4.s")
+
+
+#define NULL 0
+
+
+extern float sqrtf(float value);
+#pragma intrinsic(sqrtf);
+u8 func_8005D92C(s32);
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 func_8005D92C(s32 index);
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 func_8005D92C(s32 index);
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+s32 func_800601A4(s32 arg0, u8 arg1)
+{
+  int new_var;
+  if (((*((s32 *) (D_80128570 + (arg0 * 112)))) & 1) != 0)
+  {
+    new_var = 112;
+    if (arg1 < 0x1A)
+    {
+      arg1 += 0;
+      switch ((u32) func_8005D92C(arg0))
+      {
+        case 5:
+
+        case 6:
+          return *((u8 *) (((*((s32 *) ((D_80128570 + (arg0 * new_var)) + 0x60))) + arg1) + 0xA8C));
+
+        case 7:
+          return *((u8 *) (((*((s32 *) ((D_80128570 + (arg0 * new_var)) + 0x60))) + arg1) + 0xA67));
+
+      }
+
+    }
+  }
+  return 0;
+}
+
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
 #endif
 
 #ifdef VERSION_US
