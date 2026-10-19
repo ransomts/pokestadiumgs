@@ -81,9 +81,18 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
   fragment67/79 ParticleGfx+BattleAnim; TradeCable/AuxiliaryEffect/Geo_NodeCamera)
   + 7 in commit 33cf0aca (Sched x3, Storage_GetSramHandle, Jpeg_InitializeDspTask,
   draw_profiler_mode_0, Timer_MeasureElapsedUs) with AC80-data + 7140-bss migrations.
-- EXTRACT-STABILITY DEBT: 33cf0aca's ld edits + blob truncations (88A40/85DA0/unk_bss2/3)
-  die on the next make extract — port them into the yaml FIRST (recipes in the
-  func_8000B2A4/func_80006540 spool metas). Do NOT run make extract before that.
+- EXTRACT-STABILITY DEBT CLEARED (follow-up commit): 33cf0aca's migrations are now
+  yaml-driven; make extract is safe again. yaml: `- [0x88A20, .data, AC80]` +
+  `- [0x88A40, data]` split the 85DA0 blob (AC80.c owns [0x80087E20, 0x80087E40));
+  `{vram: 0x800D0490, type: .bss, name: 7140}` + `{vram: 0x800D0510, type: bss,
+  name: unk_bss3}` split unk_bss2 (7140.c sramHandle, SUBALIGN(16) 0x74 -> 0x80).
+  Nothing stays ld-level. splat auto-insert gotcha: an explicit `.data`/`.bss`
+  sibling anchors mid-list, so every LATER src file's auto-inserted section entry
+  relocates after it — the regenerated ld shows the 85DA0 blob + AC80.o(.data)
+  inside the src .data list and unk_bss/unk_bss2/7140.o(.bss) inside the src .bss
+  list. Harmless here because only main (0x2B80 bss) and AC80/7140 own non-empty
+  sections in those lists (verify in the .map before the next mid-blob split).
+  Verified: two full extract+make cycles -> build/pokestadiumgs-us.z64: OK.
 - Parked with recipes: spline trio (func_8290E040/E0FC/E1D8 — statics + orphan .bss
   at 0x8291BC14 + literal blob split; see W5b lessons), func_84164C28 + func_84168CA4
   (fragment79 blob datamig, joint).
