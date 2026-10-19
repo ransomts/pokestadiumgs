@@ -235,7 +235,7 @@ void func_86703F9C(void) {
 #ifdef VERSION_US
 extern void func_80037120(s32, s32, s32 *, s16 *, s16 *);
 extern s32 D_80094908;
-s32 func_86706874(s32 arg0, void *arg1) {
+s32 GeoCallback_OrientToCamera(s32 arg0, void *arg1) {
     s16 pad;
     s32 x;
     s16 y;

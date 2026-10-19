@@ -2,7 +2,7 @@
 
 
 #ifdef VERSION_US
-/* mkdraft:func_86900020 begin */
+/* mkdraft:GeoCallback_InitCamera begin */
 extern void GeoCamera_SetPerspective(void *, f32, f32, f32);
 extern f32 __sinf(f32);
 extern f32 __cosf(f32);
@@ -12,13 +12,13 @@ extern f32 D_8690EB40;
 extern f32 D_8690EB44;
 extern f32 D_8690EB48;
 
-s32 func_86900020(s32 arg0, void *arg1) {
+s32 GeoCallback_InitCamera(s32 arg0, void *arg1) {
     s16 pad;
     GeoCamera_SetPerspective(arg1, D_8690EB48, 100.0f, 12800.0f);
     func_80038E14(arg1, 0, (__sinf(D_8690EB40) * D_8690EB3C) + 400.0f + D_8690EB44, __cosf(D_8690EB40) * D_8690EB3C, 0.0f, D_8690EB44, 0.0f, 0);
     return 1;
 }
-/* mkdraft:func_86900020 end */
+/* mkdraft:GeoCallback_InitCamera end */
 #endif
 
 #ifdef VERSION_US

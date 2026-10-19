@@ -1100,16 +1100,16 @@ u8 func_8005BF78() {
 #endif
 
 #ifdef VERSION_US
-/* mkdraft:func_8005BFA8 begin */
+/* mkdraft:GbSave_GetBoxEntryCount begin */
 extern s32 func_8005BF28(s32 arg0, s32 arg1);
 
-s32 func_8005BFA8(s32 arg0, s32 arg1) {
+s32 GbSave_GetBoxEntryCount(s32 arg0, s32 arg1) {
     if (func_80057A80(arg0) != 0) {
         return func_8005BF28(arg0, arg1);
     }
     return func_8005BF78(arg0, arg1);
 }
-/* mkdraft:func_8005BFA8 end */
+/* mkdraft:GbSave_GetBoxEntryCount end */
 #endif
 
 #ifdef VERSION_US
@@ -1441,7 +1441,7 @@ s32 func_8005CB38(s32 arg0, s32 arg1) {
 
 #ifdef VERSION_US
 extern u8 D_801285D0[];
-extern s32 func_8005BFA8(s32, s32);
+extern s32 GbSave_GetBoxEntryCount(s32, s32);
 extern s32 func_8005CAA4(s32);
 s32 func_8005CC14(s32 arg0, s32 arg1, s32 arg2) {
     s32 result = 0;
@@ -1453,7 +1453,7 @@ s32 func_8005CC14(s32 arg0, s32 arg1, s32 arg2) {
         result = *(u8 *)(record + 0x9AC);
         break;
     case 0x21:
-        result = func_8005BFA8(arg1, arg2);
+        result = GbSave_GetBoxEntryCount(arg1, arg2);
         break;
     case 0x22:
         result = *(u8 *)(record + 0x266);
@@ -1656,8 +1656,8 @@ void func_8005D418(s32 arg0, s32 arg1, s32 arg2) {
 #endif
 
 #ifdef VERSION_US
-/* mkdraft:func_8005D4FC begin */
-void func_8005D4FC(s32 arg0, s32 arg1, s32 arg2) {
+/* mkdraft:GbSave_AppendEntry begin */
+void GbSave_AppendEntry(s32 arg0, s32 arg1, s32 arg2) {
     s32 base = *(s32 *)(D_80128570 + arg1 * 112 + 0x60);
     s32 data = *(s32 *)(D_80128570 + arg1 * 112 + 0x68);
     s32 result = func_8005CDDC(arg0, arg1, arg2);
@@ -1687,7 +1687,7 @@ void func_8005D4FC(s32 arg0, s32 arg1, s32 arg2) {
         }
     }
 }
-/* mkdraft:func_8005D4FC end */
+/* mkdraft:GbSave_AppendEntry end */
 #endif
 
 #ifdef VERSION_US
@@ -1695,7 +1695,7 @@ extern u8 func_8005D92C(s32 index);
 
 extern void func_8005D348(s32, s32, s32);
 extern void func_8005D418(s32, s32, s32);
-extern void func_8005D4FC(s32, s32, s32);
+extern void GbSave_AppendEntry(s32, s32, s32);
 void func_8005D610(s32 arg0, s32 arg1, s32 arg2) {
     s32 state = func_8005D92C(arg1);
     switch (state) {
@@ -1710,7 +1710,7 @@ void func_8005D610(s32 arg0, s32 arg1, s32 arg2) {
         func_8005D418(arg0, arg1, arg2);
         break;
     case 7:
-        func_8005D4FC(arg0, arg1, arg2);
+        GbSave_AppendEntry(arg0, arg1, arg2);
         break;
     }
 }

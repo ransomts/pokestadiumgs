@@ -6,11 +6,11 @@
 #endif
 
 #ifdef VERSION_US
-/* mkdraft:func_84124514 begin */
+/* mkdraft:Audio_LookupScaledRatio_fragment79 begin */
 extern u8 D_84185448[];
 extern u8 D_84185454[];
 
-u8 func_84124514(u16 numerator, u16 denominator) {
+u8 Audio_LookupScaledRatio_fragment79(u16 numerator, u16 denominator) {
     s32 scaled = (numerator * 48) / denominator;
     s32 index = 0;
     do {
@@ -21,7 +21,7 @@ u8 func_84124514(u16 numerator, u16 denominator) {
     } while (D_84185454 != &D_84185448[index * 2]);
     return D_84185448[index * 2 + 1];
 }
-/* mkdraft:func_84124514 end */
+/* mkdraft:Audio_LookupScaledRatio_fragment79 end */
 #endif
 
 #ifdef VERSION_US
