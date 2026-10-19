@@ -38,7 +38,7 @@ void func_8AF07FF0(void) {
 #define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
 #endif
 
-M2C_UNK func_8AF00130(M2C_UNK);                     /* extern */
+extern void func_8AF00130(s32);                     /* extern */
 M2C_UNK func_8AF08C90();                            /* extern */
 extern u8 *D_8AF263C0;
 
@@ -61,8 +61,6 @@ s16 func_8AF08538(s16 arg0) {
 }
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_1F5F20/func_8AF085C8.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_1F5F20/func_8AF08644.s")
-
 #ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
 #define M2C_UNK s32
 #define M2C_UNK8 s8
@@ -79,7 +77,39 @@ s16 func_8AF08538(s16 arg0) {
 #define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
 #endif
 
-M2C_UNK func_8AF00130(M2C_UNK);                     /* extern */
+extern void func_8AF00130(s32);
+void func_8AF15EF0(void);
+extern u8 *D_8AF263C0;
+
+s32 func_8AF08644(s16 arg0) {
+    if (M2C_FIELD(D_8AF263C0, u16 *, 8) & 0x800) {
+        D_8AF2C960 = 0;
+    } else if (M2C_FIELD(D_8AF263C0, u16 *, 8) & 0x100) {
+        D_8AF2C960 = 5;
+    } else if (M2C_FIELD(D_8AF263C0, u16 *, 8) & 0x8000) {
+        func_8AF00130(0xBF);
+        func_8AF15EF0();
+        arg0 = 0x10;
+    }
+    return arg0;
+}
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+extern void func_8AF00130(s32);                     /* extern */
 M2C_UNK func_8AF1B5D4();                            /* extern */
 extern u8 *D_8AF263C0;
 

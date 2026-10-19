@@ -677,7 +677,38 @@ s32 func_8AB02BA8(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/45/fragment45_2251A0/func_8AB02C20.s")
+extern u8 *D_8AB11D0C;
+extern s16 D_8AB12696;
+
+s32 func_8AB02C20(void) {
+    u8 state;
+    s32 result;
+
+    state = D_8AB11D0C[2];
+    switch (state) {
+    default:
+        D_8AB12696 = 0x17;
+        result = 0x1C8;
+        break;
+    case 1:
+        D_8AB12696 = 0x17;
+        result = 0x1C8;
+        break;
+    case 2:
+        D_8AB12696 = 0x2F;
+        result = 0x1DF;
+        break;
+    case 3:
+        D_8AB12696 = 0x48;
+        result = 0x20E;
+        break;
+    case 4:
+        result = 0x20E;
+        D_8AB12696 = 0x48;
+        break;
+    }
+    return result;
+}
 #endif
 
 #ifdef VERSION_US
@@ -717,7 +748,23 @@ s32 func_8AB02CB4(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/45/fragment45_2251A0/func_8AB02EF8.s")
+void *func_8AB02EF8(void) {
+    s16 idx;
+    void *result;
+
+    if (func_8AB01340(D_8AB12694) != 0) {
+        do {
+            func_8AB012A4();
+        } while (func_8AB01340(D_8AB12694) != 0);
+    }
+    D_8AB12692 += 1;
+    if (D_8AB12692 >= 0x3E8) {
+        D_8AB12692 = 0x3E7;
+    }
+    idx = ((s16 *)D_8AB14680)[D_8AB12694];
+    result = *(void **)(D_8AB11D10 + idx * 4);
+    return result;
+}
 #endif
 
 #ifdef VERSION_US

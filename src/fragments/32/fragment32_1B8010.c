@@ -93,8 +93,69 @@ void func_88306F90(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/32/fragment32_1B8010/func_8830700C.s")
+extern s32 func_80001FF0(void);
+extern void func_880002F4(u8 *, s16);
+extern s8 D_88308E04;
+extern u8 D_88308E18;
+extern s32 D_88308EA0;
+extern s8 D_88308EB1;
+extern s8 D_88308EB2;
+extern s16 D_88308EB4;
+extern s16 D_88308EB6;
+extern s16 D_88308EC0;
 
+void func_8830700C(void) {
+    f32 quotient;
+    f32 var;
+
+    /* Per-frame scroll stepper: 138240 / frame-time pixels into D_88308EC0,
+     * then mode 1/2 walks D_88308EB4 toward target D_88308EB6 by 780 /
+     * frame-time; the +/-0.5 rounds the trunc toward the motion direction.
+     * On arrival: snap to target, copy the preset index D_88308EB2 ->
+     * D_88308EB1, reset mode D_88308EA0, re-arm via func_880002F4
+     * (&D_88308E18, 0), and clear D_88308E04. */
+    quotient = 138240.0f / (f32)func_80001FF0();
+    if (quotient > 0.0f) {
+        var = 0.5f;
+    } else {
+        var = -0.5f;
+    }
+    D_88308EC0 += (s32)((138240.0f / (f32)func_80001FF0()) + var);
+    switch (D_88308EA0) {
+    case 1:
+        quotient = 780.0f / (f32)func_80001FF0();
+        if (quotient > 0.0f) {
+            var = 0.5f;
+        } else {
+            var = -0.5f;
+        }
+        D_88308EB4 -= (s32)((780.0f / (f32)func_80001FF0()) + var);
+        if (D_88308EB6 >= D_88308EB4) {
+            D_88308EB4 = D_88308EB6;
+            D_88308EB1 = D_88308EB2;
+            D_88308EA0 = 0;
+            func_880002F4(&D_88308E18, 0);
+            D_88308E04 = 0;
+        }
+        return;
+    case 2:
+        quotient = 780.0f / (f32)func_80001FF0();
+        if (quotient > 0.0f) {
+            var = 0.5f;
+        } else {
+            var = -0.5f;
+        }
+        D_88308EB4 += (s32)((780.0f / (f32)func_80001FF0()) + var);
+        if (D_88308EB4 >= D_88308EB6) {
+            D_88308EB4 = D_88308EB6;
+            D_88308EB1 = D_88308EB2;
+            D_88308EA0 = 0;
+            func_880002F4(&D_88308E18, 0);
+            D_88308E04 = 0;
+        }
+        break;
+    }
+}
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/32/fragment32_1B8010/func_88307294.s")
 
 extern Gfx *D_800D0510;
