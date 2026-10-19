@@ -55,7 +55,67 @@ void func_8416654C(f32 arg0, f32 *arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3D4DA0/func_841665D4.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3D4DA0/func_8416691C.s")
+/* mkdraft:func_8416691C begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+s32 func_841094EC();                                /* extern */
+M2C_UNK func_841665D4(M2C_UNK *);                   /* extern */
+extern M2C_UNK D_8419F070;
+extern s16 D_841A4DB0;
+extern s16 D_841A4DB2;
+extern s16 D_841A4DB4;
+
+s32 func_8416691C(void) {
+    M2C_UNK *var_s0;
+    s32 var_s1;
+
+    D_841A4DB2 += 1;
+    if ((func_841094EC() == 1) && (D_841A4DB4 == 0)) {
+        D_841A4DB0 = D_841A4DB2 + 0x46;
+        D_841A4DB4 = 1;
+        goto block_9;
+    }
+    if (D_841A4DB4 == 1) {
+        if ((D_841A4DB0 - 0x32) < D_841A4DB2) {
+            D_841A4DB4 = 2;
+        }
+        goto block_9;
+    }
+    if ((D_841A4DB4 == 2) && (D_841A4DB0 < D_841A4DB2)) {
+        return -1;
+    }
+block_9:
+    var_s0 = &D_8419F070;
+    var_s1 = 0;
+    do {
+        if (M2C_FIELD(var_s0, s16 *, 0) == 1) {
+            M2C_FIELD(var_s0, s16 *, 4) = (s16) (M2C_FIELD(var_s0, s16 *, 4) + 1);
+            if ((M2C_FIELD(var_s0, s16 *, 2) == 1) && (M2C_FIELD(var_s0, s16 *, 6) < M2C_FIELD(var_s0, s16 *, 4))) {
+                M2C_FIELD(var_s0, s16 *, 0) = 0;
+            } else {
+                func_841665D4(var_s0);
+            }
+        }
+        var_s1 += 1;
+        var_s0 += 0x360;
+    } while (var_s1 != 0x1A);
+    return 0;
+}
+/* mkdraft:func_8416691C end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3D4DA0/func_84166A64.s")
 
