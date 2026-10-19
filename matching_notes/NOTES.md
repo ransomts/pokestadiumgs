@@ -75,6 +75,48 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
 
 ## Wave log
 
+### Wave 7 (2026-10-19, C_agent tier, matcher agents): 12 matches (189 total)
+- 89667321: 12 matches from the sweep's lowest C_agent scores (300-345 band),
+  6 agents on disjoint files, sweep logs (/tmp/opencode/sweep_scratch/full2/
+  logs/<func>.log) handed to agents as diff head starts. All spools carry
+  per-function recipes. Parked: func_82000CB0/CE0 (fragment16) — reloc-illusion
+  0s needing the fade-state data migration to 0x82001EA0 (full verified recipe
+  in metas; the pair shares one static prologue, all-or-nothing). Near-misses
+  spooled for a future round: func_8AF0145C@135 (2 register/scheduling classes
+  left), func_864001E0@310 (x-mul operand order + branch-folding pair).
+- NEW IDO LESSONS (wave 7, multi-agent confirmed):
+  1. A DISCARDED non-void call result still reserves v0 in uopt's temp
+     coloring: callee return types are load-bearing for register allocation
+     even when the result is unused (fragment45 + fragment44 independently;
+     retyping func_8004C8A0's externs to the true void* flipped whole v0/v1
+     clusters; func_8AC00738/8AC05F00/8AC063AC/8AC06400 declared void for the
+     same effect). Check the callee's TRUE signature in its matched definition
+     before fighting v0/v1 swaps.
+  2. uopt CSE-splits on literal SPELLING: `if (arg0 == 5 && arg0 == 5U &&
+     arg0 == 5U) {}` compiles to the target's lone li/bne ($at) where every
+     other dead-branch spelling (single compare, 3 identical, if/else, switch,
+     goto forms, early returns) either deletes the branch or lands in v0.
+     Mixed signed/unsigned spellings split uopt's CSE classes (s32 singleton
+     + u32 pair); the singleton must come first (func_81003510, // FAKE).
+  3. A for-loop's counter init joins the loop preheader AFTER the hoisted
+     loop-invariants (do-while + separate i=0 statement reorders as1's
+     prologue scheduling); confirmed pre/post-as1 with ccs.py (func_8640912C).
+  4. lui-sharing is extern-vs-defined storage: as1 gives extern-symbolic s16
+     stores their own lui, but shares one lui across stores to storage DEFINED
+     in the same .o (static/global). func_82000CB0/CE0 matched only via a
+     file-static struct + local pointer copy (each member address flattens to
+     a symbolic store). func_8000B28C (NOTES dead end: one shared lui + two
+     sw's) is almost certainly this mechanism: try in-file storage, not more
+     spelling searches.
+  5. Named locals assigned from a memory load get a load-temp+move pair that
+     as1 forwards one register late — writing the load expression inline at
+     each use (CSE) lands the temp in the right register (fragment45
+     controller reads, func_87E08844's widget pointers).
+- TOOLING: var.py under system python 3.6 dies mid-variant and can leave the
+  src file half-edited — always .venv/bin/python3 (agents hit this once).
+  fd.sh's stale-expected jal i-lines after rename waves are display noise
+  (expected/ objects predate the rename); the full make decides.
+
 ### Wave 6 (2026-10-19, S1 cross-ports, matcher agents): 10 matches (177 total)
 - fc0216e2: all 10 remaining >=1.000 crossport twins (func_800052C4, func_8410A4F8,
   func_84120464, func_841569E0, func_84156AB4, func_84168B00, func_84168C18,
