@@ -18,3 +18,13 @@ s/\bfunc_81603CD0\b/Fragment11_DrawTexturedPanelBorder/g
 s/\bfunc_816039B0\b/Fragment11_DrawThickPanelFrame/g
 s/\bfunc_816044AC\b/Fragment11_DrawBorderedPanelFill/g
 s/\bfunc_8005FF0C\b/GbSave_GetMapObjectPtr/g
+s/\bfunc_800052C4\b/Sched_HandleRspEvent/g
+s/\bfunc_8410A4F8\b/Audio_SetChannelGroupCounts/g
+s/\bfunc_84120464\b/BattleAnim_InitSwayOffset/g
+s/\bfunc_841569E0\b/BattleAnim_CalcVectorAtToDm/g
+s/\bfunc_84156AB4\b/BattleAnim_CalcVectorAtToDm2/g
+s/\bfunc_84168B00\b/BattleAnim_SixSlotTrail_ComputeCameraRelativeOffset/g
+s/\bfunc_84168C18\b/BattleAnim_SixSlotTrail_ComputeRotatedOffset/g
+s/\bfunc_88508B10\b/TradeCable_UpdateLightWaitPulse/g
+s/\bfunc_88508CAC\b/TradeCable_UpdateLightFlashPulse/g
+s/\bfunc_885096E0\b/TradeCable_SpawnBallTrailGhost/g

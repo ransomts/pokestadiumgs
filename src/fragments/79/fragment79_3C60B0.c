@@ -105,7 +105,7 @@ void func_841569C0(s32 arg0) {
 #ifdef VERSION_US
 typedef struct { f32 x; f32 y; f32 z; } Vec3f841569E0;
 extern void func_80070C14(f32 *, f32 *, f32 *);
-void func_841569E0(f32* arg0, f32* arg1, f32* arg2, f32* arg3, f32* arg4, f32* arg5) {
+void BattleAnim_CalcVectorAtToDm(f32* arg0, f32* arg1, f32* arg2, f32* arg3, f32* arg4, f32* arg5) {
     Vec3f841569E0 anchor_pos;
     Vec3f841569E0 bone_pos;
     f32 anchor_x;
@@ -143,7 +143,7 @@ void func_841569E0(f32* arg0, f32* arg1, f32* arg2, f32* arg3, f32* arg4, f32* a
 #ifdef VERSION_US
 typedef struct { f32 x; f32 y; f32 z; } Vec3f84156AB4;
 extern void func_80070C14(f32 *, f32 *, f32 *);
-void func_84156AB4(f32* arg0, f32* arg1, f32* arg2, f32* arg3, f32* arg4, f32* arg5) {
+void BattleAnim_CalcVectorAtToDm2(f32* arg0, f32* arg1, f32* arg2, f32* arg3, f32* arg4, f32* arg5) {
     Vec3f84156AB4 anchor_pos;
     Vec3f84156AB4 bone_pos;
     f32 anchor_x;
@@ -713,12 +713,12 @@ void BattleAnim_StartEffect67OwnerAnchoredFourStream_Draw(void) {
 #endif
 
 #ifdef VERSION_US
-extern void func_841569E0(f32 *, f32 *, f32 *, f32 *, f32 *, f32 *);
+extern void BattleAnim_CalcVectorAtToDm(f32 *, f32 *, f32 *, f32 *, f32 *, f32 *);
 extern void func_8415C644(f32, f32, f32, f32, f32, f32, s32, s32, s32, s32, s32, f32, f32, f32, s32);
 extern f32 D_8418C598;
 void BattleAnim_StartEffect78Radial20_EmitVariantA(void) {
     f32 out[6];
-    func_841569E0(&out[5], &out[4], &out[3], &out[2], &out[1], &out[0]);
+    BattleAnim_CalcVectorAtToDm(&out[5], &out[4], &out[3], &out[2], &out[1], &out[0]);
     out[2] *= 6.0f;
     out[1] *= 6.0f;
     out[0] *= 6.0f;

@@ -41,7 +41,7 @@ void func_885087D4(unk_D_88523100 *arg0) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/34/fragment34_1C5AA0/func_8850889C.s")
 
-void func_88508B10(unk_D_88523100 *arg0) {
+void TradeCable_UpdateLightWaitPulse(unk_D_88523100 *arg0) {
     arg0->unk_04 = D_88523034 + arg0->unk_02;
     arg0->unk_06 = (s16)(2.0f * D_80087E50[(u16)(arg0->unk_12) >> 4] + ((2.0f * D_80087E50[(u16)(arg0->unk_12) >> 4]) > 0.0f ? 0.5f : -0.5f)) + 0xD2;
 
@@ -66,7 +66,7 @@ void func_88508BEC(u8 *arg0) {
     }
 }
 
-void func_88508CAC(unk_D_88523100 *arg0) {
+void TradeCable_UpdateLightFlashPulse(unk_D_88523100 *arg0) {
     arg0->unk_04 = D_88523034 + arg0->unk_02;
     arg0->unk_06 = (s16)(2.0f * D_80087E50[(u16)(arg0->unk_12) >> 4] + ((2.0f * D_80087E50[(u16)(arg0->unk_12) >> 4]) > 0.0f ? 0.5f : -0.5f)) + 0xD2;
 
@@ -120,7 +120,7 @@ void func_885093F0(void) { s32 i = 0; u8 *ptr = D_88523050; do { i += 1; ptr += 
 typedef struct { s16 unk_00; s16 unk_02; s16 unk_04; } unk_D_88523050_012;
 typedef struct { s32 unk_00; s16 unk_04; s16 unk_06; s16 unk_08; s16 unk_0A; s16 unk_0C; s16 unk_0E; s16 unk_10; unk_D_88523050_012 unk_12[10]; } unk_D_88523050;
 
-void func_885096E0(unk_D_88523050 *arg0) {
+void TradeCable_SpawnBallTrailGhost(unk_D_88523050 *arg0) {
     s32 i;
     unk_D_88523050_012 *var_v0 = NULL;
 
@@ -144,7 +144,7 @@ void func_885096E0(unk_D_88523050 *arg0) {
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/34/fragment34_1C5AA0/func_8850974C.s")
 
 extern void func_8850974C(u8 *);
-extern void func_885096E0(unk_D_88523050 *);
+extern void TradeCable_SpawnBallTrailGhost(unk_D_88523050 *);
 extern void func_885084EC(s32, s32);
 void func_88509870(u8 *arg0) {
     s16 temp_v0;
@@ -167,7 +167,7 @@ void func_88509870(u8 *arg0) {
         temp_v0_2 = *(s16 *)(arg0 + 8);
         if (temp_v0_2 == 0) {
             if (*(s16 *)(arg0 + 0x10) < 0xA) {
-                func_885096E0((unk_D_88523050 *)arg0);
+                TradeCable_SpawnBallTrailGhost((unk_D_88523050 *)arg0);
                 *(s16 *)(arg0 + 8) = 2;
             }
         }

@@ -342,7 +342,7 @@ void Sched_HandlePreNMI(void) {
 #endif
 
 #ifdef VERSION_US
-void func_800052C4(void) {
+void Sched_HandleRspEvent(void) {
     S1_UnkStruct80001380* sp24 = (S1_UnkStruct80001380 *)D_800CD020[0xA14 / 4];
     s32 tmp = Sched_HandleRspCompletion((u8 *)D_800CD020[0xA14 / 4]);
 
@@ -390,7 +390,7 @@ void Sched_HandleRdpEvent(void) {
 extern OSMesgQueue D_800CDA10;
 extern u8 D_800CD9D0[];
 extern void func_800051B0(void);
-extern void func_800052C4(void);
+extern void Sched_HandleRspEvent(void);
 void func_800053D4(void *arg0) {
     s32 sp24;
 
@@ -410,7 +410,7 @@ void func_800053D4(void *arg0) {
                 break;
 
             case 0x64:
-                func_800052C4();
+                Sched_HandleRspEvent();
                 break;
 
             case 0x65:

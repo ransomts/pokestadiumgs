@@ -12,7 +12,7 @@ extern u32 func_841094A4(void);
 extern void Vec3f_CrossProductComponents(f32, f32, f32, f32, f32, f32, f32*, f32*, f32*);
 extern void func_80070C14(f32*, f32*, f32*);
 
-void func_84168B00(s32 arg0, f32* arg1, f32* arg2, f32* arg3, f32 arg4, UNUSED f32 arg5, UNUSED f32 arg6,
+void BattleAnim_SixSlotTrail_ComputeCameraRelativeOffset(s32 arg0, f32* arg1, f32* arg2, f32* arg3, f32 arg4, UNUSED f32 arg5, UNUSED f32 arg6,
                    UNUSED f32 arg7) {
     UNUSED s32 pad[36];
     unk_func_84168B00* temp_v0 = (unk_func_84168B00*)func_841094A4();
@@ -54,7 +54,7 @@ void func_84168B00(s32 arg0, f32* arg1, f32* arg2, f32* arg3, f32 arg4, UNUSED f
 }
 extern f32 D_8418C920;
 
-void func_84168C18(f32 arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
+void BattleAnim_SixSlotTrail_ComputeRotatedOffset(f32 arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
     UNUSED Mtx sp70;
     Mtx sp30;
     UNUSED s32 pad;
