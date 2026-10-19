@@ -1,0 +1,104 @@
+# crossport_join: GS(us, unmatched) x S1(matched corpus)
+# s1 index: /home/tsranso/Code/pokestadium/build/corpus/index.json (7427 fns, 7427 with C)  s1 elf names: 9940 resolved
+# gs nonmatchings: 3743 files, 3731 with insns, 564117 instructions
+# index load+postings 3.6s, scoring 6.9s (16 jobs)  min_score=0.90
+
+gs_func           score  s1_func      s1_name(s)
+func_829063EC     1.000  func_86B01320 MathUtil_RandomU16Range  [src/fragments/17/fragment17_160CB0.c]  | also: BattleAnim_RandomRange
+func_8000AA2C     1.000  draw_profiler_mode_0 draw_profiler_mode_0  [src/profiler.c]
+func_8290E0FC     1.000  func_8430C8A0 Battle_ComputeSplineWeightsVariantB  [src/fragments/62/fragment62_2F6930.c]
+func_8290E1D8     1.000  func_8430C97C Battle_ComputeSplineWeightsVariantC  [src/fragments/62/fragment62_2F6930.c]
+func_8410383C     1.000  func_81401430 ParticleGfx_Build2DTransformMatrix  [src/fragments/34/fragment34_261F90.c]
+func_84168CA4     1.000  func_8436DAC4 BattleAnim_SixSlotTrail_UpdateSlot  [src/fragments/62/fragment62_357C30.c]
+func_800053D4     1.000  func_80005194 Sched_ThreadEntry  [src/5580.c]
+func_80006540     1.000  func_80000628 Storage_GetSramHandle  [src/rsp.c]
+func_8000BBBC     1.000  JpegUtils_ProcessHuffmanTableImplOld JpegUtils_ProcessHuffmanTableImplOld  [src/jpegutils.c]
+func_80004C14     1.000  func_800049D4 Sched_StartTask  [src/5580.c]
+func_8000B2A4     1.000  set_get_time_diff set_get_time_diff  [src/profiler.c]
+func_8000B86C     1.000  JpegUtils_GetHuffmanCodes JpegUtils_GetHuffmanCodes  [src/jpegutils.c]
+func_8000B980     1.000  JpegUtils_ProcessHuffmanTableImpl JpegUtils_ProcessHuffmanTableImpl  [src/jpegutils.c]
+func_8000BA3C     1.000  JpegUtils_ProcessHuffmanTable JpegUtils_ProcessHuffmanTable  [src/jpegutils.c]
+func_8003A4CC     1.000  func_80013464 Geo_NodeCamera  [src/12D80.c]
+func_841038F4     1.000  func_814014E8 ParticleGfx_Build2DTransformMatrixYScaled  [src/fragments/34/fragment34_261F90.c]
+func_841092B8     1.000  func_8432CEF0 BattleAnim_UpdateEffectCallbacks  [src/fragments/62/fragment62_315D50.c]
+func_84164C28     1.000  func_84368F08 OwnerLinkedFourStream_UpdateNodeChain  [src/fragments/62/fragment62_353370.c]
+func_885087D4     1.000  func_82F0F2AC TradeCable_UpdateLightIdlePulse  [src/fragments/41/fragment41_2942C0.c]
+func_800039C8     1.000  func_80003558 Jpeg_InitializeDspTask  [src/3FB0.c]
+func_800055B0     1.000  func_80005370 Sched_RemoveClient  [src/5580.c]
+func_8000B780     1.000  JpegUtils_ProcessQuantizationTable JpegUtils_ProcessQuantizationTable  [src/jpegutils.c]
+func_8000B7E8     1.000  JpegUtils_ParseHuffmanCodesLengths JpegUtils_ParseHuffmanCodesLengths  [src/jpegutils.c]
+func_8000B8D8     1.000  JpegUtils_SetHuffmanTable JpegUtils_SetHuffmanTable  [src/jpegutils.c]
+func_8000BB14     1.000  JpegUtils_SetHuffmanTableOld JpegUtils_SetHuffmanTableOld  [src/jpegutils.c]
+func_8290E040     1.000  func_8430C7E4 Battle_ComputeSplineWeightsVariantA  [src/fragments/62/fragment62_2F6930.c]
+func_82B00E10     1.000  func_8436E920 AuxiliaryEffect_Init  [src/fragments/62/fragment62_3591E0.c]
+func_841037A0     1.000  func_81401394 ParticleGfx_PushMatrix  [src/fragments/34/fragment34_261F90.c]
+func_84103D2C     1.000  func_81401940 ParticleGfx_BuildTransformMatrixXYScaled  [src/fragments/34/fragment34_261F90.c]
+func_8410933C     1.000  func_8432CF74 BattleAnim_DrawEffectCallbacks  [src/fragments/62/fragment62_315D50.c]
+func_8410A4F8     1.000  func_8003D6B0 Audio_SetChannelGroupCounts  [src/3D140_2.c]
+func_84120464     1.000  func_843093F0 BattleAnim_InitSwayOffset  [src/fragments/62/fragment62_2F3CB0.c]
+func_841569E0     1.000  func_84359490 BattleAnim_CalcVectorAtToDm  [src/fragments/62/fragment62_343BA0.c]
+func_84156AB4     1.000  func_84359564 BattleAnim_CalcVectorAtToDm2  [src/fragments/62/fragment62_343BA0.c]
+func_84168B00     1.000  func_8436D920 BattleAnim_SixSlotTrail_ComputeCameraRelativeOffset  [src/fragments/62/fragment62_357C30.c]
+func_84168C18     1.000  func_8436DA38 BattleAnim_SixSlotTrail_ComputeRotatedOffset  [src/fragments/62/fragment62_357C30.c]
+func_88508B10     1.000  func_82F0F578 TradeCable_UpdateLightWaitPulse  [src/fragments/41/fragment41_2942C0.c]  | also: TradeCable_UpdateLightFlashPulse
+func_88508CAC     1.000  func_82F0F578 TradeCable_UpdateLightWaitPulse  [src/fragments/41/fragment41_2942C0.c]  | also: TradeCable_UpdateLightFlashPulse
+func_885096E0     1.000  func_82F0C8EC TradeCable_SpawnBallTrailGhost  [src/fragments/41/fragment41_2942C0.c]
+func_800052C4     1.000  func_80005084 Sched_HandleRspEvent  [src/5580.c]
+... (66 more below --min 0.90; rerun with --all-lines)
+
+== clusters by S1 name prefix (best match; counts at score buckets) ==
+prefix           all  >=.9  >=.8  >=.6
+BattleAnim_*      28    28     0     0
+JpegUtils_*        8     8     0     0
+ParticleGfx_*      7     7     0     0
+TradeCable_*       6     6     0     0
+Sched_*            5     5     0     0
+OwnerLinkedFourStream_*     4     4     0     0
+AuxiliaryEffect_*     4     4     0     0
+FourStreamTrail_*     4     4     0     0
+OwnerAnchoredFourStream_*     4     4     0     0
+Radial20_*         4     4     0     0
+Battle_*           3     3     0     0
+DoubleTextureTrail_*     3     3     0     0
+TexturedRibbonSheet_*     3     3     0     0
+Trail50Effect_*     3     3     0     0
+Trail40Node_*      3     3     0     0
+Trade_*            2     2     0     0
+Gallery_*          2     2     0     0
+MathUtil_*         1     1     0     0
+draw_*             1     1     0     0
+Storage_*          1     1     0     0
+set_*              1     1     0     0
+Geo_*              1     1     0     0
+Jpeg_*             1     1     0     0
+Audio_*            1     1     0     0
+Sort_*             1     1     0     0
+LoadTextureBlockWithTileSize_*     1     1     0     0
+Gb*                1     1     0     0
+Particle31_*       1     1     0     0
+WaterParticle_*     1     1     0     0
+Mtx_*              1     1     0     0
+
+== top S1 source files among matches (func_* hits live here) ==
+   18 (  18 >=.9)  src/fragments/62/fragment62_343BA0.c
+    8 (   8 >=.9)  src/jpegutils.c
+    7 (   7 >=.9)  src/fragments/34/fragment34_261F90.c
+    6 (   6 >=.9)  src/fragments/62/fragment62_357C30.c
+    6 (   6 >=.9)  src/fragments/41/fragment41_2942C0.c
+    5 (   5 >=.9)  src/5580.c
+    4 (   4 >=.9)  src/fragments/62/fragment62_353370.c
+    4 (   4 >=.9)  src/fragments/62/fragment62_3591E0.c
+    4 (   4 >=.9)  src/fragments/62/fragment62_352570.c
+    4 (   4 >=.9)  src/fragments/62/fragment62_3540B0.c
+    4 (   4 >=.9)  src/fragments/62/fragment62_356730.c
+    4 (   4 >=.9)  src/fragments/62/fragment62_34A420.c
+    3 (   3 >=.9)  src/fragments/62/fragment62_2F6930.c
+    3 (   3 >=.9)  src/fragments/62/fragment62_315D50.c
+    3 (   3 >=.9)  src/fragments/62/fragment62_3512D0.c
+
+== totals ==
+GS functions with best S1 match >= 0.9 : 106
+GS functions with best S1 match >= 0.8 : 106
+GS functions with best S1 match >= 0.6 : 106
+GS functions scanned: 3743 (3637 below 0.90)
+note: 66 rows hidden by --top; use --all-lines

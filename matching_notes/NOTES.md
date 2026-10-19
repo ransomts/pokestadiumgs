@@ -75,6 +75,30 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
 
 ## Wave log
 
+### Wave 4 (2026-10-19 ~01:00): 9 matches + 5 near-misses + 2 blob-class parks
+- 9 matched (see commit): func_80047104 [Font_GetHeightRecordIndex], func_8004A858
+  [Ui_DrawGradientQuad] (+neighbor extern retype), func_82800490 [fragment10_main],
+  func_82800620 (25 = neighbor rename-noise only), func_80068390, func_800684F0 (10
+  reloc-class), func_80069900 (10 reloc-class), func_8006A51C, func_80070DEC.
+- PARKED (blob-ownership display class; every byte verified identical, needs the
+  fragment23-style yaml migration): func_800630F0 [Type_IdToChartIndex] and
+  func_800631B4 [Type_ChartIndexToId] — recipe in spool metas; W4c verified the pair
+  ROM-OK in an isolated tree (/tmp/opencode/psv, since removed) via insert
+  [0xA5C90, .rodata, 63CF0] + const u32 D_800A5090[1]={0} prefix + 2 extern drops.
+- Near-misses farmed: func_8002781C@744 (KEY CLUE in meta: call inside if(mode>=4)
+  gives score 5 but the target jal is unconditional — needs the promoted-mode temp in
+  a1 with an unconditional call), func_80031564@650 (la-CSE form), func_800333CC@1060
+  (jtbl in A4590 blob — yaml migration recipe in meta), func_800113B4@492,
+  func_8280105C@220 (missing trailing dead [jr ra;nop] stub).
+- FARM MECHANICS FIXED (again): seed drafts alter the ROM BY DESIGN, so the staged
+  build gate now runs `make COMPARE=0` (compile+link check only); byte-identity stays
+  the integrator's local gate. Seeds branches MUST be re-cut after every rename wave
+  (a stale branch's tracked src conflicts with the live tree's regenerated asm/ —
+  farm-seeds-2 died on undefined Fragment11_DrawThickPanelFrame). Draft prologue
+  typedefs can collide when two seeds land in one file — dedup on the branch.
+- Farm job 17634152 (work1, 7h): 11 functions x 4 workers x 2 copies, seeds
+  farm-seeds-3, SAVE_DIR /scratch/$USER/permuter_best_gs.
+
 ### Wave 3 (2026-10-19 early): 12 matches + 8 farm near-misses
 - 12 matched (commit af2948bc): func_8001644C, func_800162D0 (+const SLOWCOPY data),
   func_8000A080 (both reloc-class-10 ROM-identical), func_8006E944, func_800697B8,

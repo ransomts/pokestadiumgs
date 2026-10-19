@@ -81,9 +81,14 @@ fi
 cd "$STAGE"
 find build -exec touch {} + 2>/dev/null || true
 
-# Gate: the staged tree must build byte-identical before anyone works on it.
-env PATH="$STAGE/.venv/bin:$PATH" make -j"$SLURM_CPUS_PER_TASK" PYTHON="$STAGE/.venv/bin/python3" 2>&1 | tail -3
-grep -q "build/pokestadiumgs-us.z64: OK" <(env PATH="$STAGE/.venv/bin:$PATH" make PYTHON="$STAGE/.venv/bin/python3" 2>&1 | tail -1) || { echo "BUILD NOT OK"; exit 1; }
+# Gate: the staged tree must compile and link. COMPARE=0 because seed drafts (near-miss
+# C spliced over pragmas) intentionally alter the ROM bytes; the farm only needs the
+# tree to build. Byte-identity is the integrator's local full-make gate, not this one.
+if env PATH="$STAGE/.venv/bin:$PATH" make -j"$SLURM_CPUS_PER_TASK" PYTHON="$STAGE/.venv/bin/python3" COMPARE=0 > "$STAGE/gate.log" 2>&1; then
+    echo "BUILD OK (COMPARE=0)"
+else
+    tail -5 "$STAGE/gate.log"; echo "BUILD NOT OK"; exit 1
+fi
 
 # Permuter farm. Spec is func:src[:workers[:copies]]: the permuter's main process caps each
 # function at ~80 it/s regardless of workers, so scale by adding copies (independent
