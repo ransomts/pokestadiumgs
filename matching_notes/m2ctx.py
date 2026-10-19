@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import shutil
+import sys
+import subprocess
+from pathlib import Path
+
+# assuming that this util is in matching_notes/ (local port; upstream tools/ has no m2ctx)
+script_dir = os.path.dirname(os.path.realpath(__file__))
+root_dir = os.path.abspath(os.path.join(script_dir, ".."))
+
+# Project-specific (mirrors pokestadiumgs Makefile IINC + GBI/LIBULTRA defines)
+CPP_FLAGS = [
+    "-undef",
+    "-D__sgi",
+    "-DVERSION_US=1",
+    "-DTARGET_N64",
+    "-D_LANGUAGE_C",
+    "-DF3DEX_GBI_2",
+    "-D_MIPS_SZLONG=32",
+    "-ffreestanding",
+    "-nostdinc",
+    "-Iinclude",
+    "-Isrc",
+    "-Isrc/libnaudio",
+    "-Iassets/us",
+    "-I.",
+    "-Ibuild",
+    "-Ilib/ultralib/include",
+    "-Ilib/ultralib/include/PR",
+    "-Ilib/ultralib/include/ido",
+    "-DM2C",
+]
+
+def import_c_file(in_file) -> str:
+
+    Message = '/**** Context file for Pokemon Stadium 2 *****/\n'
+
+    in_file = os.path.relpath(in_file, root_dir)
+    # Prefer clang as C preprocessor if installed on the system
+    if shutil.which('clang') is not None:
+        cpp = ['clang', '-E', '-P', '-x', 'c', '-Wno-trigraphs']
+    else:
+        cpp = ['gcc', '-E', '-P']
+
+    cpp_getdefines = [*cpp, "-dM", *CPP_FLAGS, in_file]
+    cpp_procfile = [*cpp, *CPP_FLAGS, in_file]
+
+    out_text = ""
+    try:
+        out_text += subprocess.check_output(cpp_getdefines, cwd=root_dir, encoding="utf-8")
+        out_text += subprocess.check_output(cpp_procfile, cwd=root_dir, encoding="utf-8")
+    except subprocess.CalledProcessError:
+        print(
+            "Failed to preprocess input file, when running command:\n",
+            cpp_getdefines,
+            file=sys.stderr,
+            )
+        sys.exit(1)
+
+    if not out_text:
+        print("Output is empty - aborting")
+        sys.exit(1)
+    return Message + out_text
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="""Create a context file which can be used for mips_to_c"""
+        )
+    parser.add_argument(
+        "c_file",
+        help="""File from which to create context""",
+        )
+    args = parser.parse_args()
+
+    output = import_c_file(args.c_file)
+
+    with open(os.path.join(root_dir, "ctx.c"), "w", encoding="UTF-8") as f:
+        f.write(output)
+
+
+if __name__ == "__main__":
+    main()

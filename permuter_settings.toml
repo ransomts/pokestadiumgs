@@ -1,0 +1,24 @@
+compiler_type = "ido"
+
+[preserve_macros]
+NULL = "int"
+"g[DS]P.*" = "void"
+"gs[DS]P.*" = "void"
+"gDma.*" = "void"
+"G_IM_SIZ_.*" = "int"
+"G_IM_FMT_.*" = "int"
+"G_TX_.*" = "int"
+"G_[AC]C.*" = "int"
+SQ = "float"
+ABS = "float"
+ABS_ALT = "float"
+ABS_NORMALIZED = "float"
+COSS = "float"
+SINS = "float"
+
+[decompme.compilers]
+"tools/coalesce_cc.py" = "ido7.1"
+"tools/ido/linux/7.1/cc" = "ido7.1"
+"tools/ido/macos/7.1/cc" = "ido7.1"
+"tools/ido/linux/5.3/cc" = "ido5.3"
+"tools/ido/macos/5.3/cc" = "ido5.3"
