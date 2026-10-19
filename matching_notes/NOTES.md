@@ -117,8 +117,19 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
   — full make OK, byte-identical. Seed fixups that mattered: no u16 mask on the
   Ui_DrawGradientQuad args (s32 prototype per src/4AC10.c), sp24 declared
   second for home slot 0x24.
-- Farm job 17663103 (work1, 8h, SEED_BRANCH=farm-seeds-5): 13 functions x
-  3 workers x 2 copies; staged build verified locally (COMPARE=0) before sbatch.
+- Farm job 17663103 (work1, SEED_BRANCH=farm-seeds-5) DIED IN ITS STAGED GATE:
+  it dequeued exactly while the wave-6 rename `make extract` was regenerating
+  asm/, and deeper — palmetto_job.sh's SEED_BRANCH staging extracts the branch's
+  ENTIRE tracked tree over the live-tree rsync, so a seed branch older than the
+  current farm-port (pre-wave-6, pre-rename) demands a stale asm/ set and the
+  gate fails (src/57C0.c wanting func_800052C4.s that no longer exists). This
+  is the "re-cut seeds after every rename wave" rule extended: ALSO do not let
+  an integrator extract/full-make race a farm job's staging minute, and treat
+  seed-branch age vs farm-port HEAD as a hard precondition. Re-cut as
+  farm-seeds-6 (db50ca70, cherry-pick of the seed commit onto current HEAD,
+  8AF1BAE8 draft dropped as adopted) after local staged-build verification;
+  relaunched as job 17663884 (--time passed to sbatch explicitly: the in-job
+  scontrol TimeLimit trim failed once). 13 functions x 3 workers x 2 copies.
 
 ### Sweep A_adopt adoption (2026-10-19): 59 matches (166 total)
 - All 59 score-0 sweep drafts spliced from matching_notes/sweep_zero/ in four
