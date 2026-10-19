@@ -2,14 +2,14 @@
 
 
 #ifdef VERSION_US
-extern void func_8004A858(s32, s32, u16, u16, s32 *, s32 *);
+extern void Ui_DrawGradientQuad(s32, s32, u16, u16, s32 *, s32 *);
 extern u8 D_8AF26450;
 extern u8 D_8AF26454;
 s32 func_8AF0EFF0(void *arg0) {
     void *temp_v0;
 
     temp_v0 = (*(void **)((u8 *)(arg0) + (0x18)));
-    func_8004A858(0, 0, (*(u16 *)((u8 *)(temp_v0) + (4))), (*(u16 *)((u8 *)(temp_v0) + (6))), &D_8AF26450, &D_8AF26454);
+    Ui_DrawGradientQuad(0, 0, (*(u16 *)((u8 *)(temp_v0) + (4))), (*(u16 *)((u8 *)(temp_v0) + (6))), &D_8AF26450, &D_8AF26454);
     return 0;
 }
 

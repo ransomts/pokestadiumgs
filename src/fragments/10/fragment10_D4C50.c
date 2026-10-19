@@ -40,7 +40,7 @@ void func_8280018C(u8 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/10/fragment10_D4C50/func_828001FC.s")
 
-/* mkdraft:func_82800490 begin */
+/* mkdraft:fragment10_main begin */
 extern s32 main_pool_push_state(s32);
 extern s32 main_pool_pop_state(s32);
 extern void Gfx_InitDisplayListBuffers(s32, s32);
@@ -64,7 +64,7 @@ extern u8 D_828029A0[];
 extern u8 D_828029AC[];
 extern s32 D_82802A5C;
 
-s32 func_82800490(s32 arg0, s16 *arg1) {
+s32 fragment10_main(s32 arg0, s16 *arg1) {
     s32 configuration;
     s32 result;
 
@@ -100,5 +100,5 @@ s32 func_82800490(s32 arg0, s16 *arg1) {
     main_pool_pop_state(0x43535050);
     return result;
 }
-/* mkdraft:func_82800490 end */
+/* mkdraft:fragment10_main end */
 #endif

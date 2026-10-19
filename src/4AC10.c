@@ -122,14 +122,14 @@ void Ui_FillInsetRectangleB(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u16 arg4) {
     }
 }
 
-/* mkdraft:func_8004A858 begin */
+/* mkdraft:Ui_DrawGradientQuad begin */
 extern s32 func_8000731C(void);
 extern void *Gfx_AllocDisplayList(s32);
 extern void Gfx_SetViewportDimensions(void *, s16, s16);
 extern void Gfx_SetVertexAttributes(Vtx *, s16, s16, s16, s16, s16, u8, u8, u8, u8);
 extern Mtx D_80094890;
 
-void func_8004A858(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u8 *arg4, u8 *arg5) {
+void Ui_DrawGradientQuad(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u8 *arg4, u8 *arg5) {
     s16 *dims;
     Vtx *vertices;
     Mtx *matrix;
@@ -158,7 +158,7 @@ void func_8004A858(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u8 *arg4, u8 *arg5) {
     gSPVertex(D_800D0510++, (u32)vertices & 0x1FFFFFFF, 4, 0);
     gSP2Triangles(D_800D0510++, 0, 2, 3, 0, 0, 3, 1, 0);
 }
-/* mkdraft:func_8004A858 end */
+/* mkdraft:Ui_DrawGradientQuad end */
 
 extern Gfx *D_800D0510;
 extern s32 StageContext_IsHighResolution(void);
@@ -182,7 +182,7 @@ void Ui_DrawBorderedPanel(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u16 arg4) {
 
 extern Gfx *D_800D0510;
 extern s32 StageContext_IsHighResolution(void);
-extern void func_8004A858(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u8 *arg4, u8 *arg5);
+extern void Ui_DrawGradientQuad(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u8 *arg4, u8 *arg5);
 extern void Ui_DrawBorderStyleA(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 extern void Ui_DrawBorderStyleC(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 extern u8 D_80094E38[];
@@ -190,9 +190,9 @@ extern u8 D_80094F50[];
 void Ui_DrawGradientPanel(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
     if (arg2 >= 15 && arg3 >= 15) {
         if (StageContext_IsHighResolution() != 0) {
-            func_8004A858(arg0 + 6, arg1 + 6, arg2 - 12, arg3 - 12, arg4, arg5);
+            Ui_DrawGradientQuad(arg0 + 6, arg1 + 6, arg2 - 12, arg3 - 12, arg4, arg5);
         } else {
-            func_8004A858(arg0 + 2, arg1 + 2, arg2 - 4, arg3 - 4, arg4, arg5);
+            Ui_DrawGradientQuad(arg0 + 2, arg1 + 2, arg2 - 4, arg3 - 4, arg4, arg5);
         }
     }
     gSPDisplayList(D_800D0510++, D_80094E38);
