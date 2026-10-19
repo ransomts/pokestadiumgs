@@ -75,6 +75,22 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
 
 ## Wave log
 
+### Wave 5 (2026-10-19, S1 cross-ports): 25 matches (107 total)
+- 18 in commit d2f7e50b (C380 JPEG block x8 via Makefile CC_OLD=IDO 5.3 route —
+  CHECK THE DONOR REPO'S PER-FILE COMPILER EXCEPTIONS before fighting regalloc;
+  fragment67/79 ParticleGfx+BattleAnim; TradeCable/AuxiliaryEffect/Geo_NodeCamera)
+  + 7 in commit 33cf0aca (Sched x3, Storage_GetSramHandle, Jpeg_InitializeDspTask,
+  draw_profiler_mode_0, Timer_MeasureElapsedUs) with AC80-data + 7140-bss migrations.
+- EXTRACT-STABILITY DEBT: 33cf0aca's ld edits + blob truncations (88A40/85DA0/unk_bss2/3)
+  die on the next make extract — port them into the yaml FIRST (recipes in the
+  func_8000B2A4/func_80006540 spool metas). Do NOT run make extract before that.
+- Parked with recipes: spline trio (func_8290E040/E0FC/E1D8 — statics + orphan .bss
+  at 0x8291BC14 + literal blob split; see W5b lessons), func_84164C28 + func_84168CA4
+  (fragment79 blob datamig, joint).
+- crossport_join.py + CROSSPORT_2026-10-19.txt: 106 GS-unmatched have S1 twins >=0.9
+  (52 at 1.000); ~80 remain unworked. Upstream split machinery ready
+  (upstream_split.sh, dry-runs clean; up/renames first, then per-fragment PRs).
+
 ### Wave 4 (2026-10-19 ~01:00): 9 matches + 5 near-misses + 2 blob-class parks
 - 9 matched (see commit): func_80047104 [Font_GetHeightRecordIndex], func_8004A858
   [Ui_DrawGradientQuad] (+neighbor extern retype), func_82800490 [fragment10_main],
