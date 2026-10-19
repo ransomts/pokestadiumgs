@@ -200,7 +200,20 @@ void func_86703DF4_padding(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/55/fragment55_code/func_86703F9C.s")
+/* mkdraft:func_86703F9C begin */
+extern s32 D_8670BB58;
+extern s32 D_86727CD8[];
+extern u32 func_8003570C(void);
+
+void func_86703F9C(void) {
+    s32 value;
+    D_86727CD8[0] = D_8670BB58 / 1800;
+    value = D_8670BB58 - D_86727CD8[0] * 1800;
+    D_86727CD8[1] = value / 30;
+    value -= D_86727CD8[1] * 30;
+    D_86727CD8[2] = func_8003570C() % 3 + value * 100 / 30;
+}
+/* mkdraft:func_86703F9C end */
 #endif
 
 #ifdef VERSION_US
@@ -220,7 +233,27 @@ void func_86703DF4_padding(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/55/fragment55_code/func_86706874.s")
+extern void func_80037120(s32, s32, s32 *, s16 *, s16 *);
+extern s32 D_80094908;
+s32 func_86706874(s32 arg0, void *arg1) {
+    s16 pad;
+    s32 x;
+    s16 y;
+    s16 z;
+
+    if (arg0 == 2) {
+        func_80037120(D_80094908 + 0xB4, D_80094908 + 0xA8, &x, &y, &z);
+        *(s16 *)((u8 *)arg1 + 0x1C) = y + 0x2000;
+        *(s16 *)((u8 *)arg1 + 0x1E) = z - 0x2000;
+    }
+    return 0;
+}
+
+void func_867068DC(void) {
+}
+
+void D_867068E4(void) {
+}
 #endif
 
 #ifdef VERSION_US

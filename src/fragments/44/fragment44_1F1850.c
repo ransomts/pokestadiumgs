@@ -26,7 +26,32 @@ void func_8AF03624(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_1F1850/func_8AF03678.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_1F1850/func_8AF03730.s")
+/* mkdraft:func_8AF03730 begin */
+extern void func_8005053C(void *, void *);
+extern void func_80050578(void *, s32);
+extern u8 D_8AF2C550;
+extern u8 D_8AF2653C;
+extern s16 D_8AF26544;
+
+s32 func_8AF03730(s32 arg0, u8 *arg1)
+{
+  unsigned int new_var2;
+  u8 *new_var;
+  new_var2 = 0x400;
+  switch (arg0)
+  {
+    case 0:
+      func_8005053C(arg1, &D_8AF2C550);
+      new_var = &D_8AF2653C;
+      func_80050578(arg1, (s32) new_var);
+      break;
+    case 1:
+      break;
+  }
+  D_8AF26544 += new_var2;
+  return 0;
+}
+/* mkdraft:func_8AF03730 end */
 
 extern u16 D_8AF2C560;
 extern u8 D_8AF2C278[];

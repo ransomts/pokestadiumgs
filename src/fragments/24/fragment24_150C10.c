@@ -182,7 +182,30 @@ void func_82B01850(s32 arg0, s32 arg1) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/24/fragment24_150C10/func_82B018CC.s")
+/* mkdraft:func_82B018CC begin */
+void *func_82B018CC(void *arg0, s32 arg1) {
+    s32 i;
+    u8 *ptr;
+    void *result;
+    void *base;
+
+    result = NULL;
+    i = 0;
+    base = arg0;
+    if (arg1 > 0) {
+        ptr = base;
+        do {
+            i += 1;
+            if (*(s16 *)ptr == 0) {
+                result = ptr;
+                break;
+            }
+            ptr += 0x70;
+        } while (i != arg1);
+    }
+    return result;
+}
+/* mkdraft:func_82B018CC end */
 #endif
 
 #ifdef VERSION_US

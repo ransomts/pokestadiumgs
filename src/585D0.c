@@ -1085,7 +1085,7 @@ void func_8005BECC(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 #ifdef VERSION_US
 u8 *func_8005B280();
 
-u8 func_8005BF78(void) {
+u8 func_8005BF78() {
     u8 *temp_v0;
     u8 var_v1;
 
@@ -1100,7 +1100,16 @@ u8 func_8005BF78(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005BFA8.s")
+/* mkdraft:func_8005BFA8 begin */
+extern s32 func_8005BF28(s32 arg0, s32 arg1);
+
+s32 func_8005BFA8(s32 arg0, s32 arg1) {
+    if (func_80057A80(arg0) != 0) {
+        return func_8005BF28(arg0, arg1);
+    }
+    return func_8005BF78(arg0, arg1);
+}
+/* mkdraft:func_8005BFA8 end */
 #endif
 
 #ifdef VERSION_US
@@ -1208,7 +1217,16 @@ void func_8005C22C(s32 arg0, s32 arg1, s32 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005C2B4.s")
+/* mkdraft:func_8005C2B4 begin */
+void func_8005C2B4(s32 arg0, s32 arg1, s32 arg2) {
+    typedef struct { u8 first; u8 second; } Pair;
+    s32 temp_v0;
+    temp_v0 = *(s32 *)(D_801285D0 + arg1 * 112);
+    if ((arg2 >= 0) && (arg2 < 50)) {
+        ((Pair *)(temp_v0 + 0x267))[arg2] = *(Pair *)arg0;
+    }
+}
+/* mkdraft:func_8005C2B4 end */
 #endif
 
 #ifdef VERSION_US
@@ -1638,7 +1656,38 @@ void func_8005D418(s32 arg0, s32 arg1, s32 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005D4FC.s")
+/* mkdraft:func_8005D4FC begin */
+void func_8005D4FC(s32 arg0, s32 arg1, s32 arg2) {
+    s32 base = *(s32 *)(D_80128570 + arg1 * 112 + 0x60);
+    s32 data = *(s32 *)(D_80128570 + arg1 * 112 + 0x68);
+    s32 result = func_8005CDDC(arg0, arg1, arg2);
+    if (result < func_8005CAA4(arg0)) {
+        result++;
+        switch (arg0) {
+        case 0x20:
+            *(u8 *)(base + 0x865) = result;
+            *(u8 *)(base + result + 0x866) = 0xFF;
+            break;
+        case 0x21:
+            func_8005C060(arg1, arg2, result);
+            break;
+        case 0x22:
+            *(u8 *)(base + 0x47F) = result;
+            *(u8 *)(base + result * 2 + 0x480) = 0xFF;
+            break;
+        case 0x24:
+            *(u8 *)(data + 0x40B) = result;
+            break;
+        case 0x26:
+            *(u8 *)(D_80128730[arg1] + 1) = result;
+            break;
+        case 0x27:
+            *(u8 *)(D_80128730[arg1]) = result;
+            break;
+        }
+    }
+}
+/* mkdraft:func_8005D4FC end */
 #endif
 
 #ifdef VERSION_US
@@ -2359,11 +2408,37 @@ void func_8005F9F4(s32 arg0, s32 arg1) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005FAB4.s")
+/* mkdraft:func_8005FAB4 begin */
+s32 func_8005FAB4(s32 arg0) {
+    if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) == 0) {
+        return 0;
+    }
+    switch ((u32)func_8005D92C(arg0)) {
+    case 5:
+    case 6:
+        return *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + 0x86B);
+    case 7:
+        return *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + 0x846);
+    }
+}
+/* mkdraft:func_8005FAB4 end */
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005FB40.s")
+/* mkdraft:func_8005FB40 begin */
+s32 func_8005FB40(s32 arg0) {
+    if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) == 0) {
+        return 0;
+    }
+    switch ((u32)func_8005D92C(arg0)) {
+    case 5:
+    case 6:
+        return *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + 0x86A);
+    case 7:
+        return *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + 0x845);
+    }
+}
+/* mkdraft:func_8005FB40 end */
 #endif
 
 #ifdef VERSION_US
@@ -2387,7 +2462,21 @@ void func_8005FBCC(s32 arg0, u8 arg1, u8 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005FC7C.s")
+/* mkdraft:func_8005FC7C begin */
+void func_8005FC7C(s32 arg0, u8 arg1, u8 arg2) {
+    if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) != 0) {
+        switch ((u32)func_8005D92C(arg0)) {
+        case 5:
+        case 6:
+            *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + arg1 + 0x86C) = arg2;
+            break;
+        case 7:
+            *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + arg1 + 0x847) = arg2;
+            break;
+        }
+    }
+}
+/* mkdraft:func_8005FC7C end */
 #endif
 
 #ifdef VERSION_US
@@ -2395,7 +2484,21 @@ void func_8005FBCC(s32 arg0, u8 arg1, u8 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005FDB0.s")
+/* mkdraft:func_8005FDB0 begin */
+void func_8005FDB0(s32 arg0, u8 arg1, u8 arg2) {
+    if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) != 0) {
+        switch ((u32)func_8005D92C(arg0)) {
+        case 5:
+        case 6:
+            *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + arg1 + 0x3AD) = arg2;
+            break;
+        case 7:
+            *(u8 *)(*(s32 *)(D_80128570 + arg0 * 112 + 0x60) + arg1 + 0x3AC) = arg2;
+            break;
+        }
+    }
+}
+/* mkdraft:func_8005FDB0 end */
 #endif
 
 #ifdef VERSION_US

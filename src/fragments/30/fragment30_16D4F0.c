@@ -98,7 +98,31 @@ void func_881014E4(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/30/fragment30_16D4F0/func_8810179C.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/30/fragment30_16D4F0/func_88102234.s")
+/* mkdraft:func_88102234 begin */
+extern s32 func_80001FF0(void);
+extern void StageContext_SetClearColor(u16);
+extern void StageFade_StartFromOpaque(s32);
+extern void func_80064D28(void);
+extern void func_8810179C(s32);
+extern f32 D_88104E68;
+
+void func_88102234(void) {
+    s32 count;
+    s32 i;
+
+    count = (u32) (((f32)func_80001FF0() * D_88104E68) / 2) & 0xFFFF;
+    StageContext_SetClearColor(1);
+    StageFade_StartFromOpaque(count);
+    i = 0;
+    if (count != 0) {
+        do {
+            func_80064D28();
+            func_8810179C(0);
+            i += 1;
+        } while (i != count);
+    }
+}
+/* mkdraft:func_88102234 end */
 
 extern void func_800226C0(s32);
 extern void func_880040D4();

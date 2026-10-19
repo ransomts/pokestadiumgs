@@ -252,19 +252,26 @@ void func_8413F498(s16 arg0, s16 arg1, s16 arg2, u16 arg3) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3ADCA0/func_8413F5A8.s")
+/* mkdraft:func_8413F5A8 begin */
+extern void func_8004D19C(s32, s32, s32, s32, s32);
+
+void func_8413F5A8(s16 arg0, s16 arg1, u16 arg2, u16 arg3) {
+    s32 value = (s32)func_8004C990((s32)arg2, (s32)arg3);
+    func_8004D19C((s32)arg0, (s32)arg1, value, 0, 0);
+}
+/* mkdraft:func_8413F5A8 end */
 #endif
 
 #ifdef VERSION_US
 extern u8 D_84186FE0[];
-extern void func_8413F5A8(s32,s32,s32,s32);
+extern void func_8413F5A8(s16,s16,u16,u16);
 void func_8413F5F4(s16 arg0, s16 arg1, s32 arg2) {
     func_8413F5A8(arg0, arg1, 0x23, D_84186FE0[arg2]);
 }
 #endif
 
 #ifdef VERSION_US
-extern void func_8413F5A8(s32,s32,s32,s32);
+extern void func_8413F5A8(s16,s16,u16,u16);
 extern s32 func_800630F0(s32);
 extern u8 D_84186F98[];
 extern u8 D_84186FE8[];
@@ -283,9 +290,9 @@ void func_8413F640(s16 arg0, s16 arg1, s32 arg2) {
 #endif
 
 #ifdef VERSION_US
-extern void func_8413F5A8(s32, s32, s32, s32);
+extern void func_8413F5A8(s16, s16, u16, u16);
 void func_8413F6C0(s16 arg0, s16 arg1, u16 arg3) {
-    func_8413F5A8(arg0, arg1, 0x1E, arg3);
+    func_8413F5A8(arg0, arg1, 0x1E, (u16)(s32)arg3);
 }
 #endif
 
@@ -530,7 +537,7 @@ void func_84140690(void *arg0) {
 
 #ifdef VERSION_US
 extern u8 D_84186B60[];
-extern void func_8413F5A8(s32,s32,s32,s32);
+extern void func_8413F5A8(s16,s16,u16,u16);
 void func_84140B64(void *arg0) {
     u8 sp27;
     s32 temp_v0;
@@ -831,7 +838,7 @@ typedef struct {
     u8 r, g, b, a;
 } Candidate84142B78Record;
 extern void ParticleGfx_SetPrimColor_fragment79(u8 r, u8 g, u8 b, u8 a);
-extern void func_8413F5A8(s32,s32,s32,s32);
+extern void func_8413F5A8(s16,s16,u16,u16);
 extern void func_8413F700(s16 arg0, s16 arg1);
 extern void func_8413F73C(s16 arg0, s16 arg1);
 extern void func_8413F778(s16 arg0, s16 arg1);

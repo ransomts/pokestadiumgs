@@ -2,9 +2,63 @@
 
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_205C30/func_8AF179C0.s")
+/* mkdraft:func_8AF179C0 begin */
+extern void func_800504BC(s16 *);
+extern void func_8AC015B0(s16, s16, s32, s32, s16);
+extern u8 *D_8AF35000;
+extern s16 D_8AF27430;
+extern s16 D_8AF35008;
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_205C30/func_8AF17A5C.s")
+s32 func_8AF179C0(s32 mode, void *record) {
+    s16 x;
+    s16 y;
+    void *preserved;
+    s16 values[2];
+
+    preserved = record;
+    switch (mode) {
+    case 0:
+        *(u16 *)((u8 *)preserved + 2) &= 0xFFFD;
+        break;
+    case 1:
+        func_800504BC(values);
+        x = *(s16 *)((u8 *)preserved + 8) + values[0];
+        y = *(s16 *)((u8 *)preserved + 0xA) + values[1];
+        func_8AC015B0(x, y, (s32)D_8AF35000, D_8AF27430, D_8AF35008);
+        break;
+    }
+    return 0;
+}
+/* mkdraft:func_8AF179C0 end */
+
+/* mkdraft:func_8AF17A5C begin */
+extern void func_800504BC(s16 *);
+extern void func_8AC015B0(s16, s16, s32, s32, s16);
+extern u8 *D_8AF35004;
+extern s16 D_8AF27434;
+extern s16 D_8AF3500A;
+
+s32 func_8AF17A5C(s32 mode, void *record) {
+    s16 x;
+    s16 y;
+    void *preserved;
+    s16 values[2];
+
+    preserved = record;
+    switch (mode) {
+    case 0:
+        *(u16 *)((u8 *)preserved + 2) &= 0xFFFD;
+        break;
+    case 1:
+        func_800504BC(values);
+        x = *(s16 *)((u8 *)preserved + 8) + values[0];
+        y = *(s16 *)((u8 *)preserved + 0xA) + values[1];
+        func_8AC015B0(x, y, (s32)D_8AF35004, D_8AF27434, D_8AF3500A);
+        break;
+    }
+    return 0;
+}
+/* mkdraft:func_8AF17A5C end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_205C30/func_8AF17AF8.s")
 

@@ -72,7 +72,58 @@ void func_88214394(void) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/31/fragment31_186690/func_882143EC.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/31/fragment31_186690/func_882152F4.s")
+/* mkdraft:func_882152F4 begin */
+typedef struct { u8 pad[8]; s16 position; s16 start; u8 pad2[0x20]; } Scroll18690;
+typedef struct { u8 slot; u8 reserved[0xB]; Scroll18690 records[2]; u8 pad[0xC]; s32 position; } State18690;
+extern s32 D_882346F0;
+extern s32 D_882346F4;
+
+s32 func_882152F4(u8 arg0, u8 arg1) {
+    u32 index = arg0;
+    State18690 *state;
+    s32 result = 0;
+
+    switch (D_882346F0) {
+    default:
+        goto done;
+    case 0:
+        if (D_882346F4 == 0) {
+            goto done;
+        }
+        state = (State18690 *)D_88234730;
+        if (arg0 != state->slot) {
+            goto done;
+        }
+        if (arg1 == state->records[index].position - state->records[index].start) {
+            result = 1;
+            goto done;
+        }
+        goto done;
+    case 1:
+    case 3:
+        state = (State18690 *)D_88234730;
+        if (arg0 == state->slot) {
+            goto done;
+        }
+        if (arg1 == state->records[index].position - state->records[index].start) {
+            result = 1;
+            goto done;
+        }
+        goto done;
+    case 2:
+        state = (State18690 *)D_88234730;
+        if (arg0 != state->slot) {
+            goto done;
+        }
+        if ((s16)arg1 == *(s16 *)((u8 *)state + 0x70) - state->records[index].start) {
+            result = 1;
+        }
+        goto done;
+    }
+done:
+    return result;
+}
+/* mkdraft:func_882152F4 end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/31/fragment31_186690/func_88215420.s")
 

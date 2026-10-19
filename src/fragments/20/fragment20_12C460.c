@@ -797,7 +797,38 @@ void func_82609938(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/20/fragment20_12C460/func_8260B424.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/20/fragment20_12C460/func_8260B8CC.s")
+/* mkdraft:func_8260B8CC begin */
+extern s32 func_8004C990(s32, s32);
+extern void GfxRect_DrawTextured(s16, s16, s16, s16, s16, s16, s16, s16, s32);
+
+void func_8260B8CC(s32 x, s32 y, s32 width, s32 height) {
+    s32 resource;
+    s32 tile_width;
+    s32 tile_height;
+
+    resource = func_8004C990(81, 0);
+    tile_width = ((u16 *)resource)[0];
+    tile_height = ((u16 *)resource)[1];
+    tile_width /= 4;
+    GfxRect_DrawTextured(x, y, tile_width, tile_height, 0, 0, 1024, 1024, 0);
+    GfxRect_DrawTextured(x + tile_width, y, width - tile_width * 2, tile_height,
+                  tile_width << 5, 0, 0, 1024, 0);
+    GfxRect_DrawTextured(x + width - tile_width, y, tile_width, tile_height,
+                  tile_width << 5, 0, 1024, 1024, 0);
+    GfxRect_DrawTextured(x, y + tile_height, tile_width, height - tile_height * 2,
+                  (tile_width * 2) << 5, 0, 1024, 0, 0);
+    GfxRect_DrawTextured(x, y + height - tile_height, tile_width, tile_height,
+                  (tile_width * 2) << 5, 0, 1024, 1024, 0);
+    GfxRect_DrawTextured(x + tile_width, y + height - tile_height,
+                  width - tile_width * 2, tile_height,
+                  (tile_width * 3) << 5, 0, 0, 1024, 0);
+    GfxRect_DrawTextured(x + width - tile_width, y + height - tile_height,
+                  tile_width, tile_height, (tile_width * 3) << 5, 0, 1024, 1024, 0);
+    GfxRect_DrawTextured(x + width - tile_width, y + tile_height,
+                  tile_width, height - tile_height * 2,
+                  (tile_width * 3) << 5, 0, 1024, 0, 0);
+}
+/* mkdraft:func_8260B8CC end */
 
 extern s32 func_8004D1FC(u8 *);
 extern void func_82607BF4(s16, u8 *, u8 *, s16, s32);

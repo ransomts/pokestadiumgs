@@ -6,7 +6,28 @@
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/42/fragment42_code/func_88D00178.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/42/fragment42_code/func_88D0038C.s")
+/* mkdraft:func_88D0038C begin */
+extern s32 func_80001FF0(void);
+extern void StageFade_StartFromOpaque(s32);
+extern void func_80064D28(void);
+extern void func_88D00178(void);
+extern f32 D_88D00A74;
+
+void func_88D0038C(void) {
+    u16 count;
+    s32 i;
+    count = (u16)((f32)func_80001FF0() * D_88D00A74 / 2);
+    StageFade_StartFromOpaque(count);
+    if (count != 0) {
+        i = 0;
+        do {
+            func_80064D28();
+            func_88D00178();
+            i++;
+        } while (i != count);
+    }
+}
+/* mkdraft:func_88D0038C end */
 
 extern void func_80064D28(void);
 extern s32 func_88D00020(void);
@@ -20,7 +41,30 @@ void func_88D00488(void) {
     } while (result == 0);
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/42/fragment42_code/func_88D004C8.s")
+/* mkdraft:func_88D004C8 begin */
+extern s32 func_80001FF0(void);
+extern void func_800225C4(s32);
+extern void StageFade_StartFromTransparent(s32);
+extern void func_80064D28(void);
+extern void func_88D00178(void);
+extern f32 D_88D00A78;
+
+void func_88D004C8(void) {
+    u16 count;
+    s32 i;
+    count = (u16)((f32)func_80001FF0() * D_88D00A78 / 2);
+    func_800225C4(count * 2);
+    StageFade_StartFromTransparent(count);
+    if (count != 0) {
+        i = 0;
+        do {
+            func_80064D28();
+            func_88D00178();
+            i++;
+        } while (i != count);
+    }
+}
+/* mkdraft:func_88D004C8 end */
 
 extern s32 mem_pool_try_init(s32, s32);
 extern void func_80057908(s32);

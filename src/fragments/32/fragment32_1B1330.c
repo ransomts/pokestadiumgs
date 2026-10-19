@@ -153,7 +153,28 @@ s32 func_88300A78(void) { s32 value = D_88308E04; s32 result; if (value < 5) { r
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/32/fragment32_1B1330/func_88301C00.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/32/fragment32_1B1330/func_88304E60.s")
+/* mkdraft:func_88304E60 begin */
+extern s32 func_80001FF0(void);
+extern void StageFade_StartFromOpaque(s32);
+extern void func_80064D28(void);
+extern void func_88301C00(s32);
+extern f32 D_88308920;
+
+void func_88304E60(void) {
+    u16 count;
+    s32 i;
+    count = (u16)((f32)func_80001FF0() * D_88308920 / 2);
+    StageFade_StartFromOpaque(count);
+    if (count != 0) {
+        i = 0;
+        do {
+            func_80064D28();
+            func_88301C00(0);
+            i++;
+        } while (i != count);
+    }
+}
+/* mkdraft:func_88304E60 end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/32/fragment32_1B1330/func_88304F5C.s")
 
