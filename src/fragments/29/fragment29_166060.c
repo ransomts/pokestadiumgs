@@ -189,8 +189,27 @@ u32 Credits_RandomRange(u32 arg0) {
     return (u32) ((u32) (osGetCount() + sp1C) / 10U) % arg0;
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/29/fragment29_166060/func_88000EC0.s")
-
+void func_88000EC0(s8 *arg0, s16 arg1, s32 arg2) {
+    if (arg1 >= 100) {
+        arg0[2] = arg1 / 100;
+        arg1 -= arg0[2] * 100;
+    } else if (arg2 != 0) {
+        arg0[2] = 0;
+    } else {
+        arg0[2] = -1;
+    }
+    if (arg1 >= 10) {
+        arg0[1] = arg1 / 10;
+        arg1 -= arg0[1] * 10;
+    } else if (arg0[2] > 0) {
+        arg0[1] = 0;
+    } else if (arg2 != 0) {
+        arg0[1] = 0;
+    } else {
+        arg0[1] = -1;
+    }
+    arg0[0] = arg1;
+}
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/29/fragment29_166060/func_88000FC4.s")
 
 typedef struct {

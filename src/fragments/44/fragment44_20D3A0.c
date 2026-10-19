@@ -185,5 +185,26 @@ s16 func_8AF2078C(void) {
     func_8AC06220(&D_8AF39510, D_8AF2BDC6);
     return sp1E;
 }
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_20D3A0/func_8AF208D0.s")
+void func_8AC00738(void);                           /* extern */
+void func_8AC05F00(M2C_UNK *);                       /* extern */
+s32 func_8AC0665C(M2C_UNK *, s16);                  /* extern */
+s32 func_8AC0672C(M2C_UNK *, s16);                  /* extern */
+extern M2C_UNK D_8AF39498;
+extern M2C_UNK D_8AF39510;
+extern M2C_UNK D_8AF39588;
+
+void func_8AF208D0(void) {
+    u8 *sp24;
+    void *sp1C;
+
+    sp24 = D_8AF27970;
+    sp1C = sp24 + 0x28;
+    func_8AC00738();
+    if (func_8AC0665C(&D_8AF39588, M2C_FIELD(sp1C, s16 *, 0x10)) != 0) {
+        func_8AC05F00(&D_8AF39498);
+    }
+    if (func_8AC0672C(&D_8AF39588, M2C_FIELD(sp1C, s16 *, 0x10)) != 0) {
+        func_8AC05F00(&D_8AF39510);
+    }
+}
 #endif

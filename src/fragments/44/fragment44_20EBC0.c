@@ -75,5 +75,27 @@ s16 func_8AF20DB0(void) {
     func_8AC06220(&D_8AF398B8, D_8AF2BDC6);
     return sp1E;
 }
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_20EBC0/func_8AF20E4C.s")
+void func_8AC00738(void);                           /* extern */
+void func_8AC05F00(M2C_UNK *);                       /* extern */
+s32 func_8AC06800(M2C_UNK *, s16);                  /* extern */
+s32 func_8AC06834(M2C_UNK *, s16);                  /* extern */
+extern M2C_UNK D_8AF39840;
+extern M2C_UNK D_8AF398B8;
+extern M2C_UNK D_8AF39930;
+
+void func_8AF20E4C(void) {
+    u8 *sp24;
+    void *sp18;
+    void *temp_v0;
+
+    sp24 = D_8AF279A0;
+    sp18 = sp24 + 0x28;
+    func_8AC00738();
+    if (func_8AC06800(&D_8AF39930, M2C_FIELD(sp18, s16 *, 0x10)) != 0) {
+        func_8AC05F00(&D_8AF39840);
+    }
+    if (func_8AC06834(&D_8AF39930, M2C_FIELD(sp18, s16 *, 0x10)) != 0) {
+        func_8AC05F00(&D_8AF398B8);
+    }
+}
 #endif

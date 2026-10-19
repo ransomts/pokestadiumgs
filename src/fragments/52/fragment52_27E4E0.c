@@ -91,7 +91,47 @@ void func_864007B8(s32 arg0, s32 arg1) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/52/fragment52_27E4E0/func_86400804.s")
+extern s32 func_80001FF0(void);
+extern u32 func_8003570C(void);
+extern void func_80037E3C(void *, void *, void *);
+extern void func_8003F114(u8 *, s32, s32, s32);
+extern void func_8003F1DC(u8 *);
+extern u8 *func_87F025B8(void *, void *);
+extern u8 *D_86416C00;
+extern void func_864002CC(void);
+void func_86400804(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
+    u8 *object;
+    // karodo: unused declaration. IDO reserves its home slot at 0x30(sp), which keeps the
+    // spilled object+0x24 common subexpression at 0x24(sp) as in the original frame layout.
+    u8 *sp30;
+    u32 sp2C;
+    s32 var_v1;
+
+    object = func_87F025B8(D_86416C00 + 0x3334, (void *)func_864002CC);
+    if (object != NULL) {
+        func_80037E3C(object + 0x24, (void *)func_864007B8, object);
+        func_8003F1DC(object + 0x24);
+        func_8003F114(object + 0x24, 0, -1, *(s32 *)(D_86416C00 + 0x7B8));
+        *(u8 *)(object + 0x26) |= 0x10;
+        sp2C = func_8003570C();
+        if ((((f32)func_80001FF0() / 60.0f) * 6.0f) >= 0.0f) {
+            var_v1 = (s32)((((f32)func_80001FF0() / 60.0f) * 6.0f) + 0.5f);
+        } else {
+            var_v1 = (s32)((((f32)func_80001FF0() / 60.0f) * 6.0f) - 0.5f);
+        }
+        *(u32 *)(object + 0x1C) = sp2C % (u32)((var_v1 >> 2) + 1);
+        *(f32 *)(object + 0x48) = arg0;
+        *(f32 *)(object + 0x4C) = arg1;
+        *(f32 *)(object + 0x50) = arg2;
+        *(f32 *)(object + 0x54) = arg3;
+        *(f32 *)(object + 0x58) = arg3;
+        *(f32 *)(object + 0x5C) = arg3;
+        *(f32 *)(object + 0x10) = arg4;
+        *(f32 *)(object + 0x14) = arg5;
+        *(f32 *)(object + 0x18) = arg6;
+        *(s32 *)(object + 0xC) = *(s32 *)(object + 0xC) | arg7;
+    }
+}
 #endif
 
 #ifdef VERSION_US

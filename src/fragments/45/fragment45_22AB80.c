@@ -49,7 +49,7 @@ extern u8 D_8AB126A8[];
 extern s16 D_8AB16950;
 extern s32 D_8AB16A14;
 extern void func_87F005F0(f32, f32);
-extern void func_8004C8A0(void *, s32, s32, s32);
+extern void *func_8004C8A0(void *, s32, s32, s32);
 extern void func_87F006BC(void);
 extern u32 func_87F006AC(void);
 extern void func_8AB00BA4();
@@ -166,7 +166,7 @@ extern s16 D_8AB16A36;
 extern s32 func_80025D44(void);
 extern s32 func_8AB07E6C(s32);
 extern void func_80021ED8(s32);
-extern void func_8004C8A0(void *, s32, s32, s32);
+extern void *func_8004C8A0(void *, s32, s32, s32);
 extern u8 D_8AB126A8[];
 s32 func_8AB07DC4(s32 arg0)
 {
@@ -241,8 +241,64 @@ s32 func_8AB08D3C(s32 arg0) {
     return sp1C;
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/45/fragment45_22AB80/func_8AB08DBC.s")
+extern void *D_80087200;
+extern s32 func_800279C4(s32);
+extern s32 func_8AB00548(void);
+extern s32 func_8AB00B78(s32);
+extern s32 func_8AB08F58(s32);
+extern void func_8AC063AC(void *, u16);
+extern void func_8AC06400(void *, void *);
+extern s32 D_8AB11280;
+extern void *D_8AB11D00;
+extern void *D_8AB12688;
+extern u16 D_8AB1268E;
+extern s16 D_8AB1269C;
+extern s32 D_8AB12BA8;
+extern s32 D_8AB12CBC;
+extern s32 D_8AB12D50;
+extern s32 D_8AB12DE4;
+extern s32 D_8AB12E78;
+extern void *D_8AB16B9C;
+extern s32 D_8AB16BA0;
 
+s32 func_8AB08DBC(s32 arg0) {
+    u16 temp_v0; /* unused; its 0x1C home slot places result at 0x18 as in the original frame */
+    s32 result;
+
+    result = 0x16;
+    switch (arg0) {
+    case 0:
+        func_8004C8A0(D_8AB126A8, 0x100, 0x3A, 3);
+        *(u16 *)((u8 *)D_8AB11D00 + 2) = (u16)(*(u16 *)((u8 *)D_8AB11D00 + 2) | 1);
+        func_8004C8A0(&D_8AB12BA8, 0x100, 0x39, 8);
+        *(u16 *)((u8 *)D_8AB12688 + 2) = (u16)(*(u16 *)((u8 *)D_8AB12688 + 2) | 1);
+        func_8AB00B98(D_8AB12688, -1U);
+        func_8AB04AE4();
+        func_8AC06400(&D_8AB16BA0, D_8AB16B9C);
+        *(u16 *)((u8 *)D_8AB16B9C + 2) = (u16)(*(u16 *)((u8 *)D_8AB16B9C + 2) | 1);
+        D_8AB12CBC = 0;
+        D_8AB12D50 = 0;
+        D_8AB12DE4 = 0;
+        D_8AB12E78 = 0;
+        D_8AB11280 = 0;
+        D_8AB1269C = 0x14;
+        func_8AB00548();
+        break;
+    case 1:
+        func_8AC063AC(&D_8AB16BA0, D_8AB1268E);
+        if (*(u16 *)((u8 *)D_80087200 + 8) & 0x8000) {
+            *(u16 *)((u8 *)D_8AB16B9C + 2) = (u16)(*(u16 *)((u8 *)D_8AB16B9C + 2) & 0xFFFE);
+            *(u16 *)((u8 *)D_8AB12688 + 2) = (u16)(*(u16 *)((u8 *)D_8AB12688 + 2) & 0xFFFE);
+            func_800279C4(0xCF0B);
+            result = func_8AB08F58(0);
+        } else if (*(u16 *)((u8 *)D_80087200 + 8) & 0x4000) {
+            result = func_8AB08D3C(0);
+            func_8AB00B78(3);
+        }
+        break;
+    }
+    return result;
+}
 extern u8 *D_8AB16CB0;
 extern s16 D_8AB16C18;
 extern s32 D_8AB16CC4;
@@ -250,7 +306,7 @@ extern s32 func_8AB090B8(s32);
 extern void func_80021ED8(s32);
 extern void func_800225C4(s32);
 extern void Geo_RenderRootNode(s32);
-extern void func_8004C8A0(void *, s32, s32, s32);
+extern void *func_8004C8A0(void *, s32, s32, s32);
 extern void func_87F005F0(f32, f32);
 extern u32 func_87F006AC(void);
 extern void func_87F006BC(void);

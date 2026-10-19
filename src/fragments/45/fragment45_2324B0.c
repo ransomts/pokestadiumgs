@@ -42,8 +42,62 @@ s32 func_8AB0E2EC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/45/fragment45_2324B0/func_8AB0E350.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/45/fragment45_2324B0/func_8AB0E4BC.s")
+extern void *func_8004C8A0(void *, s32, s32, s32);
+extern void func_80021ED8(s32);
+extern void func_8003C6B8(s32);
+extern void func_8004C54C(s32, s32);
+extern s32 func_8004C874(s32, s32);
+extern void func_800225C4(s32);
+extern void func_87F005F0(f32, f32);
+extern void func_87F006BC(void);
+extern u32 func_87F006AC(void);
+extern void func_8AB00BA4();
+extern s32 func_8AB0E684(s32);
+extern void *D_8AB11D00;
+extern u8 *D_8AB11D0C;
+extern u8 D_8AB126A8[];
+extern s16 D_8AB17188;
+extern void *D_8AB17220;
+extern s32 D_8AB17234;
 
+s32 func_8AB0E4BC(s32 arg0) {
+    s32 sp1C;
+
+    sp1C = 0x26;
+    switch (arg0) {
+    case 0:
+        func_87F005F0((f32) (*(s16 *)((u8 *)D_8AB17220 + 8) - 0x140), (f32) (0xF0 - *(s16 *)((u8 *)D_8AB17220 + 0xA)));
+        func_8004C8A0(D_8AB126A8, 0x100, 0x3A, 0x183);
+        D_8AB17188 = 3;
+        func_800225C4(0x5A);
+        func_8004C54C(0xF, func_8004C874(0x39, *(s8 *)(D_8AB11D0C + 0x14) + 0x269));
+        func_8004C8A0(D_8AB126A8, 0x100, 0x39, 0x172);
+        *(u16 *)((u8 *)D_8AB11D00 + 2) = (u16)(*(u16 *)((u8 *)D_8AB11D00 + 2) | 1);
+        break;
+    case 1:
+        func_87F006BC();
+        switch ((s16) func_87F006AC()) {
+        case 1:
+            func_8AB00BA4(0x64, D_8AB17188, 0);
+            D_8AB17188 -= 1;
+            break;
+        case 2:
+            func_80021ED8(0x4C);
+            func_8AB00BA4(0x64, D_8AB17188, 0);
+            D_8AB17188 -= 1;
+            break;
+        case 3:
+            *(u16 *)((u8 *)D_8AB11D00 + 2) = (u16)(*(u16 *)((u8 *)D_8AB11D00 + 2) & 0xFFFE);
+            sp1C = func_8AB0E684(0);
+            break;
+        }
+        break;
+    case 2:
+        func_8003C6B8(D_8AB17234);
+        break;
+    }
+    return sp1C;
+}
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/45/fragment45_2324B0/func_8AB0E684.s")
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/45/fragment45_2324B0/func_8AB0E8B4.s")
