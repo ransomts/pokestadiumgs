@@ -49,7 +49,29 @@ s32 func_88400034(s32 arg0, u8 *arg1) {
     return result;
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/33/fragment33_code/func_8840011C.s")
+/* mkdraft:func_8840011C begin */
+extern s16 Math_StepToS(s16, s16, s16);
+
+void func_8840011C(void *state) {
+    s16 step;
+    s16 increment;
+    s16 *rotation = (s16 *)(*(u8 **)((u8 *)state + 0x1C) + 0x1E);
+
+    if (*(s16 *)((u8 *)state + 0xE) < 256) {
+        *(s16 *)((u8 *)state + 0xE) += 16;
+    }
+    rotation[1] += *(s16 *)((u8 *)state + 0xE);
+    increment = *(s16 *)((u8 *)state + 0xE);
+    step = (rotation[0] < 0 ? -rotation[0] : rotation[0]) / 12;
+    if (step < 8) {
+        step = 8;
+    }
+    if (step < increment) {
+        increment = step;
+    }
+    rotation[0] = Math_StepToS(rotation[0], 0, increment);
+}
+/* mkdraft:func_8840011C end */
 
 extern void func_8840011C(void *);
 extern void *D_884017E0;

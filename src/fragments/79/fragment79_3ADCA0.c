@@ -1884,7 +1884,37 @@ void func_8414735C(u8 *arg0, s16 arg1, s16 arg2, u8 arg3, s16 arg4)
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3ADCA0/func_841474B4.s")
+/* mkdraft:func_841474B4 begin */
+extern u8 D_84186F1B[];
+extern u8 D_84186F1C[];
+
+void func_841474B4(u8 *arg0, s16 arg1, s16 arg2, u8 arg3, s16 arg4)
+{
+    s32 direction;
+    s32 sign;
+    s32 value;
+
+    value = arg0[1];
+    direction = value ? -1 : 1;
+    if (arg1 > 0) {
+        sign = 1;
+    } else {
+        sign = -1;
+    }
+    value = arg3;
+    if (value >= arg0[9]) {
+        arg0[8] &= ~1;
+        if (arg2 < 0) {
+            *(s16 *)(arg0 + 0xC) += sign * direction * D_84186F1B[arg0[9]];
+        } else if (arg2 > 0) {
+            *(s16 *)(arg0 + 0xC) += sign * direction * D_84186F1C[value + arg0[9] * -1];
+        } else {
+            *(s16 *)(arg0 + 0xC) += arg1 * direction / value;
+        }
+        func_84147270(arg0, arg3, arg4);
+    }
+}
+/* mkdraft:func_841474B4 end */
 #endif
 
 #ifdef VERSION_US
@@ -2022,7 +2052,7 @@ void func_84147B20(void *arg0) {
 #ifdef VERSION_US
 extern u8 D_84186F00;
 extern u8 D_84186F10;
-extern void func_841474B4(void *, s16, s16, u8, s32);
+extern void func_841474B4(u8 *, s16, s16, u8, s16);
 
 void func_84147FF4(u8 *arg0) {
     switch (arg0[0]) {
@@ -2040,7 +2070,7 @@ void func_84147FF4(u8 *arg0) {
 #ifdef VERSION_US
 extern u8 D_84186F00;
 extern u8 D_84186F10;
-extern void func_841474B4(void *, s16, s16, u8, s32);
+extern void func_841474B4(u8 *, s16, s16, u8, s16);
 
 void func_84148054(void *arg0) {
     switch (*(u8 *)arg0) {

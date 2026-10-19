@@ -128,7 +128,14 @@ void func_81600408(u8 *arg0) {
     func_816003C8(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D7BC0/func_81600450.s")
+/* mkdraft:func_81600450 begin */
+s32 func_81600450(u8 *arg0, void *arg1) {
+    return (*(s16 *)((u8 *)arg1 + 0) >= *(s16 *)(arg0 + 0)) &&
+           (*(s16 *)(arg0 + 0) + *(s16 *)(arg0 + 4) >= *(s16 *)((u8 *)arg1 + 4) + *(s16 *)((u8 *)arg1 + 0)) &&
+           (*(s16 *)((u8 *)arg1 + 2) >= *(s16 *)(arg0 + 2)) &&
+           (*(s16 *)(arg0 + 2) + *(s16 *)(arg0 + 6) >= *(s16 *)((u8 *)arg1 + 6) + *(s16 *)((u8 *)arg1 + 2));
+}
+/* mkdraft:func_81600450 end */
 
 s32 func_816004C0(u8 *arg0, u8 *arg1) {
     return (*(s16 *)(arg0 + 0) + *(s16 *)(arg0 + 4) < *(s16 *)(arg1 + 0))

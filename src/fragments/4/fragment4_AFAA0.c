@@ -418,12 +418,16 @@ void func_8180351C(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/4/fragment4_AFAA0/func_81803558.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/4/fragment4_AFAA0/func_81803668.s")
+/* mkdraft:func_81803668 begin */
+extern void func_81803558(u8 *, u8 *, f32, s32);
+
+void func_81803668(u8 *arg0, u8 *arg1, f32 arg2, s32 arg3) { while (*(s16 *)arg0 >= 0) { func_81803558(arg0, arg1, arg2, arg3); arg0 += 0x20; } }
+/* mkdraft:func_81803668 end */
 
 extern void func_800498C4();
-extern void func_81803558(s32, s32, s32, s32);
+extern void func_81803558(u8 *, u8 *, f32, s32);
 extern void func_800499EC();
-void func_818036D8(s32 arg0, s32 arg1, s32 arg2, s32 arg3) { func_800498C4(); func_81803558(arg0, arg1, arg2, arg3); func_800499EC(); }
+void func_818036D8(s32 arg0, s32 arg1, f32 arg2, s32 arg3) { func_800498C4(); func_81803558(arg0, arg1, arg2, arg3); func_800499EC(); }
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/4/fragment4_AFAA0/func_81803720.s")
 

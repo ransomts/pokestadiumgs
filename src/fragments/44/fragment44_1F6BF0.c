@@ -2,7 +2,34 @@
 
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_1F6BF0/func_8AF08980.s")
+/* mkdraft:func_8AF08980 begin */
+extern void func_800504BC(s16 *);
+extern void func_8AC015B0(s16, s16, s32, s32, s16);
+extern u8 D_8AF265A8[];
+extern s16 D_8AF265A0;
+extern s16 D_8AF2C9E0;
+
+s32 func_8AF08980(s32 mode, void *record) {
+    s16 x;
+    s16 y;
+    void *preserved;
+    s16 values[2];
+
+    preserved = record;
+    switch (mode) {
+    case 0:
+        *(u16 *)((u8 *)preserved + 2) &= 0xFFFD;
+        break;
+    case 1:
+        func_800504BC(values);
+        x = *(s16 *)((u8 *)preserved + 8) + values[0];
+        y = *(s16 *)((u8 *)preserved + 0xA) + values[1];
+        func_8AC015B0(x, y, (s32)(D_8AF265A8), D_8AF265A0, D_8AF2C9E0);
+        break;
+    }
+    return 0;
+}
+/* mkdraft:func_8AF08980 end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_1F6BF0/func_8AF08A1C.s")
 

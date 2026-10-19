@@ -49,7 +49,32 @@ u8 *func_8AF0017C(s16 arg0) {
     return NULL;
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_1EE290/func_8AF00240.s")
+/* mkdraft:func_8AF00240 begin */
+extern u8 D_8AF2BEA4[];
+
+u8 *func_8AF00240(s16 arg0) {
+    s32 i;
+    u8 *entry;
+    entry = D_8AF2BE98;
+    if (arg0 == *(s16 *)(D_8AF2BEA4 - 0xC)) {
+        return entry;
+    }
+    entry += 0xC;
+    if (arg0 == *(s16 *)entry) {
+        return entry;
+    }
+    entry += 0xC;
+    i = 2;
+    do {
+        if (arg0 == *(s16 *)entry) {
+            return entry;
+        }
+        i++;
+        entry += 0xC;
+    } while (i != 0xA);
+    return NULL;
+}
+/* mkdraft:func_8AF00240 end */
 
 void func_8AF00304(s16 arg0, s32 arg1)
 {

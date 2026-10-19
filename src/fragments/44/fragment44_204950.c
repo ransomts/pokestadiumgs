@@ -58,7 +58,33 @@ s16 func_8AF16D2C(void) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_204950/func_8AF16DC8.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_204950/func_8AF16E60.s")
+/* mkdraft:func_8AF16E60 begin */
+extern s16 *D_8AF2BA94;
+extern u8 D_8AF34C38[250];
+
+void func_8AF16E60(void) {
+    s16 *source;
+    s16 index;
+    s16 value;
+    s16 sentinel;
+
+    source = D_8AF2BA94;
+    index = 0;
+    sentinel = -1;
+    for (;;) {
+        value = *source;
+        if (sentinel != value) {
+            *((u8 *)&D_8AF34C38 + index) = value;
+            index++;
+            index = (s16) index;
+            if (index >= 250) {
+                break;
+            }
+        }
+        source++;
+    }
+}
+/* mkdraft:func_8AF16E60 end */
 
 extern u16 *D_8AF2BAA4;
 s32 func_8AF16EB0(u8 arg0) {

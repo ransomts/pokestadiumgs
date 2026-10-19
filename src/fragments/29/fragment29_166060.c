@@ -21,9 +21,42 @@ s32 func_8800005C(void) {
     return fragment29_main(D_8800686C);
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/29/fragment29_166060/func_88000080.s")
+/* mkdraft:func_88000080 begin */
+typedef struct { s16 tick, value, start, end; u8 delay, rise, hold, fall; } Fragment29Envelope;
 
-extern void func_88000080(void *, s16, s16, s16);
+s16 func_88000080(Fragment29Envelope *envelope) {
+    f32 bias;
+    f32 delta;
+    if (envelope->tick <= envelope->delay) {
+        envelope->value = envelope->start;
+    } else if (envelope->delay < envelope->tick && envelope->tick < envelope->delay + envelope->rise) {
+        if (((f32)((envelope->end - envelope->start) * (envelope->tick - envelope->delay)) / envelope->rise) > 0.0f) {
+            bias = 0.5f;
+        } else {
+            bias = -0.5f;
+        }
+        delta = (f32)((envelope->end - envelope->start) * (envelope->tick - envelope->delay)) / envelope->rise;
+        envelope->value = (s32)(bias + delta) + envelope->start;
+    } else if (envelope->delay + envelope->rise <= envelope->tick && envelope->tick <= envelope->delay + envelope->rise + envelope->hold) {
+        envelope->value = envelope->end;
+    } else {
+        if (((f32)((envelope->start - envelope->end) * (envelope->tick - envelope->delay - envelope->rise - envelope->hold)) / envelope->fall) > 0.0f) {
+            bias = 0.5f;
+        } else {
+            bias = -0.5f;
+        }
+        delta = (f32)((envelope->start - envelope->end) * (envelope->tick - envelope->delay - envelope->rise - envelope->hold)) / envelope->fall;
+        envelope->value = (s32)(bias + delta) + envelope->end;
+    }
+    envelope->tick++;
+    if (envelope->tick == envelope->delay + envelope->rise + envelope->hold + envelope->fall) {
+        envelope->tick = 0;
+    }
+    return envelope->value;
+}
+/* mkdraft:func_88000080 end */
+
+extern s16 func_88000080(Fragment29Envelope *);
 void func_88000288(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 arg4, u8 arg5, u8 arg6, u8 arg7) {
     *(s16 *)((u8 *)arg0 + 0) = arg1;
     *(s16 *)((u8 *)arg0 + 4) = arg2;
@@ -32,7 +65,7 @@ void func_88000288(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 arg4, u8 arg5, u
     *(u8 *)((u8 *)arg0 + 9) = arg5;
     *(u8 *)((u8 *)arg0 + 10) = arg6;
     *(u8 *)((u8 *)arg0 + 11) = arg7;
-    func_88000080(arg0, arg1, arg2, arg3);
+    func_88000080(arg0);
 }
 
 void func_880002F4(u8 *arg0, s16 arg1) {

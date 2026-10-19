@@ -218,7 +218,45 @@ void func_8130FFE0(f32 arg0, f32 arg1) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/14/fragment14_1077C0/func_8131001C.s")
+/* mkdraft:func_8131001C begin */
+f64 func_8131001C(f64 arg0, f64 arg1) {
+    extern f64 D_81312998, D_813129A0, D_813129A8, D_813129B0, D_813129B8, D_813129C0;
+    f64 ratio;
+    f64 reduced;
+    f64 fraction;
+    s32 i;
+
+    if ((arg1 == 0.0) && (arg0 == 0.0)) {
+        return 0.0;
+    }
+    if (arg1 == 0.0) {
+        if (arg0 > 0.0) {
+            return D_81312998;
+        }
+        return D_813129A0;
+    }
+    ratio = arg0 / arg1;
+    reduced = ((ratio > 0.0 ? ratio : -ratio) <= 1.0) ? ratio : 1.0 / ratio;
+    fraction = 0.0;
+    for (i = 14; i > 0; i--) {
+        fraction = (i * i) * reduced * reduced / ((2 * i + 1) + fraction);
+    }
+    reduced = reduced / (1.0 + fraction);
+    if (ratio > 1.0) {
+        reduced = D_813129A8 - reduced;
+    }
+    if (ratio < -1.0) {
+        reduced = D_813129B0 - reduced;
+    }
+    if (arg1 > 0.0) {
+        return reduced;
+    }
+    if (arg0 > 0.0) {
+        return reduced + D_813129B8;
+    }
+    return reduced - D_813129C0;
+}
+/* mkdraft:func_8131001C end */
 #endif
 
 #ifdef VERSION_US
