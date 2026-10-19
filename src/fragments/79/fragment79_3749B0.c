@@ -2,7 +2,62 @@
 
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3749B0/func_84105120.s")
+/* mkdraft:func_84105120 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK func_8410358C();                            /* extern */
+M2C_UNK func_8410474C();                            /* extern */
+M2C_UNK func_84105CA8();                            /* extern */
+M2C_UNK func_84105D00();                            /* extern */
+M2C_UNK func_841091CC();                            /* extern */
+extern M2C_UNK D_84190078;
+extern s32 D_84190180;
+extern s32 D_84190184;
+extern s32 D_84190188;
+extern s32 D_84190190;
+extern s32 D_841901A8;
+extern M2C_UNK D_84190218;
+
+void func_84105120(void) {
+    D_84190180 = 0;
+    D_84190184 = 0;
+    D_84190190 = 0;
+    D_84190188 = 0;
+    M2C_FIELD(&D_84190078, f32 *, 0) = 1.0f;
+    M2C_FIELD(&D_84190078, f32 *, 4) = 1.0f;
+    M2C_FIELD(&D_84190078, f32 *, 8) = 1.0f;
+    D_841901A8 = 0;
+    M2C_FIELD(&D_84190218, s8 *, 0) = 0xFF;
+    M2C_FIELD(&D_84190218, s8 *, 1) = 0xFF;
+    M2C_FIELD(&D_84190218, s8 *, 2) = 0xFF;
+    M2C_FIELD(&D_84190218, s8 *, 4) = 0xFF;
+    M2C_FIELD(&D_84190218, s8 *, 5) = 0xFF;
+    M2C_FIELD(&D_84190218, s8 *, 6) = 0xFF;
+    M2C_FIELD(&D_84190218, s8 *, 8) = 0xFF;
+    M2C_FIELD(&D_84190218, s8 *, 9) = 0xFF;
+    M2C_FIELD(&D_84190218, s8 *, 0xA) = 0xFF;
+    func_8410358C();
+    func_8410474C();
+    func_84105D00();
+    func_84100134();
+    func_841091CC();
+    func_84105CA8();
+}
+/* mkdraft:func_84105120 end */
 
 extern s32 D_841901AC;
 extern s32 func_84108654(u16, u16);

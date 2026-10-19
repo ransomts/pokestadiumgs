@@ -322,7 +322,31 @@ void func_87E1097C(s32 *arg0, s32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/63/fragment63_312AE0/func_87E109FC.s")
+/* mkdraft:func_87E109FC begin */
+void func_87E109FC(TreeNode_80050428 **arg0, s32 arg1) {
+    void (*sp20)(s32, void *);
+
+    switch (arg1) {                                 /* irregular */
+    case 0x95:
+        sp20 = func_87E10094;
+        func_87F0AB08(*arg0, 0x504C4D31, (void (*)(s32, u8 *)) func_87E10094, NULL);
+        func_87F0AB08(*arg0, 0x50524D31, (void (*)(s32, u8 *)) func_87E10094, (void *)1);
+        func_87F0AB08(*arg0, 0x504D4D31, (void (*)(s32, u8 *)) func_87E10094, (void *)2);
+        sp20 = func_87E10154;
+        func_87F0AB08(*arg0, 0x424C4D31, (void (*)(s32, u8 *)) func_87E10154, NULL);
+        func_87F0AB08(*arg0, 0x42524D31, (void (*)(s32, u8 *)) func_87E10154, (void *)1);
+        func_87F0AB08(*arg0, 0x424D4D31, (void (*)(s32, u8 *)) func_87E10154, (void *)2);
+        return;
+    case 0x96:
+        sp20 = func_87E10214;
+        func_87F0AB08(*arg0, 0x4B4C4D31, (void (*)(s32, u8 *)) func_87E10214, NULL);
+        func_87F0AB08(*arg0, 0x4B524D31, (void (*)(s32, u8 *)) func_87E10214, (void *)1);
+        func_87F0AB08(*arg0, 0x4B4D4D31, (void (*)(s32, u8 *)) func_87E10214, (void *)2);
+        return;
+    }
+}
+/* Warning: struct TreeNode_80050428 is not defined (only forward-declared) */
+/* mkdraft:func_87E109FC end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/63/fragment63_312AE0/func_87E10B30.s")
 
@@ -395,7 +419,49 @@ void func_87E11148(void *arg0, s32 arg1) {
     *(s32 *)((u8 *)arg0 + 4) = func_8004C990(0x1B8, D_87E1AA40[(u8)digit]);
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/63/fragment63_312AE0/func_87E11248.s")
+/* mkdraft:func_87E11248 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK func_800476A0(void (*)(void *, s32), M2C_UNK); /* extern */
+M2C_UNK func_800476FC(void (*)(void *, s32), M2C_UNK); /* extern */
+M2C_UNK func_80047738(M2C_UNK, s32, void (*)(void *, s32), M2C_UNK); /* extern */
+
+void func_87E11248(s32 arg0) {
+    void (*sp18)(void *, s32);
+    s32 temp_v0;
+    void (*temp_a0)(void *, s32);
+
+    temp_a0 = arg0 + 0x22C;
+    sp18 = temp_a0;
+    func_800476A0(temp_a0, 9);
+    func_800476FC(temp_a0, 9);
+    func_80047738(0, func_8004C990(0x164, *D_87E1A5EC), func_87E10F74, 0);
+    func_80047738(1, func_8004C990(0x165, *D_87E1A684), func_87E1102C, 0);
+    func_80047738(2, func_8004C990(0x165, *D_87E1A6E8), func_87E11088, 0);
+    func_80047738(3, func_8004C990(0x164, *D_87E1A620), func_87E10FD0, 0);
+    func_80047738(4, func_8004C990(0x171, 0), NULL, 0);
+    func_80047738(5, func_8004C990(0x1B5, 0), func_87E110E4, 0);
+    temp_v0 = func_8004C990(0x1B8, 0);
+    sp18 = func_87E11148;
+    func_80047738(6, temp_v0, func_87E11148, 0);
+    func_80047738(7, func_8004C990(0x1B8, 1), func_87E11148, 1);
+    func_80047738(8, func_8004C990(0x1B8, 2), func_87E11148, 2);
+}
+/* mkdraft:func_87E11248 end */
 
 s32 process_geo_layout(s32, s32 *);
 extern u8 D_87E1AA80;

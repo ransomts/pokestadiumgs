@@ -127,7 +127,61 @@ void func_84105E3C(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_375530/func_8410668C.s")
+/* mkdraft:func_8410668C begin */
+extern u8 *D_8418C950;
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+void func_8410668C(u8 *arg0) {
+    s32 temp_v1;
+    s32 var_s1;
+    u8 *var_s0;
+    u8 *var_s5;
+
+    var_s0 = D_8418C950;
+    var_s5 = NULL;
+    var_s1 = 0;
+loop_1:
+    if ((M2C_FIELD(var_s0, s8 *, 0x98) != 0) && (temp_v1 = M2C_FIELD(var_s0, s32 *, 0x10), (temp_v1 != 0)) && (ParticleMath_HasBits(temp_v1 + 4, 0x400000) != 0)) {
+        if (func_84100054(var_s0, 2) != 0) {
+            if (func_84100054(arg0, 2) != 0) {
+                var_s5 = var_s0;
+            } else {
+                goto block_9;
+            }
+        } else if (func_84100074(arg0, 2) != 0) {
+            var_s5 = var_s0;
+        } else {
+            goto block_9;
+        }
+    } else {
+block_9:
+        var_s1 += 1;
+        var_s0 += 0x9C;
+        if (var_s1 != 0x12C) {
+            goto loop_1;
+        }
+    }
+    if (var_s5 != NULL) {
+        M2C_FIELD(arg0, f32 *, 0x2C) = (f32) (M2C_FIELD(arg0, f32 *, 0x2C) + M2C_FIELD(var_s5, f32 *, 0x20));
+        M2C_FIELD(arg0, f32 *, 0x30) = (f32) (M2C_FIELD(arg0, f32 *, 0x30) + M2C_FIELD(var_s5, f32 *, 0x24));
+        M2C_FIELD(arg0, f32 *, 0x34) = (f32) (M2C_FIELD(arg0, f32 *, 0x34) + M2C_FIELD(var_s5, f32 *, 0x28));
+    }
+}
+/* mkdraft:func_8410668C end */
 #endif
 
 #ifdef VERSION_US

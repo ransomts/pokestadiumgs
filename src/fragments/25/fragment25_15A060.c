@@ -226,7 +226,49 @@ void *func_821019AC(void *arg0, void *arg1) {
     return result;
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/25/fragment25_15A060/func_82101A30.s")
+/* mkdraft:func_82101A30 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+void func_82101A30(void *arg0) {
+    s32 var_a1;
+    void *temp_a2;
+    void *temp_v0;
+
+    var_a1 = 0;
+    if (M2C_FIELD(arg0, s32 *, 8) > 0) {
+        do {
+            temp_v0 = M2C_FIELD(arg0, s32 *, 0) + var_a1;
+            var_a1 += 0x20;
+            if (temp_v0 == NULL) {
+
+            } else {
+                temp_a2 = M2C_FIELD(temp_v0, void **, 0);
+                if (temp_a2 == NULL) {
+
+                } else {
+                    M2C_FIELD(temp_a2, u16 *, 2) = (u16) (M2C_FIELD(temp_a2, u16 *, 2) | 2);
+                    M2C_FIELD(M2C_FIELD(temp_v0, void **, 0), u16 *, 0x24) = (u16) M2C_FIELD(M2C_FIELD(temp_v0, void **, 8), u16 *, 0x18);
+                    M2C_FIELD(M2C_FIELD(temp_v0, void **, 0), u16 *, 0x26) = (u16) M2C_FIELD(M2C_FIELD(temp_v0, void **, 8), u16 *, 0x1A);
+                }
+            }
+        } while (var_a1 < (M2C_FIELD(arg0, s32 *, 8) << 5));
+    }
+}
+/* mkdraft:func_82101A30 end */
 
 f32 func_82101AB4(u8 *arg0) {
     return ((f32)*(s16 *)(*(u8 **)(arg0 + 0) + 0x0C) *

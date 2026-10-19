@@ -129,7 +129,49 @@ void func_83501D3C(void) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/1/fragment1_code/func_83503324.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/1/fragment1_code/func_835034A8.s")
+/* mkdraft:func_835034A8 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK StageContext_SetClearColor(M2C_UNK);        /* extern */
+M2C_UNK StageFade_StartFromTransparent(M2C_UNK);    /* extern */
+M2C_UNK func_800225C4(M2C_UNK);                     /* extern */
+extern M2C_UNK D_83503BA8;
+extern s16 D_83503E80;
+
+void func_835034A8(void) {
+    s32 temp_t7;
+
+    temp_t7 = M2C_FIELD(&D_83503BA8, s32 *, 0x10) + 1;
+    M2C_FIELD(&D_83503BA8, s32 *, 0x10) = temp_t7;
+    if (D_83503E80 == 0) {
+        if (temp_t7 == 0x6E) {
+            M2C_FIELD(&D_83503BA8, s32 *, 0) = 3;
+            func_800225C4(0xA);
+            M2C_FIELD(&D_83503BA8, s32 *, 0xC) = 4;
+            StageContext_SetClearColor(1);
+            StageFade_StartFromTransparent(0xA);
+        }
+    } else if (M2C_FIELD(&D_83503BA8, s32 *, 0x10) == 0x64) {
+        M2C_FIELD(&D_83503BA8, s32 *, 0xC) = 4;
+        StageContext_SetClearColor(1);
+        StageFade_StartFromTransparent(0xA);
+    }
+}
+/* mkdraft:func_835034A8 end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/1/fragment1_code/func_83503548.s")
 
