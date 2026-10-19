@@ -1776,7 +1776,73 @@ void BattleAnim_Table_84185F10_010(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_393CA0/func_8412B1D4.s")
+void _bcopy(void *, void *, s32);
+void func_841352DC(u8 arg0);
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK func_8003F6E0(u8 *, u8 *, u8);              /* extern */
+
+void func_8412B1D4(void) {
+    s32 var_a1;
+    u8 *temp_v0;
+    u8 *temp_v0_2;
+    u8 *temp_v0_3;
+    u8 temp_a0;
+
+    M2C_FIELD(D_84195208[D_841951BC], s8 *, 0x26) = 0;
+    M2C_FIELD(D_84195208[D_841951BC], s8 *, 0x27) = 0;
+    temp_v0 = D_84195208[D_841951BD];
+    if ((M2C_FIELD(temp_v0, u8 *, 0x11) & 8) || (M2C_FIELD(temp_v0, u8 *, 0xF) & 0x60)) {
+        func_84134E7C(0U, 1U);
+        func_841366C4(D_841951BC, -1);
+        func_84135B40(0xB5U);
+        return;
+    }
+    temp_v0_2 = D_84195208[D_841951BC];
+    M2C_FIELD(temp_v0_2, u8 *, 0x11) = (u8) (M2C_FIELD(temp_v0_2, u8 *, 0x11) | 8);
+    M2C_FIELD(D_84195208[D_841951BC], s8 *, 0x15) = 0;
+    M2C_FIELD(D_84195208[D_841951BC], s8 *, 0x25) = 0;
+    *D_84195208[D_841951BC] = *D_84195208[D_841951BD];
+    M2C_FIELD(D_84195208[D_841951BC], u16 *, 0x2C) = (u16) M2C_FIELD(D_84195208[D_841951BD], u16 *, 0x2C);
+    M2C_FIELD(D_84195208[D_841951BC], u16 *, 0x2E) = (u16) M2C_FIELD(D_84195208[D_841951BD], u16 *, 0x2E);
+    M2C_FIELD(D_84195208[D_841951BC], u8 *, 0x2A) = (u8) M2C_FIELD(D_84195208[D_841951BD], u8 *, 0x2A);
+    _bcopy(D_84195208[D_841951BD] + 5, D_84195208[D_841951BC] + 5, 4);
+    _bcopy(D_84195208[D_841951BD] + 1, D_84195208[D_841951BC] + 1, 2);
+    _bcopy(D_84195208[D_841951BD] + 0x32, D_84195208[D_841951BC] + 0x32, 0xA);
+    _bcopy(D_84195208[D_841951BD] + 0x3C, D_84195208[D_841951BC] + 0x3C, 0xA);
+    _bcopy(D_84195208[D_841951BD] + 0x1E, D_84195208[D_841951BC] + 0x1E, 7);
+    func_8003F6E0(D_84195208[D_841951BC] + 0x50, D_84195200[D_841951BC], *D_84195208[D_841951BD]);
+    var_a1 = 0;
+    do {
+        temp_v0_3 = &D_84195208[D_841951BC][var_a1];
+        temp_a0 = M2C_FIELD(temp_v0_3, u8 *, 5);
+        var_a1 = (var_a1 + 1) & 0xFF;
+        if (temp_a0 == 0) {
+            M2C_FIELD(temp_v0_3, s8 *, 9) = 0;
+        } else if (temp_a0 == 0xA6) {
+            M2C_FIELD(temp_v0_3, s8 *, 9) = 1;
+        } else {
+            M2C_FIELD(temp_v0_3, s8 *, 9) = 5;
+        }
+    } while (var_a1 < 4);
+    func_841366C4(D_841951BC, -1);
+    func_84135B40(0x3DU);
+    func_841352DC(D_841951BC);
+}
 #endif
 
 #ifdef VERSION_US
@@ -1878,7 +1944,45 @@ s32 func_8412BD3C(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_393CA0/func_8412BDF0.s")
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+s32 func_80062CE0(u8);                              /* extern */
+extern u8 D_841951C0;
+
+void func_8412BDF0(void) {
+    M2C_FIELD(D_84195208[D_841951BC], s8 *, 0x26) = 0;
+    M2C_FIELD(D_84195208[D_841951BC], s8 *, 0x27) = 0;
+    if (func_8412BD3C() != 0) {
+        M2C_FIELD(&D_84195208[D_841951BC][D_841951C0], u8 *, 5) = (u8) M2C_FIELD(D_84195208[D_841951BD], u8 *, 0x26);
+        M2C_FIELD(&D_84195208[D_841951BC][D_841951C0], s8 *, 9) = 5;
+        func_84136678(D_841951BC, -1);
+        func_8004C54C(0x1EU, func_80062CE0(M2C_FIELD(D_84195208[D_841951BD], u8 *, 0x26)));
+        func_84135B00(0x85U);
+    } else {
+        func_84136678(D_841951BC, -1);
+        if (M2C_FIELD(D_84195208[D_841951BD], u8 *, 0xD) & 4) {
+            func_84135B00(0xB6U);
+        } else {
+            func_84135B00(0xB5U);
+        }
+    }
+    func_84124594(D_841951BC);
+    func_84136CA8();
+}
 #endif
 
 #ifdef VERSION_US
@@ -3415,7 +3519,65 @@ void BattleAnim_Table_84186004_076(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_393CA0/func_84130EA8.s")
+void func_84124798(u8);
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+s32 func_800630C0(u8);                              /* extern */
+M2C_UNK func_841562BC(u8, u8, M2C_UNK);             /* extern */
+
+void func_84130EA8(void) {
+    func_84124798(D_841951BD);
+    func_841248DC(D_841951BD);
+    func_84124954(D_841951BD);
+    func_841249D8(D_841951BD);
+    if (D_841951BF == 6) {
+        func_84136678(D_841951BC, -1);
+        func_84135B00(0x88U);
+    }
+    func_84124A7C();
+    func_84136A9C(D_841951BD, -1, (s16) ((s16) D_841951E8 * -1), 2U);
+    if ((s16) D_841951E8 == M2C_FIELD(D_84195200[D_841951BD], u16 *, 0x28)) {
+        if (func_84127140(D_841951BD) != 0) {
+            func_84136218(D_841951BD, 1U);
+        } else if (func_84127140(D_841951BC) != 0) {
+            func_84136218(D_841951BC, 2U);
+        }
+    }
+    if ((s16) D_841951E8 > 0) {
+        if (M2C_FIELD(D_841951F8[D_841951BC], u8 *, 0x49A) != 0) {
+            if (func_800630C0(D_841951BF) != 0) {
+                func_841562BC(D_841951BD, M2C_FIELD(D_841951F8[D_841951BD], u8 *, 0xA), 1);
+            } else {
+                func_841562BC(D_841951BD, M2C_FIELD(D_841951F8[D_841951BD], u8 *, 0xA), 4);
+            }
+        }
+        if (M2C_FIELD(D_841951F8[D_841951BD], u8 *, 0x49A) != 0) {
+            if (func_800630C0(D_841951BF) != 0) {
+                func_841562BC(D_841951BC, M2C_FIELD(D_841951F8[D_841951BC], u8 *, 0xA), 0);
+            } else {
+                func_841562BC(D_841951BC, M2C_FIELD(D_841951F8[D_841951BC], u8 *, 0xA), 3);
+            }
+        }
+    }
+    func_84124604(D_841951BD, D_841951BF);
+    func_84136D40(2U);
+    func_84136CA8();
+    func_84124A14(D_841951BD);
+}
 #endif
 
 #ifdef VERSION_US
@@ -3437,7 +3599,57 @@ void BattleAnim_Table_84186004_078(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_393CA0/func_84131174.s")
+void func_84124798(u8);
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+void func_84131174(void) {
+    s32 temp_v1;
+    u8 *var_v0;
+    u8 var_a2;
+
+    func_84136678(D_841951BD, -1);
+    func_84124798(D_841951BD);
+    var_v0 = D_84195208[D_841951BC];
+    if (!(M2C_FIELD(var_v0, u8 *, 0xF) & 4)) {
+        func_841248DC(D_841951BD);
+        func_84135034(0U, 1U);
+        func_84136D40(1U);
+    } else {
+        var_a2 = M2C_FIELD(var_v0, u8 *, 0x12);
+        if (var_a2 == 1) {
+            func_84136678(D_841951BD, -1);
+            if (D_841951BF != 0xFB) {
+                func_8004C594(1, M2C_FIELD(D_84195208[D_841951BC], s32 *, 0x4C));
+                func_84135B00(0x9CU);
+            }
+            func_84124954(D_841951BD);
+            var_v0 = D_84195208[D_841951BC];
+            var_a2 = M2C_FIELD(var_v0, u8 *, 0x12);
+        }
+        temp_v1 = M2C_FIELD(var_v0, s32 *, 0x4C);
+        func_84135034((temp_v1 - var_a2) & 0xFF, (temp_v1 - 1) & 0xFF);
+    }
+    func_841249D8(D_841951BD);
+    func_84124A7C();
+    func_84136A9C(D_841951BD, -1, (s16) ((s16) D_841951E8 * -1), 2U);
+    func_84124604(D_841951BD, D_841951BF);
+    func_84136CA8();
+    func_84124A14(D_841951BD);
+}
 #endif
 
 #ifdef VERSION_US
@@ -3986,6 +4198,7 @@ extern s32 D_841951C8;
 extern void * D_841951F0;
 extern void * D_841951F8[];
 extern u8 * D_84195208[];
+void func_84137DB8(void);
 void func_841347A0(void *arg0){u8 v;func_8413425C();func_84137DB8();((u8*)D_841951F0)[0x9C7]=(u8)0;do{((u8*)D_84195208[0])[0x28]=(u8)0;((u8*)D_84195208[1])[0x28]=(u8)0;((u8*)D_841951F8[0])[0x10]=(u8)0;((u8*)D_841951F8[1])[0x10]=(u8)0;D_841951C8=0;func_841362C8((u8)0);func_841362C8((u8)1);func_84131760();func_84137DB8();v=(u8)func_84134098((u8)0);func_841383B4((u8)v,(u8)func_84134098((u8)1),(u8)0);func_84126CD0();func_84134CBC((u8)0,(u8)0x5A);func_84136CA8();func_841343FC();func_84133440();func_84137DB8();}while(D_841951DC==0);}
 #endif
 
@@ -4943,7 +5156,43 @@ void func_84137D04(u8 arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_393CA0/func_84137DB8.s")
+void func_80023A3C(s32, s32, s32);
+extern u8 D_84195248[];
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+void func_84137DB8(void) {
+    if (M2C_FIELD(D_84195280, u8 *, 0x4D80) != M2C_FIELD(D_84195280, u8 *, 0x4D81)) {
+        if (D_84195278 == 3) {
+            func_84137D04(0U);
+            func_84137D04(1U);
+            if ((M2C_FIELD(D_84195248, u8 *, 0xE) == 5) || (M2C_FIELD(D_84195248, u8 *, 0x26) == 5)) {
+                func_84147228(0x17, 0U, 0, 7, 1);
+                func_84147228(0x17, 0U, 0, 0xB, 4);
+            } else {
+                func_84147228(0x17, 0U, 0, 7, 0);
+                func_84147228(0x17, 0U, 0, 0xB, 2);
+            }
+            func_84147228(0x17, 0U, 0, 4, 4);
+            func_80023A3C(0x27, 0, 0);
+        }
+        D_84195278 = 2;
+        func_84134968();
+    }
+}
 #endif
 
 #ifdef VERSION_US
@@ -5827,7 +6076,120 @@ f32 func_8413D358(u8 arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_393CA0/func_8413D37C.s")
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK func_80008648();                            /* extern */
+M2C_UNK func_800088DC();                            /* extern */
+M2C_UNK func_8002B1CC();                            /* extern */
+M2C_UNK func_80064D28();                            /* extern */
+M2C_UNK func_8410A608();                            /* extern */
+M2C_UNK func_8410A884();                            /* extern */
+M2C_UNK func_8410A9B4();                            /* extern */
+M2C_UNK func_84136D9C();                            /* extern */
+M2C_UNK func_84137778();                            /* extern */
+M2C_UNK func_8413C820();                            /* extern */
+M2C_UNK func_8413CE84();                            /* extern */
+M2C_UNK func_84145BA0(u8);                          /* extern */
+M2C_UNK func_8414605C();                            /* extern */
+M2C_UNK func_841482BC();                            /* extern */
+extern u8 *D_80087200;
+extern s32 D_84186150;
+extern s32 D_84186174;
+extern u8 D_8419A0A2;
+extern u8 D_8419A0A3;
+
+void func_8413D37C(void) {
+    s32 var_s7;
+
+    var_s7 = 0;
+    if (M2C_FIELD(D_841951F0, u8 *, 0x9C2) == 2) {
+        func_84147228(0x19, 0U, 0, 5, 3);
+    }
+    if (*D_8419A0A0 != 0) {
+        func_84147228(0x1A, 0U, 0, 5, 3);
+    } else {
+        func_84134CBC(0U, 0x65U);
+        func_84136CA8();
+    }
+    func_84147228(0x18, 0U, 0, 7, 1);
+    func_84134920();
+    if (*D_8419A0A0 != 0) {
+        D_84195278 = 1;
+    } else {
+        M2C_FIELD((D_84195280 + (M2C_FIELD(D_84195280, u8 *, 0x4D81) * 0x280)), s8 *, -0x27E) = 0;
+    }
+    func_84147228(1, 0U, 0, 0xF, 0);
+    func_84147228(1, 1U, 0, 0xF, 0);
+    do {
+        func_80064D28();
+        func_8413CE84();
+        if ((s32) D_8419A0A3 > 0) {
+            D_8419A0A3 -= 1;
+        }
+        func_841482BC();
+        func_8413C820();
+        if (var_s7 == 0) {
+            var_s7 = 1;
+            func_8002B1CC();
+        }
+        if ((D_84195278 != 8) && (D_84186170 != 0)) {
+            func_8410A608();
+        }
+        if (D_84195278 != 8) {
+            func_841359D0();
+        }
+        func_84137778();
+        func_84136D9C();
+        func_84137CA4();
+        func_800088DC();
+        if (D_84186170 != 0) {
+            func_8410A884();
+        } else {
+            func_8413C7C0();
+        }
+        switch (D_84195278) {
+        case 8:
+            func_8410A9B4();
+            break;
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 7:
+            if (D_84186174 != 0) {
+                func_84145BA0(*D_8419A0A0);
+            }
+            break;
+        case 6:
+            func_8414605C();
+            break;
+        }
+        func_80008648();
+        if ((*D_8419A0A0 != 0) && (D_8419A0A3 == 0) && (D_84195278 != 7) && (M2C_FIELD(D_80087200, u16 *, 8) & 0xD000)) {
+            func_8413584C(0x14U);
+        }
+        if ((M2C_FIELD(D_841951F0, u8 *, 0x9C2) == 2) && (D_8419A0A3 == 0) && (D_84195278 != 7) && (M2C_FIELD(D_80087200, u16 *, 8) & 0x1000)) {
+            func_8413584C(0x14U);
+            D_8419A0A2 = 1;
+        }
+    } while (D_84186150 != 0);
+    func_84134944();
+}
 #endif
 
 #ifdef VERSION_US
@@ -5861,5 +6223,67 @@ void func_8413D6D4(u8 *arg0, u8 *arg1) { u8 i; _bzero(arg0, 0x54); arg0[0] = arg
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_393CA0/func_8413E2EC.s")
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK Asset_LoadToSegment(u32, M2C_UNK *, M2C_UNK *, M2C_UNK); /* extern */
+M2C_UNK Gfx_FreeDisplayListBuffers();               /* extern */
+M2C_UNK Gfx_InitDisplayListBuffers(M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK StageFade_StartFromOpaque(M2C_UNK);         /* extern */
+s32 func_800082E0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32); /* extern */
+M2C_UNK func_80008514(s32);                         /* extern */
+M2C_UNK func_80008574();                            /* extern */
+M2C_UNK func_80035424(M2C_UNK);                     /* extern */
+M2C_UNK func_80047610();                            /* extern */
+M2C_UNK func_8004C09C(M2C_UNK);                     /* extern */
+M2C_UNK func_8004C398();                            /* extern */
+M2C_UNK func_8410AA18(s32, s32, u8 *);              /* extern */
+void func_8413D37C(void);
+M2C_UNK func_8413DE28(s32, s32);                    /* extern */
+M2C_UNK func_8414831C(u8);                          /* extern */
+M2C_UNK main_pool_pop_state(M2C_UNK);               /* extern */
+M2C_UNK main_pool_push_state(M2C_UNK);              /* extern */
+extern M2C_UNK D_1000000;
+extern M2C_UNK D_446E30;
+extern M2C_UNK D_447D00;
+extern u8 D_8419A0A2;
+extern u8 D_8419A0A3;
+
+u8 func_8413E2EC(s32 arg0, s32 arg1) {
+    s32 sp24;
+
+    main_pool_push_state(0x504D4254);
+    Gfx_InitDisplayListBuffers(0x20000, 0);
+    sp24 = func_800082E0(0, 1, 3, 1, 2, 1);
+    Asset_LoadToSegment((u32) ((s32) &D_1000000 & 0x0F000000) >> 0x18, &D_446E30, &D_447D00, 0);
+    func_8004C09C(0x43);
+    func_8413DE28(arg0, arg1);
+    func_8410AA18(sp24, arg0, D_84199D80);
+    func_8414831C(*D_8419A0A0);
+    func_84136564();
+    func_80008514(sp24);
+    StageFade_StartFromOpaque(0xA);
+    D_8419A0A3 = 0xA;
+    func_8413D37C();
+    func_80008574();
+    func_80035424(4);
+    func_80047610();
+    func_8004C398();
+    Gfx_FreeDisplayListBuffers();
+    main_pool_pop_state(0x504D4254);
+    return D_8419A0A2;
+}
 #endif
