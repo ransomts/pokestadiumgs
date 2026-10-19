@@ -3,8 +3,8 @@
 # Decompilation coverage
 
 <!-- AUTO_COVERAGE:START -->
-- US functions with C implementations: **6,798 / 10,532 (64.5%)**
-- Remaining `GLOBAL_ASM` owners: **3,734**
+- US functions with C implementations: **6,801 / 10,532 (64.6%)**
+- Remaining `GLOBAL_ASM` owners: **3,731**
 - Baseline: **10,532** US `GLOBAL_ASM` owners in the original pragma snapshot
 <!-- AUTO_COVERAGE:END -->
 
@@ -26,7 +26,7 @@
 | `src/517E0.c` | 15 | 118 | 87.3% |
 | `src/56F90.c` | 9 | 31 | 71.0% |
 | `src/57C0.c` | 5 | 23 | 78.3% |
-| `src/585D0.c` | 62 | 229 | 72.9% |
+| `src/585D0.c` | 61 | 229 | 73.4% |
 | `src/63CF0.c` | 3 | 6 | 50.0% |
 | `src/641E0.c` | 2 | 44 | 95.5% |
 | `src/654A0.c` | 6 | 11 | 45.5% |
@@ -38,7 +38,7 @@
 | `src/69F70.c` | 1 | 5 | 80.0% |
 | `src/6AA80.c` | 12 | 74 | 83.8% |
 | `src/6DEC0.c` | 2 | 6 | 66.7% |
-| `src/6E850.c` | 14 | 55 | 74.5% |
+| `src/6E850.c` | 13 | 55 | 76.4% |
 | `src/7140.c` | 2 | 12 | 83.3% |
 | `src/728D0.c` | 3 | 5 | 40.0% |
 | `src/72C30.c` | 5 | 16 | 68.8% |
@@ -51,7 +51,7 @@
 | `src/fragments/10/fragment10_D4C50.c` | 2 | 5 | 60.0% |
 | `src/fragments/10/fragment10_D5250.c` | 17 | 27 | 37.0% |
 | `src/fragments/11/fragment11_D7BC0.c` | 6 | 39 | 84.6% |
-| `src/fragments/11/fragment11_D9520.c` | 33 | 97 | 66.0% |
+| `src/fragments/11/fragment11_D9520.c` | 32 | 97 | 67.0% |
 | `src/fragments/11/fragment11_E1E10.c` | 13 | 30 | 56.7% |
 | `src/fragments/12/fragment12_E5330.c` | 14 | 25 | 44.0% |
 | `src/fragments/12/fragment12_E7C00.c` | 25 | 72 | 65.3% |
