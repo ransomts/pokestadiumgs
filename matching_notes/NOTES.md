@@ -75,7 +75,18 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
 
 ## Wave log
 
-### Wave 8 + farm scale-up (2026-10-19 afternoon): 13 matches (212 campaign)
+### C_FUNCTION_PADDING lesson (2026-10-19 evening, farm adoptions 129 session matches)
+- Permuter candidates may end with `#pragma C_FUNCTION_PADDING(N)`: inert in
+  the permuter's harness (coalesce_cc ignores pragmas) but HONORED by the
+  repo's asm-processor, appending N real bytes after the function. fd.sh
+  cannot see it (the diff covers the function span only) — only the ROM gate
+  catches the overlay-size shift (+0x10 moved every later fragment's ROM_START
+  and broke two asset-offset immediates in BattleAnim_LoadResourceTable).
+  STRIP the pragma from every adopted candidate unless the target .s actually
+  carries trailing padding bytes (check the .s tail; the 26 committed uses of
+  the pragma are real matches where retail has the gap).
+
+### Wave 9 + farm scale-up (2026-10-19 afternoon): 13 matches (212 campaign)
 - 71f4ed99: 13 matches from the C_agent 351-400 band (6 agents, 16 functions;
   2 near-misses spooled: func_813002D0@155 v0/v1 pair, func_82100D9C@15
   path-sensitive register reuse). Companion edit: func_800495F8's extern
