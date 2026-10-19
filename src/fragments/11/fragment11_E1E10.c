@@ -184,7 +184,38 @@ void func_8160B54C(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_E1E10/func_8160B6E4.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_E1E10/func_8160B828.s")
+/* mkdraft:func_8160B828 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+f32 func_816092FC();                                /* extern */
+
+s32 func_8160B828(void *arg0) {
+    if (M2C_FIELD(arg0, s8 *, 8) != M2C_FIELD(arg0, s8 *, 9)) {
+        M2C_FIELD(arg0, f32 *, 4) = (f32) (M2C_FIELD(arg0, f32 *, 4) + func_816092FC());
+        if (M2C_FIELD(arg0, f32 *, 4) >= 4.0f) {
+            M2C_FIELD(arg0, s8 *, 9) = (s8) M2C_FIELD(arg0, s8 *, 8);
+            M2C_FIELD(arg0, f32 *, 4) = 0.0f;
+        }
+        return 1;
+    }
+    M2C_FIELD(arg0, f32 *, 4) = 0.0f;
+    return 0;
+}
+/* mkdraft:func_8160B828 end */
 
 extern void func_8160A6AC(void *);
 void func_8160B8A8(u8 *arg0, s32 arg1, s32 arg2) {

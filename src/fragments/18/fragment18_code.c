@@ -35,7 +35,40 @@ void fragment18_main(u8 *arg0) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/18/fragment18_code/func_817000A4.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/18/fragment18_code/func_81700120.s")
+/* mkdraft:func_81700120 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+void func_81700120(void *arg0) {
+    s16 temp_v0;
+    s16 temp_v1;
+
+    M2C_FIELD(arg0, s16 *, 0xE) = (s16) (M2C_FIELD(arg0, s16 *, 0xE) + 1);
+    temp_v0 = M2C_FIELD(arg0, s16 *, 0xE);
+    if (temp_v0 < 5) {
+        temp_v1 = M2C_FIELD(arg0, s16 *, 0x16);
+        M2C_FIELD(arg0, s16 *, 0x10) = (s16) (temp_v1 + ((s32) ((M2C_FIELD(arg0, s16 *, 0x14) - temp_v1) * temp_v0) / 5));
+        return;
+    }
+    M2C_FIELD(arg0, s16 *, 4) = 2;
+    M2C_FIELD(arg0, s16 *, 0xE) = 0;
+    M2C_FIELD(arg0, s16 *, 0x1C) = 0;
+    M2C_FIELD(arg0, s16 *, 0x10) = (s16) M2C_FIELD(arg0, s16 *, 0x14);
+}
+/* mkdraft:func_81700120 end */
 
 void func_81700190(void *arg0) {
     s16 temp_v0;

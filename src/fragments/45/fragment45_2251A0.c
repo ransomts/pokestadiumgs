@@ -609,7 +609,42 @@ void func_8AB01FBC(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/45/fragment45_2251A0/func_8AB0234C.s")
+/* mkdraft:func_8AB0234C begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK func_8AB02240(s16, s16, s32, M2C_UNK);      /* extern */
+extern u32 D_8AB11D04;
+extern s16 D_8AB126A0;
+extern s16 D_8AB14678;
+extern s32 D_8AB16794;
+
+void func_8AB0234C(void) {
+    if (((D_8AB14678 == 4) || (D_8AB14678 == 2)) && (D_8AB126A0 == 2)) {
+        if (D_8AB14678 != 2) {
+            if (D_8AB14678 == 4) {
+                func_8AB02240(M2C_FIELD(D_8AB11D04, s16 *, 8), M2C_FIELD(D_8AB11D04, s16 *, 0xA), D_8AB16794, 0);
+            }
+        } else {
+            func_8AB02240(M2C_FIELD(D_8AB11D04, s16 *, 8), M2C_FIELD(D_8AB11D04, s16 *, 0xA), D_8AB16794, 0xFF);
+        }
+        D_8AB126A0 = 1;
+    }
+}
+/* mkdraft:func_8AB0234C end */
 #endif
 
 #ifdef VERSION_US

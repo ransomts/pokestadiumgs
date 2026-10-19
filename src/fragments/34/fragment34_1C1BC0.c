@@ -144,7 +144,49 @@ void Trade_UpdateBoxSlotShrink(void *arg0)
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/34/fragment34_1C1BC0/func_885055A0.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/34/fragment34_1C1BC0/func_88505718.s")
+/* mkdraft:func_88505718 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK func_80057944(s32);                         /* extern */
+extern void func_88505038(void *arg0, s32 arg1);
+extern u8 D_885229A8;
+extern M2C_UNK D_885229B0;
+extern M2C_UNK D_88522E6C;
+extern s8 D_8852300C[];
+
+void func_88505718(void) {
+    M2C_UNK *var_s0;
+
+    if (M2C_FIELD(&D_8852300C, s8 *, 1) != -1) {
+        func_80057944(M2C_FIELD(&D_8852300C, s8 *, 1) & 0xFF);
+        M2C_FIELD(&D_8852300C, s8 *, 1) = -1;
+    }
+    M2C_FIELD(&D_885229A8, s32 *, 0) = 1;
+    M2C_FIELD(&D_885229A8, s16 *, 4) = 0;
+    func_88505038(&D_885229B0, 1);
+    var_s0 = &D_885229B0;
+    do {
+        if (M2C_FIELD(var_s0, s16 *, 0x198) != -1) {
+            func_88505038(var_s0 + 0x194, 2);
+        }
+        var_s0 += 0x194;
+    } while (var_s0 != &D_88522E6C);
+}
+/* mkdraft:func_88505718 end */
 
 extern s8 D_8852300A;
 extern void func_88505718(void);

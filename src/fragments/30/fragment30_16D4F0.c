@@ -54,7 +54,51 @@ void func_881000B8(void) {
     func_8810009C(3, 2);
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/30/fragment30_16D4F0/func_8810013C.s")
+/* mkdraft:func_8810013C begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+extern u8 *D_88104E80;
+
+void func_8810013C(void *arg0, void *arg1, M2C_UNK arg2) {
+    f32 temp_fa1;
+    f32 temp_fv0;
+    f32 temp_fv1;
+    f32 var_fa0;
+    f32 var_fa0_2;
+
+    temp_fv0 = (f32) (6 - M2C_FIELD(D_88104E80, u8 *, 7)) / 6.0f;
+    temp_fv1 = (f32) (M2C_FIELD(arg1, u16 *, 4) - 0x20) * temp_fv0;
+    if (temp_fv1 > 0.0f) {
+        var_fa0 = 0.5f;
+    } else {
+        var_fa0 = -0.5f;
+    }
+    M2C_FIELD(arg0, u16 *, 4) = (u16) ((s32) (var_fa0 + temp_fv1) + 0x20);
+    temp_fa1 = (f32) (M2C_FIELD(arg1, u16 *, 6) - 0x20) * temp_fv0;
+    if (temp_fa1 > 0.0f) {
+        var_fa0_2 = 0.5f;
+    } else {
+        var_fa0_2 = -0.5f;
+    }
+    M2C_FIELD(arg0, u16 *, 6) = (u16) ((s32) (var_fa0_2 + temp_fa1) + 0x20);
+    M2C_FIELD(arg0, s16 *, 0) = (s16) ((M2C_FIELD(arg1, s16 *, 0) + ((s32) M2C_FIELD(arg1, u16 *, 4) >> 1)) - ((s32) M2C_FIELD(arg0, u16 *, 4) >> 1));
+    M2C_FIELD(arg0, s16 *, 2) = (s16) ((M2C_FIELD(arg1, s16 *, 2) + ((s32) M2C_FIELD(arg1, u16 *, 6) >> 1)) - ((s32) M2C_FIELD(arg0, u16 *, 6) >> 1));
+}
+/* mkdraft:func_8810013C end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/30/fragment30_16D4F0/func_88100264.s")
 

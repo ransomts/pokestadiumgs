@@ -9,11 +9,65 @@ void func_8414F260(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3BEAF0/func_8414F2F4.s")
+/* mkdraft:func_8414F2F4 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+s32 func_8414C960(s32);                             /* extern */
+s32 func_84154B24();                                /* extern */
+extern M2C_UNK D_841951F8;
+
+void func_8414F2F4(void *arg0) {
+    s32 temp_s3;
+    s32 temp_v1;
+    s32 var_s0;
+    s32 var_s1;
+    s32 var_s5;
+    u8 temp_v1_2;
+    void **temp_s2;
+
+s32 func_84154B24();                                /* extern */
+    temp_s2 = (temp_v1 * 4) + &D_841951F8;
+    temp_s3 = temp_v1 * 2;
+    var_s0 = 0;
+    var_s1 = 0;
+    var_s5 = M2C_FIELD(arg0, s32 *, 0x14);
+    do {
+        temp_v1_2 = M2C_FIELD((func_8414C960(((M2C_FIELD(*temp_s2, u8 *, 0xA) * 4) + var_s0) & 0xFF) + temp_s3), u8 *, 3);
+        var_s0 += 1;
+        if (var_s1 < (s32) temp_v1_2) {
+            var_s1 = temp_v1_2 & 0xFF;
+        }
+    } while (var_s0 != 4);
+    if (var_s1 != 0) {
+        if (var_s5 < 0) {
+            var_s5 = -var_s5;
+        }
+        if (var_s1 < 0x80) {
+            M2C_FIELD(arg0, s32 *, 0x18) = (s32) ((s32) (-var_s5 * (var_s1 + 0xA)) / 255);
+            return;
+        }
+        M2C_FIELD(arg0, s32 *, 0x18) = (s32) -var_s5;
+    }
+}
+/* mkdraft:func_8414F2F4 end */
 #endif
 
 #ifdef VERSION_US
-extern u8 func_84154B24(void);
+s32 func_84154B24();                                /* extern */
 void func_8414F3FC(void *arg0) {
     u8 value = func_84154B24();
     if (*(u16 *)((u8 *)arg0 + value * 2 + 2) < 0xB2) {

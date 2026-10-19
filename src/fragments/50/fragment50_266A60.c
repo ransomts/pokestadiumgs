@@ -453,7 +453,41 @@ void func_86203B08(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/50/fragment50_266A60/func_86203BA8.s")
+/* mkdraft:func_86203BA8 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+extern void *D_8620E198;
+
+void func_86203BA8(void) {
+    void *temp_v1;
+    void *var_v0;
+
+    var_v0 = M2C_FIELD(D_8620E198, void **, 0x180);
+    if (var_v0 != NULL) {
+        do {
+            temp_v1 = M2C_FIELD(var_v0, void **, 0x20);
+            M2C_FIELD(temp_v1, s32 *, 0x3C) = (s32) M2C_FIELD(var_v0, s32 *, 0x48);
+            M2C_FIELD(temp_v1, s32 *, 0x40) = (s32) M2C_FIELD(var_v0, s32 *, 0x4C);
+            M2C_FIELD(temp_v1, s32 *, 0x44) = (s32) M2C_FIELD(var_v0, s32 *, 0x50);
+            var_v0 = M2C_FIELD(var_v0, void **, 4);
+        } while (var_v0 != NULL);
+    }
+}
+/* mkdraft:func_86203BA8 end */
 #endif
 
 #ifdef VERSION_US

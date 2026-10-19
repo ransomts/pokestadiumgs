@@ -2,7 +2,61 @@
 
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/63/fragment63_306150/func_87E027E0.s")
+/* mkdraft:func_87E027E0 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK func_87E10E64(s32);                         /* extern */
+M2C_UNK func_87E10EA8(s32);                         /* extern */
+M2C_UNK func_87E10F2C(s32);                         /* extern */
+extern M2C_UNK D_87E19934;
+extern M2C_UNK D_87E19964;
+
+void func_87E027E0(void *arg0) {
+    M2C_UNK *sp1C;
+    s32 temp_v0_2;
+    u8 temp_v0;
+    void *temp_v1;
+
+    temp_v1 = M2C_FIELD(arg0, void **, 0x204);
+    temp_v0 = M2C_FIELD(temp_v1, u8 *, 0x2180);
+    switch (temp_v0) {                              /* irregular */
+    case 0:
+    case 1:
+        if (M2C_FIELD(temp_v1, u8 *, 0x2182) != 0) {
+            sp1C = (M2C_FIELD(arg0, s32 *, 4) * 0xC) + &D_87E19934;
+        } else {
+            sp1C = &D_87E19964;
+        }
+        break;
+    case 3:
+        sp1C = (M2C_FIELD(arg0, s32 *, 4) * 0xC) + 0x18 + &D_87E19934;
+        break;
+    }
+    temp_v0_2 = M2C_FIELD(arg0, s32 *, 0);
+    if ((temp_v0_2 == 2) || (temp_v0_2 == 3)) {
+        func_87E10EA8(-1);
+        func_87E10F2C(-1);
+        return;
+    }
+    func_87E10E64(M2C_FIELD(sp1C, s32 *, 0));
+    func_87E10EA8(M2C_FIELD(sp1C, s32 *, 4));
+    func_87E10F2C(M2C_FIELD(sp1C, s32 *, 8));
+}
+/* mkdraft:func_87E027E0 end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/63/fragment63_306150/func_87E028D8.s")
 
