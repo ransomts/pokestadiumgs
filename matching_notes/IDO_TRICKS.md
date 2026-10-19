@@ -158,7 +158,49 @@ An expression that only becomes identical to another after a constant local is p
 with the draft's `w`/`h` locals instead of the literal) is found later and so gets the later slot:
 swapping the two spill slots of func_8850B2D4 came from writing `((arg2 - 7) + h) << 2`.
 
+## Upstream pragma escape hatches (discovered 2026-10-19; michiiik's tools/)
+
+The build's CC is `tools/coalesce_cc.py`, a wrapper around IDO cc that
+processes three opt-in pragmas IN EVERY COMPILE - these are first-class
+match mechanisms, not patches:
+
+1. `#pragma COALESCE_AT_LUI(func, [sym...])` before a function definition:
+   folds redundant `lui $at, %hi(S)` runs in the COMPILED OBJECT when every
+   operand resolves to the same %hi page (address map from symbol_addrs +
+   the linked map). This is the designed solution for the lui-sharing class
+   - use it INSTEAD of the fragment16 static-struct workaround and before
+   retrying the func_8000B28C dead end (its one-lui-two-sw target shape).
+2. `#pragma SWAP_FUNCTION_WORDS(func, offset, wordA, wordB)`: swaps two
+   adjacent instructions at a function-relative word offset when both
+   expected words match exactly and carry no relocations - the as1 .loc
+   scheduling-tie class. For residuals that are EXACTLY a commuted pair
+   (e.g. func_82606E90@60's li position, the or/addu operand classes),
+   check this before farming: verify the pair, add the pragma, fd.sh 0.
+3. `#pragma REWRITE_FUNCTION_WORD(func, offset, expected, new)`: rewrites
+   one word under the same exact-match safety model.
+
+All three require the object to already contain the expected words; they
+change no scheduling and add no instructions (see tools/coalesce_cc.py's
+docstring for the -S round-trip trap they avoid). Existing uses to imitate:
+src/229E0.c:6271 (SWAP), src/fragments/19/fragment19_121100.c:38 and
+src/fragments/79/fragment79_393CA0.c:4791 (COALESCE_AT_LUI).
+
+Related upstream assets now in our tree:
+- `docs/regions/**/*.md` (129 files): per-file match knowledge with winning
+  source-shape labels and accepted batch checksums. AGENTS WORKING A FILE
+  MUST READ ITS REGION DOC FIRST (docs/regions/fragments/NN/<file>.md) - the
+  label records the exact verified source shape (e.g. f16-flow labels).
+- `tools/candidate_identity.py`: IDO .loc-aware logical-line identity for
+  candidate dedup (token-identical statements on separate lines compile
+  differently - never collapse them).
+- `tools/find_fragments.py`, `tools/dump_code_syms.py`: overlay utilities.
+- CI: keep-open-prs-current.yml - PRs touching ONLY src/**/*.c are "small"
+  and merge on their own passing ROM gate even when stale vs master; wider
+  PRs (include/, linker_scripts/, yamls/, tools/) must re-gate on the
+  current tip. Our match PRs are small; up/renames is NOT (symbol_addrs).
+
 ## Data layout facts (2026-10-16, Phase D)
+
 - IDO puts every data object on a 4-byte boundary; a label at an unaligned address is a field.
 - .data/.rodata are emitted in source order, initialized function statics included (`static T x = 0;`
   -> .data at its source position; no initializer -> .bss).

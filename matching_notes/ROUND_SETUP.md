@@ -36,6 +36,12 @@ predictor of success), then matching_notes/NOTES.md (dead ends; do not retry the
 
 ## Workflow per function
 
+0. KNOWLEDGE CHECK (do this FIRST): if `docs/regions/<NN>/<srcfile>.md`
+   exists for your target (check both docs/regions/ and
+   docs/regions/fragments/NN/), read it before drafting — upstream's
+   region docs record winning source-shape labels, accepted batch
+   checksums, and failed-attempt notes for the file's owners. Also read
+   matching_notes/spool/<func>.meta if one exists from an earlier wave.
 1. Read the target asm `asm/us/nonmatchings/<grp>/<func>.s`. If a sibling is given:
    `corpus.py show <sibling>` and copy its C — the twin usually differs only in
    symbol names/addresses. Retarget every symbol to the names in YOUR target .s
