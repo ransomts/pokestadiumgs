@@ -226,8 +226,40 @@ void *func_821019AC(void *arg0, void *arg1) {
     return result;
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/25/fragment25_15A060/func_82101A30.s")
-
+void func_82101A30(void *arg0)
+{
+  s32 new_var;
+  s32 var_a1;
+  void *temp_a2;
+  void *temp_v0;
+  new_var = *((s32 *) (((u8 *) arg0) + 8));
+  var_a1 = 0;
+  if (new_var > 0)
+  {
+    do
+    {
+      temp_v0 = (*((s32 *) (((u8 *) arg0) + 0))) + var_a1;
+      var_a1 += 0x20;
+      if (temp_v0 == NULL)
+      {
+      }
+      else
+      {
+        temp_a2 = *((void **) (((u8 *) temp_v0) + 0));
+        if (temp_a2 == NULL)
+        {
+        }
+        else
+        {
+          *((u16 *) (((u8 *) temp_a2) + 2)) = (u16) ((*((u16 *) (((u8 *) temp_a2) + 2))) | 2);
+          *((u16 *) (((u8 *) (*((void **) (((u8 *) temp_v0) + 0)))) + 0x24)) = (u16) (*((u16 *) (((u8 *) (*((void **) (((u8 *) temp_v0) + 8)))) + 0x18)));
+          *((u16 *) (((u8 *) (*((void **) (((u8 *) temp_v0) + 0)))) + 0x26)) = (u16) (*((u16 *) (((u8 *) (*((void **) (((u8 *) temp_v0) + 8)))) + 0x1A)));
+        }
+      }
+    }
+    while (var_a1 < ((*((s32 *) (((u8 *) arg0) + 8))) << 5));
+  }
+}
 f32 func_82101AB4(u8 *arg0) {
     return ((f32)*(s16 *)(*(u8 **)(arg0 + 0) + 0x0C) *
             (*(f32 *)(*(u8 **)(arg0 + 8) + 0x2C) + 1.0f) * 0.5f) +
