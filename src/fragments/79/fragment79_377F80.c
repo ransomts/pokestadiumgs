@@ -125,9 +125,30 @@ void func_841091CC(void) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_377F80/func_8410922C.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_377F80/func_841092B8.s")
+/* mkdraft:func_841092B8 begin */
+void func_841092B8(void* arg0) {
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_377F80/func_8410933C.s")
+    for (i = 0; i < 8; i++) {
+        if ((D_841901C0[i] != 0) && (((s32 (*)(void))D_841901C0[i])() != 0)) {
+            D_841901C0[i] = 0;
+            D_841901E0[i] = 0;
+        }
+    }
+}
+/* mkdraft:func_841092B8 end */
+
+/* mkdraft:func_8410933C begin */
+void func_8410933C(void* arg0) {
+    s32 i;
+
+    for (i = 0; i < 8; i++) {
+        if (D_841901E0[i] != 0) {
+            ((void (*)(void))D_841901E0[i])();
+        }
+    }
+}
+/* mkdraft:func_8410933C end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_377F80/func_84109394.s")
 

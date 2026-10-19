@@ -2,7 +2,17 @@
 
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/24/fragment24_150C10/func_82B00E10.s")
+/* mkdraft:func_82B00E10 begin */
+extern s16 D_82B12450;
+
+void func_82B00E10(void) {
+    s32 i;
+
+    for (i = 0; i < 2; i++) {
+        *(s16 *)((u8 *)(&D_82B12450 + i) + 0xFF4) = 0;
+    }
+}
+/* mkdraft:func_82B00E10 end */
 #endif
 
 #ifdef VERSION_US

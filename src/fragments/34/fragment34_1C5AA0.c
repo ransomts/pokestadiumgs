@@ -21,7 +21,23 @@ void func_88508780(u8 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/34/fragment34_1C5AA0/func_885087D4.s")
+/* mkdraft:func_885087D4 begin */
+typedef struct { s32 unk_00; s16 unk_02; s16 unk_04; s16 unk_06; s16 unk_08; s16 unk_0A; s16 unk_0C; s16 unk_0E; s16 unk_10; s16 unk_12; f32 unk_14; f32 unk_18; f32 unk_1C; } unk_D_88523100;
+extern f32 D_80087E50[];
+extern f32 D_8850D56C;
+
+void func_885087D4(unk_D_88523100 *arg0) {
+    arg0->unk_04 = D_88523034 + arg0->unk_02;
+    arg0->unk_06 = (s16)(D_80087E50[(u16)(arg0->unk_12) >> 4] * 3.0f + ((D_80087E50[(u16)(arg0->unk_12) >> 4] * 3.0f) > 0.0f ? 0.5f : -0.5f)) + 0xBE;
+
+    arg0->unk_12 += 0x800;
+
+    arg0->unk_1C -= D_8850D56C;
+    if (arg0->unk_1C < 1.0f) {
+        arg0->unk_1C = 1.0f;
+    }
+}
+/* mkdraft:func_885087D4 end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/34/fragment34_1C5AA0/func_8850889C.s")
 

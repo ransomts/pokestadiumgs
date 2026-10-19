@@ -6453,7 +6453,54 @@ void Geo_NodeReference(void *arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/229E0/func_8003A4CC.s")
+/* mkdraft:func_8003A4CC begin */
+extern Gfx *D_800D0510;
+extern void *D_80094908;
+extern void Gfx_ApplyScissorRect(void **);
+extern void func_80077DC0(Mtx *, u16 *, f32, f32, f32, f32, f32);
+extern void func_8003A2C8(void *);
+
+void func_8003A4CC(S1_GraphNode *arg0) {
+    UNUSED S1_MtxF pad_mtx;
+    S1_unk_D_86002F34_00C *arg = (S1_unk_D_86002F34_00C *)arg0;
+    S1_unk_D_86002F34_00C_040 *temp_s2 = &arg->unk_40;
+    S1_unk_D_86002F34_00C_060 *temp_s1 = &arg->unk_60;
+    S1_unk_D_86002F34_00C_024 *sp48 = &arg->unk_24;
+    S1_unk_D_86002F34_00C_018 *temp_s0 = &arg->unk_18;
+
+    temp_s0->vp = Gfx_AllocDisplayList(sizeof(Vp) * 1);
+    temp_s2->mtx = Gfx_AllocDisplayList(sizeof(Mtx) * 1);
+    sp48->mtx = Gfx_AllocDisplayList(sizeof(S1_MtxF) * 1);
+    temp_s1->p_mtxf = Gfx_AllocDisplayList(sizeof(S1_MtxF) * 1);
+    temp_s1->lookat = Gfx_AllocDisplayList(sizeof(LookAt) * 1);
+
+    temp_s0->vp->vp.vtrans[0] = (temp_s0->x * 4) + (temp_s0->width * 2);
+    temp_s0->vp->vp.vtrans[1] = (temp_s0->y * 4) + (temp_s0->height * 2);
+    temp_s0->vp->vp.vtrans[2] = 0x1FF;
+
+    temp_s0->vp->vp.vscale[0] = temp_s0->width * 2;
+    temp_s0->vp->vp.vscale[1] = temp_s0->height * 2;
+    temp_s0->vp->vp.vscale[2] = 0x1FF;
+
+    gSPViewport(D_800D0510++, (u32)temp_s0->vp & 0x1FFFFFFF);
+    gDPSetScissorFrac(D_800D0510++, G_SC_NON_INTERLACE, temp_s0->x * 4.0f, temp_s0->y * 4.0f,
+                      (temp_s0->x + temp_s0->width) * 4.0f, (temp_s0->y + temp_s0->height) * 4.0f);
+
+    guOrtho(temp_s2->mtx, temp_s2->l, temp_s2->r, temp_s2->b, temp_s2->t, temp_s2->n, temp_s2->f, temp_s2->scale);
+    func_80077DC0(sp48->mtx, &sp48->perspNorm, sp48->fovy, sp48->aspect, sp48->near, sp48->far, sp48->scale);
+    guLookAtReflectF(&temp_s1->mtxf, temp_s1->lookat, temp_s1->eye.x, temp_s1->eye.y, temp_s1->eye.z, temp_s1->at.x,
+                     temp_s1->at.y, temp_s1->at.z, temp_s1->up.x, temp_s1->up.y, temp_s1->up.z);
+    MtxF_ToFixed(temp_s1->p_mtxf, &temp_s1->mtxf);
+
+    D_80094908 = arg;
+    if ((arg->unk_CC.unk_00 != 1) && (arg->unk_00.unk_0C != NULL)) {
+        func_8003A2C8(&arg->unk_00);
+    }
+    GeoOverlay_Draw(&arg->unk_CC, temp_s2);
+    Gfx_ApplyScissorRect(&D_800D0510);
+    D_80094908 = NULL;
+}
+/* mkdraft:func_8003A4CC end */
 #endif
 
 #ifdef VERSION_US
