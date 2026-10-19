@@ -55,8 +55,8 @@ void func_8410A4EC(f32 arg0) {
     D_80128C54[1] = arg0;
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_379450/func_8410A4F8.s")
-
+extern f32 D_80128C54[];
+void func_8410A4F8(u8 arg0, u8 arg1, u8 arg2, u8 arg3) { volatile u8 *state; state = (volatile u8 *)D_80128C54; state += 8; state[0] = arg0; state[1] = arg1; state[2] = arg2; state[3] = arg3; }
 extern s32 D_84190200;
 extern s32 D_84190208;
 extern s32 D_8419020C;

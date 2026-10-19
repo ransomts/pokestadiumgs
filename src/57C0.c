@@ -342,7 +342,38 @@ void Sched_HandlePreNMI(void) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/57C0/func_800052C4.s")
+void func_800052C4(void) {
+    S1_UnkStruct80001380* sp24 = (S1_UnkStruct80001380 *)D_800CD020[0xA14 / 4];
+    s32 tmp = Sched_HandleRspCompletion((u8 *)D_800CD020[0xA14 / 4]);
+
+    D_800CD020[0xA14 / 4] = 0;
+
+    if (tmp) {
+        D_800CD020[0xA14 / 4] = (u32)Sched_TryStartTask((void *)D_800CD020[0xA18 / 4]);
+    }
+
+    if (sp24->state == 3) {
+        switch (sp24->task.t.type) {
+            case M_AUDTASK:
+                D_800CD020[0xA18 / 4] = 0;
+                D_800CD020[0xA28 / 4] = 0;
+                D_800CD020[0xA14 / 4] = (u32)Sched_TryStartTask((void *)D_800CD020[0xA1C / 4]);
+                break;
+
+            case M_GFXTASK:
+                if (((S1_UnkStruct80001380 *)D_800CD020[0xA1C / 4])->notifyFlag == 2) {
+                    D_800CD020[0xA1C / 4] = 0;
+                    D_800CD020[0xA2C / 4] = 0;
+                }
+                break;
+
+            case 4:
+                D_800CD020[0xA1C / 4] = 0;
+                D_800CD020[0xA30 / 4] = 0;
+                break;
+        }
+    }
+}
 #endif
 
 #ifdef VERSION_US

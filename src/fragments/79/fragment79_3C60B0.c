@@ -43,7 +43,7 @@ void BattleAnim_EffectSecondaryOwnerAnchorPosition() {
 #endif
 
 #ifdef VERSION_US
-void BattleAnim_EffectTertiaryOwnerBonePosition(void) {
+void BattleAnim_EffectTertiaryOwnerBonePosition() {
     func_841098C0();
 }
 #endif
@@ -103,11 +103,85 @@ void func_841569C0(s32 arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3C60B0/func_841569E0.s")
+typedef struct { f32 x; f32 y; f32 z; } Vec3f841569E0;
+extern void func_80070C14(f32 *, f32 *, f32 *);
+void func_841569E0(f32* arg0, f32* arg1, f32* arg2, f32* arg3, f32* arg4, f32* arg5) {
+    Vec3f841569E0 anchor_pos;
+    Vec3f841569E0 bone_pos;
+    f32 anchor_x;
+    f32 anchor_y;
+    f32 anchor_z;
+    UNUSED s32 pad[3];
+    f32 diff_x;
+    f32 diff_y;
+    f32 diff_z;
+
+    BattleAnim_EffectSecondaryOwnerAnchorPosition(&anchor_pos);
+    BattleAnim_EffectTertiaryOwnerBonePosition(&bone_pos);
+
+    anchor_x = anchor_pos.x;
+    anchor_y = anchor_pos.y;
+    anchor_z = anchor_pos.z;
+
+    diff_x = bone_pos.x - anchor_pos.x;
+    diff_y = bone_pos.y - anchor_pos.y;
+    diff_z = bone_pos.z - anchor_pos.z;
+
+    if (diff_x == 0.0f || diff_y == 0.0f || diff_z == 0.0f) {} // karodo
+
+    func_80070C14(&diff_x, &diff_y, &diff_z);
+
+    *arg0 = anchor_x;
+    *arg1 = anchor_y;
+    *arg2 = anchor_z;
+    *arg3 = diff_x;
+    *arg4 = diff_y;
+    *arg5 = diff_z;
+}
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3C60B0/func_84156AB4.s")
+typedef struct { f32 x; f32 y; f32 z; } Vec3f84156AB4;
+extern void func_80070C14(f32 *, f32 *, f32 *);
+void func_84156AB4(f32* arg0, f32* arg1, f32* arg2, f32* arg3, f32* arg4, f32* arg5) {
+    Vec3f84156AB4 anchor_pos;
+    Vec3f84156AB4 bone_pos;
+    f32 anchor_x;
+    f32 anchor_y;
+    f32 anchor_z;
+    UNUSED s32 pad[2];
+    f32 bone_y;
+    f32 diff_x;
+    f32 diff_y;
+    f32 diff_z;
+
+    BattleAnim_EffectSecondaryOwnerAnchorPosition(&anchor_pos);
+    BattleAnim_EffectTertiaryOwnerBonePosition(&bone_pos);
+
+    anchor_x = anchor_pos.x;
+    anchor_y = anchor_pos.y;
+    anchor_z = anchor_pos.z;
+
+    bone_y = bone_pos.y;
+    if (bone_y < 0.0f) {
+        bone_y = 0.0f;
+    }
+
+    diff_x = bone_pos.x - anchor_pos.x;
+    diff_y = bone_y - anchor_pos.y;
+    diff_z = bone_pos.z - anchor_pos.z;
+
+    if (diff_x == 0.0f || diff_y == 0.0f || diff_z == 0.0f) {} // karodo
+
+    func_80070C14(&diff_x, &diff_y, &diff_z);
+
+    *arg0 = anchor_x;
+    *arg1 = anchor_y;
+    *arg2 = anchor_z;
+    *arg3 = diff_x;
+    *arg4 = diff_y;
+    *arg5 = diff_z;
+}
 #endif
 
 #ifdef VERSION_US
