@@ -75,6 +75,30 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
 
 ## Wave log
 
+### Wave 8 + farm scale-up (2026-10-19 afternoon): 13 matches (212 campaign)
+- 71f4ed99: 13 matches from the C_agent 351-400 band (6 agents, 16 functions;
+  2 near-misses spooled: func_813002D0@155 v0/v1 pair, func_82100D9C@15
+  path-sensitive register reuse). Companion edit: func_800495F8's extern
+  retyped to the true varargs form.
+- NEW MATCH CLASS (func_8AF12E30): a trailing dead `jr ra; nop` after a
+  function is an UNREFERENCED STATIC EMPTY FUNCTION (IDO 7.1 never
+  dead-strips statics; statics get no map symbol; cfe/ugen provably
+  dissolves every in-function construct). Splice `static void
+  <next_addr_name>(void) {}` after the match. ~26 more functions carry the
+  trailing pattern (list in the spool meta) — each still needs its own body
+  matched, but the blocker is now understood.
+- FARM SCALE-UP: second job 17670449 (20 B_farm functions, seeds-7, :2:2,
+  disjoint from job 17663884's set so SAVE_DIR never collides). Seed prep
+  now tooling: matching_notes/declfix.py repairs mkdraft prologue conflicts
+  automatically (compile-error-driven; 16 repairs this tranche). LESSONS:
+  run it with RUN_CC_CHECK=1 (the host syntax gate catches mangled splices
+  the IDO build alone accepts); seed branches must be re-cut/rebased onto
+  current farm-port after EVERY match wave (git-archive staging replaces
+  the whole tracked tree — a branch older than the latest wave wants .s
+  files that no longer exist, twice now); never `git add -u src/` on a
+  shared tree (it sweeps concurrent agents' in-flight work into the
+  commit — farm-seeds-7's first cut had to be rebuilt after exactly that).
+
 ### Farm 17663884 adoptions (2026-10-19 afternoon): 8 matches (199 total)
 - a2bcec9b (4: func_88228BCC, func_8822B43C, func_88903B2C, func_8AF03678),
   54551426 (3: func_8416691C, func_86B0B7B4, func_84116AC4), 0dc661ee
