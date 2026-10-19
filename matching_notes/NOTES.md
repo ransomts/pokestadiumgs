@@ -75,6 +75,33 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
 
 ## Wave log
 
+### Sweep A_adopt adoption (2026-10-19): 59 matches (166 total)
+- All 59 score-0 sweep drafts spliced from matching_notes/sweep_zero/ in four
+  ROM-gated batches (559ee32c, 6606a640, eac0d6c6, 2b0d3a7a), ~15 at a time.
+  No jtbl-extent trap fired: every batch's full make printed
+  build/pokestadiumgs-us.z64: OK with the unchanged md5
+  1561c75d11cedf356a8ddb1a4a5f9d5d. COVERAGE.md: 6,887/10,532 (65.4%),
+  3,645 owners left.
+- Integration fixup classes seen when multiple drafts land in one file (all
+  codegen-neutral, verified by the per-batch ROM gate):
+  1. An m2c prologue's no-prototype extern (`M2C_UNK f();` / `s32 f();`)
+     conflicting with the sibling draft's typed definition spliced above it
+     (func_8005370C, func_8413D37C, func_88304F5C). Fix: retype the extern to
+     the definition's signature and forward the call's arguments
+     (func_80053908 now passes (arg0, arg1); target asm keeps a0/a1 in place
+     across the jal).
+  2. Two drafts declaring the same byte global with swapped s8/u8 types
+     (D_8419A0A2/D_8419A0A3). Decide with the asm loads (lbu -> u8); retyping
+     a store-only use is neutral.
+  3. An already-matched function calling a newly-defined one with an implicit
+     int declaration (func_841347A0 -> func_84137DB8): add the correct
+     prototype on its own line BEFORE the caller; result-discarding plain-jal
+     calls are unaffected. Check this before rebuilding when a file has
+     one-liner matched functions referencing the draft target.
+- The pre-existing `extern void f();` (no params) next to a `void f(void)`
+  definition is C89-compatible — not a conflict; only return-type or
+  implicit-int mismatches error.
+
 ### Wave 5 (2026-10-19, S1 cross-ports): 25 matches (107 total)
 - 18 in commit d2f7e50b (C380 JPEG block x8 via Makefile CC_OLD=IDO 5.3 route —
   CHECK THE DONOR REPO'S PER-FILE COMPILER EXCEPTIONS before fighting regalloc;
