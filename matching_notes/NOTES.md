@@ -84,6 +84,14 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
   in metas; the pair shares one static prologue, all-or-nothing). Near-misses
   spooled for a future round: func_8AF0145C@135 (2 register/scheduling classes
   left), func_864001E0@310 (x-mul operand order + branch-folding pair).
+- PARKED PAIR LANDED (e5450551, same day): the fragment16 fade-state migration
+  is done — yaml [0x10F310, .data, fragments/16/fragment16_code] + blob split
+  + aliases D_82001EA0..EAC. NEW DATAMIG LESSON: IDO pads a C object's .data
+  SECTION to 16 bytes, so a C-owned range must be a full aligned section —
+  the fade state's 12 bytes + 4 pad zeros shifted the following blob 4 bytes
+  (ROM compare failed on the first attempt). Fix: carry the next retail word
+  (here the old blob head D_82001EAC) in C so the range is exactly 16; alias
+  the absorbed label. Total: 14 wave-7 matches (191 campaign).
 - NEW IDO LESSONS (wave 7, multi-agent confirmed):
   1. A DISCARDED non-void call result still reserves v0 in uopt's temp
      coloring: callee return types are load-bearing for register allocation
