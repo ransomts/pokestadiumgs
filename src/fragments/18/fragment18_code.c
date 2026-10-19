@@ -35,8 +35,23 @@ void fragment18_main(u8 *arg0) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/18/fragment18_code/func_817000A4.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/18/fragment18_code/func_81700120.s")
-
+void func_81700120(void *arg0)
+{
+  s16 temp_v0;
+  s16 temp_v1;
+  *((s16 *) (((u8 *) arg0) + 0xE)) = (s16) ((*((s16 *) (((u8 *) arg0) + 0xE))) + 1);
+  ;
+  if ((*((s16 *) (((u8 *) arg0) + 0xE))) < 5)
+  {
+    temp_v1 = *((s16 *) (((u8 *) arg0) + 0x16));
+    *((s16 *) (((u8 *) arg0) + 0x10)) = (s16) ((((s32) (((*((s16 *) (((u8 *) arg0) + 0x14))) - temp_v1) * (*((s16 *) (((u8 *) arg0) + 0xE))))) / 5) + (*((s16 *) (((u8 *) arg0) + 0x16))));
+    return;
+  }
+  *((s16 *) (((u8 *) arg0) + 4)) = 2;
+  *((s16 *) (((u8 *) arg0) + 0xE)) = 0;
+  *((s16 *) (((u8 *) arg0) + 0x1C)) = 0;
+  *((s16 *) (((u8 *) arg0) + 0x10)) = (s16) (*((s16 *) (((u8 *) arg0) + 0x14)));
+}
 void func_81700190(void *arg0) {
     s16 temp_v0;
 
