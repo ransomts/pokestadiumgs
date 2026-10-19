@@ -687,7 +687,66 @@ void func_86B0B6CC(s32 arg0, s32 arg1) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/61/fragment61_code/func_86B0B7B4.s")
+/* mkdraft:func_86B0B7B4 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+s32 func_8003EC54(M2C_UNK *);                       /* extern */
+extern M2C_UNK D_86B17910;
+extern s32 D_86B17ABC;
+extern void *D_87F119DC;
+
+void func_86B0B7B4(void) {
+    f32 temp_fa0;
+    f32 temp_fa0_2;
+    f32 temp_fv0;
+    f32 temp_fv1_2;
+    f64 temp_fv0_2;
+    f64 temp_fv0_3;
+    f64 temp_fv1;
+
+    switch (D_86B17ABC) {                           /* irregular */
+    case 0:
+        M2C_FIELD(D_87F119DC, f32 *, 0x5C) = 7.0f;
+        temp_fv0 = M2C_FIELD(D_87F119DC, f32 *, 0x5C);
+        M2C_FIELD(D_87F119DC, f32 *, 0x58) = temp_fv0;
+        M2C_FIELD(D_87F119DC, f32 *, 0x54) = temp_fv0;
+        M2C_FIELD(D_87F119DC, s8 *, 0x41) = 0xFF;
+        return;
+    case 1:
+        temp_fv0_2 = (f64) ((f32) (func_8003EC54(&D_86B17910) - 1) / 30.0f);
+        temp_fv1 = 1.0 - temp_fv0_2;
+        temp_fa0 = (f32) ((temp_fv1 * 7.0) + (3.5 * temp_fv0_2));
+        M2C_FIELD(D_87F119DC, f32 *, 0x5C) = temp_fa0;
+        M2C_FIELD(D_87F119DC, f32 *, 0x58) = temp_fa0;
+        M2C_FIELD(D_87F119DC, f32 *, 0x54) = temp_fa0;
+        M2C_FIELD(D_87F119DC, s32 *, 0x38) = (s32) ((temp_fv1 * 128.0) + (64.0 * temp_fv0_2));
+        return;
+    case 2:
+        temp_fv1_2 = (f32) (func_8003EC54(&D_86B17910) - 1) / 27.0f;
+        temp_fv0_3 = 1.0 - (f64) temp_fv1_2;
+        temp_fa0_2 = (f32) ((temp_fv0_3 * 3.5) + (f64) (7.0f * temp_fv1_2));
+        M2C_FIELD(D_87F119DC, f32 *, 0x5C) = temp_fa0_2;
+        M2C_FIELD(D_87F119DC, f32 *, 0x58) = temp_fa0_2;
+        M2C_FIELD(D_87F119DC, f32 *, 0x54) = temp_fa0_2;
+        M2C_FIELD(D_87F119DC, s8 *, 0x41) = (s8) (s32) ((temp_fv0_3 * 64.0) + (f64) (128.0f * temp_fv1_2));
+        return;
+    }
+}
+/* mkdraft:func_86B0B7B4 end */
 #endif
 
 #ifdef VERSION_US

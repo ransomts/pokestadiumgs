@@ -77,7 +77,52 @@ void func_88903B00(void) {
     *temp_v0 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/38/fragment38_1D8990/func_88903B2C.s")
+/* mkdraft:func_88903B2C begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK Input_SetRepeatController(s32);             /* extern */
+M2C_UNK Util_Free(void *);                          /* extern */
+M2C_UNK func_88001900();                            /* extern */
+extern void *D_80087200;
+extern u8 *D_889041B0;
+extern s32 D_889041B4;
+extern s8 D_889041B8;
+
+void func_88903B2C(void) {
+    M2C_UNK (*sp1C)();
+    M2C_UNK (*temp_t9)();
+    s32 *temp_v0;
+
+    Input_SetRepeatController(D_80087200);
+    func_88001900();
+    temp_v0 = M2C_FIELD(D_889041B0, s32 **, 0x23C);
+    if (temp_v0 != NULL) {
+        *temp_v0 = 1;
+    }
+    if (M2C_FIELD(D_889041B0, s32 *, 0x240) == 0) {
+        D_889041B8 = 2;
+        D_889041B4 = 0;
+    }
+    temp_t9 = M2C_FIELD(D_889041B0, M2C_UNK (**)(), 0x244);
+    sp1C = temp_t9;
+    Util_Free(D_889041B0);
+    temp_t9();
+}
+/* mkdraft:func_88903B2C end */
 
 extern void func_88004990(u8, s32);
 extern void *D_80087200;

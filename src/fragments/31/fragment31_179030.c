@@ -13,7 +13,36 @@ void func_88205DB0(void) {
 extern void func_88200134();
 void func_88205DE8(void) { func_88200134(0, 1); func_88200134(1, 1); }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/31/fragment31_179030/func_88205E18.s")
+/* mkdraft:func_88205E18 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK func_882000AC(M2C_UNK, s16, s16, u16, s32, M2C_UNK *, M2C_UNK *, s32); /* extern */
+extern void *D_882346F8;
+void D_88000E4C(void);
+void func_88205DE8(void);
+
+void func_88205E18(void) {
+    M2C_UNK *sp2C;
+
+    sp2C = &D_88000E4C;
+    func_882000AC(2, M2C_FIELD(D_882346F8, s16 *, 0xA), M2C_FIELD(D_882346F8, s16 *, 0xC), M2C_FIELD(D_882346F8, u16 *, 0xE), (s32) M2C_FIELD(D_882346F8, s16 *, 0x10), &D_88000E4C, &func_88205DE8, 1);
+    func_882000AC(3, M2C_FIELD(D_882346F8, s16 *, 0x1A), M2C_FIELD(D_882346F8, s16 *, 0x1C), M2C_FIELD(D_882346F8, u16 *, 0x1E), (s32) M2C_FIELD(D_882346F8, s16 *, 0x20), &D_88000E4C, &D_88000E4C, 1);
+}
+/* mkdraft:func_88205E18 end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/31/fragment31_179030/func_88205EB0.s")
 

@@ -2779,7 +2779,39 @@ void func_84116A3C(u8 *arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_37A6E0/func_84116AC4.s")
+/* mkdraft:func_84116AC4 begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+void func_800231A0(u8, s16, s32, ...);               /* extern */
+void func_84108728(u8, void *, s32);                /* extern */
+s32 func_841133EC(s32);                             /* extern */
+void func_84116A3C(u8 *);                           /* extern */
+s32 func_8411E164();                                /* extern */
+
+void func_84116AC4(void *arg0) {
+    if ((func_841133EC(arg0) == 0) && (M2C_FIELD(arg0, s8 *, 0x7F6) == 0)) {
+        if (M2C_FIELD(arg0, u8 *, 0x619) == M2C_FIELD(arg0, s16 *, 0x7E8)) {
+            func_84108728(M2C_FIELD(arg0, u8 *, 0x618), arg0, func_8411E164(arg0));
+            func_800231A0(0x12C, M2C_FIELD(arg0, s16 *, 0x658), 0);
+        }
+        func_84116A3C(arg0);
+    }
+}
+/* mkdraft:func_84116AC4 end */
 #endif
 
 #ifdef VERSION_US

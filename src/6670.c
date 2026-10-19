@@ -112,5 +112,51 @@ void Cont_NoBlockEepromQueue(void) { extern OSMesgQueue D_800CE150; osSendMesg(&
 
 void Cont_InitEepromQueue(void) { extern OSMesgQueue D_800CE150; extern OSMesg D_800CE14C; osCreateMesgQueue(&D_800CE150, &D_800CE14C, 1); osSendMesg(&D_800CE150, NULL, OS_MESG_NOBLOCK); }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/6670/func_8000644C.s")
+/* mkdraft:func_8000644C begin */
+#ifndef M2C_FIELD /* mkdraft: m2c --valid-syntax helpers */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+void Cont_InitEepromQueue(void);
+M2C_UNK func_80005A70();                            /* extern */
+extern OSMesgQueue D_800CE100;
+extern u8 D_800CE118;
+extern u8 D_800CE119;
+extern OSContStatus D_800CE120;
+extern void *D_800CE148;
+
+u8 func_8000644C(void) {
+    OSContStatus *var_a0;
+    s32 var_v1;
+
+    Cont_InitEepromQueue();
+    osCreateMesgQueue(&D_800CE100, &D_800CE148, 1);
+    osSetEventMesg(5U, &D_800CE100, NULL);
+    osContInit(&D_800CE100, &D_800CE118, &D_800CE120);
+    var_a0 = &D_800CE120;
+    var_v1 = 0;
+    do {
+        if ((var_a0->type & 0x1F07) != 5) {
+            D_800CE118 &= ~(1 << var_v1);
+        }
+        var_v1 += 1;
+        var_a0 += 4;
+    } while (var_v1 != 4);
+    D_800CE119 = osEepromProbe(&D_800CE100);
+    func_80005A70();
+    return D_800CE118;
+}
+/* mkdraft:func_8000644C end */
 #endif
