@@ -101,7 +101,7 @@ pushes without me).
 - If the first command's build fails, something drifted — check `git status` for stray
   splices before anything else.
 - If `tsranso/pokestadiumgs` exists on the gitea by then, add an instruction to
-  `git push gitea farm-port` after the first green gate (remote is already configured;
+  `git push github farm-port (fork: ransomts/pokestadiumgs, remote already configured and first push done 2026-10-19)` after the first green gate (remote is already configured;
   the backup still doesn't exist off-machine).
 - Scratch assets that persist in /tmp/opencode (shared mount, survives restarts):
   the sweep copy `/tmp/opencode/sweep` (isolated, fully built — reusable for isolated
