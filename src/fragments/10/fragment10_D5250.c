@@ -37,7 +37,7 @@ s32 func_82800BB4(u8 *arg0) {
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/10/fragment10_D5250/func_8280105C.s")
 
 extern s32 func_8004C874(s32, s32);
-extern void func_816044AC(s32, s32, s32, s32, s32, void *);
+extern void Fragment11_DrawBorderedPanelFill(s32, s32, s32, s32, s32, void *);
 extern void func_800498C4(void);
 extern void func_800496A4(s32, s32);
 extern void func_8004989C(s32);
@@ -51,7 +51,7 @@ void func_82801144(void) {
 
     result1 = func_8004C874(0x19, 0xE);
     result2 = func_8004C874(0x19, 0x12);
-    func_816044AC(0x63, 0xDC, 0x1BC, 0x92, 1, &D_82802838);
+    Fragment11_DrawBorderedPanelFill(0x63, 0xDC, 0x1BC, 0x92, 1, &D_82802838);
     func_800498C4();
     func_800496A4(0x10, 1);
     func_8004989C(0x20);

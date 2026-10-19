@@ -2587,11 +2587,11 @@ void func_8005FDB0(s32 arg0, u8 arg1, u8 arg2) {
 #endif
 
 #ifdef VERSION_US
-/* mkdraft:func_8005FF0C begin */
+/* mkdraft:GbSave_GetMapObjectPtr begin */
 extern u8 func_8005D92C(s32 index);
 extern u8 D_80128570[];
 
-u8 *func_8005FF0C(s32 arg0, u8 arg1) {
+u8 *GbSave_GetMapObjectPtr(s32 arg0, u8 arg1) {
     if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) == 0) {
         return 0;
     }
@@ -2603,7 +2603,7 @@ u8 *func_8005FF0C(s32 arg0, u8 arg1) {
         return *(u8 **)(D_80128570 + arg0 * 112 + 0x60) + arg1 * 0x10 + 0x2AC;
     }
 }
-/* mkdraft:func_8005FF0C end */
+/* mkdraft:GbSave_GetMapObjectPtr end */
 #endif
 
 #ifdef VERSION_US

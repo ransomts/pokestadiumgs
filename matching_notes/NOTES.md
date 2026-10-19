@@ -75,7 +75,35 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
 
 ## Wave log
 
+### Wave 3 (2026-10-19 early): 12 matches + 8 farm near-misses
+- 12 matched (commit af2948bc): func_8001644C, func_800162D0 (+const SLOWCOPY data),
+  func_8000A080 (both reloc-class-10 ROM-identical), func_8006E944, func_800697B8,
+  func_8160551C (+no-param fixes), func_81603CD0, func_816039B0 (K&R), func_816044AC,
+  func_8005CBA0, func_8005CDDC, func_8005FF0C. func count 6,791/10,532 (64.5%).
+- 7 renames (GbApu_ResetSlotFlags, GbApu_InitSlowCopySlot, profiler_log_worker_time,
+  Fragment11_DrawTexturedPanelBorder/ThickPanelFrame/BorderedPanelFill,
+  GbSave_GetMapObjectPtr) — cross-file callers in dp_intro.c, fragment10_D5250.c,
+  fragment87_code.c also rewritten.
+- Near-misses farmed (farm-seeds-2 branch): 8005F5D4@60, 80058E60@170, 80058F18@170,
+  8000B2A4@115, 8006F83C@712, 8006E858@1859, 80071E48@135, 80047158@165, 80056870@44,
+  81604024@430, 800601A4@440.
+- FARM BUG FIXED: palmetto_job.sh's SEED_BRANCH staging used
+  `git ls-files --others --ignored --directory` as the overlay file list, which
+  silently DROPPED .venv/ — the node then ran tools/coalesce_cc.py under system
+  python 3.6 ("future feature annotations is not defined") and the gate died
+  (job 17626142). New staging: rsync the whole live tree (minus .git/build/nonmatchings)
+  then tar-extract the seed branch over it. Always verify a staged build locally
+  before sbatch.
+- Tool notes from W3 agents: try_candidate auto-restore failed once (verify with git
+  diff); var.py old-text cannot span the return type (start at the params); K&R and
+  multi-piece spools need matching_notes/splice_manual.py (whole-file splice).
+
+### Wave 2 (2026-10-18 late): 31 matches, ROM-identical
+- 31 matched via twin sweep + the 585D0.c cluster (commits 19f51484, 95d1dcc0 renames);
+  see those commit messages for the per-function list and required neighbor fixes.
+
 ### Wave 1 (2026-10-18 evening): 25 matches, ROM-identical
+
 - 25 functions matched via cross-overlay sibling twins (commit 0652592f); func
   count 6,748/10,532 (64.1%), 3,784 owners left. All fd.sh score 0 except
   func_8AF00240 (20 = reloc-SYMBOL-TEXT only; ROM byte-identical, confirmed by the

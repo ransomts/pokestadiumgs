@@ -2,8 +2,8 @@
 
 
 #ifdef VERSION_US
-/* mkdraft:func_8000A080 begin */
-void func_8000A080(s32 arg0) {
+/* mkdraft:profiler_log_worker_time begin */
+void profiler_log_worker_time(s32 arg0) {
     typedef struct {
         s16 count;
         u8 pad[6];
@@ -27,7 +27,7 @@ void func_8000A080(s32 arg0) {
         ((ProfilerRecordWorker *)&D_800D0F90)[*(s16 *)((u8 *)&D_800D0F90 + 0x25A)].count = 0;
     }
 }
-/* mkdraft:func_8000A080 end */
+/* mkdraft:profiler_log_worker_time end */
 
 extern u8 D_800D0F90;
 extern OSTime osGetTime(void);

@@ -331,7 +331,7 @@ void func_8001603C_padding(void) {}
 extern void func_80019540(void *, s32);
 extern void func_80015584(void *, s32, s32, s32, s32, s32, void *, s32, void *);
 const char D_800A1DC4[9] = "SLOWCOPY";
-void func_800162D0(u8 *arg0, s32 arg1) {
+void GbApu_InitSlowCopySlot(u8 *arg0, s32 arg1) {
     void *queue[1];
     func_80019540(*(void **)(arg0 + 0xC), arg1);
     queue[0] = arg0 + 0x30;
@@ -342,16 +342,16 @@ void func_80016354(s32 a0, s32 a1, s32 a2, s32 a3) {}
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/14640/func_80016368.s")
 
-/* mkdraft:func_8001644C begin */
+/* mkdraft:GbApu_ResetSlotFlags begin */
 extern u8 D_8011BE90[];
 
-void func_8001644C(void) {
+void GbApu_ResetSlotFlags(void) {
     s32 i;
     for (i = 0; i < 32; i++) {
         D_8011BE90[i * 0x58 + 0x14C0] = 0;
     }
 }
-/* mkdraft:func_8001644C end */
+/* mkdraft:GbApu_ResetSlotFlags end */
 
 extern void *func_80016500(s32, s32, s32, s32, s32, s32, s32);
 extern OSMesgQueue D_8011DE50;

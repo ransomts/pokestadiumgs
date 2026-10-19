@@ -400,7 +400,7 @@ extern u8 D_80094E38[];
 extern u8 D_80094F50[];
 extern s32 D_8160BD54;
 
-void func_816039B0(arg0, arg1, arg2, arg3)
+void Fragment11_DrawThickPanelFrame(arg0, arg1, arg2, arg3)
 s32 arg0; s32 arg1; s32 arg2; s32 arg3;
 {
     if (arg2 >= 0x10 && arg3 >= 0x10) {
@@ -427,7 +427,7 @@ void func_81603C84(s32 arg0, s32 arg1, s32 arg2) {
     func_8004D19C(arg0, arg1, (void *)value, 0, 0);
 }
 
-/* mkdraft:func_81603CD0 begin */
+/* mkdraft:Fragment11_DrawTexturedPanelBorder begin */
 extern void func_81602240(f32, f32, f32, f32, s32, s32, f32, f32);
 extern void func_8004D1FC(void *);
 extern u32 D_800D0510;
@@ -435,7 +435,7 @@ extern u8 D_80094E38[];
 extern u8 D_80094F50[];
 extern s32 D_8160BD58;
 
-void func_81603CD0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 *arg4, s32 *arg5) {
+void Fragment11_DrawTexturedPanelBorder(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 *arg4, s32 *arg5) {
     if (arg2 >= 0x10 && arg3 >= 0x10) {
         gSPDisplayList((*(Gfx **)&D_800D0510)++, D_80094E38);
         func_8004D1FC((void *)(u32)D_8160BD58);
@@ -454,11 +454,11 @@ void func_81603CD0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 *arg4, s32 *arg5)
         gSPDisplayList((*(Gfx **)&D_800D0510)++, D_80094F50);
     }
 }
-/* mkdraft:func_81603CD0 end */
+/* mkdraft:Fragment11_DrawTexturedPanelBorder end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D9520/func_81604024.s")
 
-/* mkdraft:func_816044AC begin */
+/* mkdraft:Fragment11_DrawBorderedPanelFill begin */
 extern void func_81602240(f32, f32, f32, f32, s32, s32, f32, f32);
 extern void func_81609344(s32, s32, s32, s32, s32);
 extern void func_81607408(void);
@@ -469,7 +469,7 @@ extern u8 D_80094F50[];
 extern s32 D_8160BDBC;
 extern s32 D_8160BDC0;
 
-void func_816044AC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u8 *arg5) {
+void Fragment11_DrawBorderedPanelFill(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u8 *arg5) {
     if (arg2 >= 0x10 && arg3 >= 0x10) {
         gSPDisplayList((*(Gfx **)&D_800D0510)++, D_80094E38);
         gDPPipeSync((*(Gfx **)&D_800D0510)++);
@@ -496,29 +496,29 @@ void func_816044AC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u8 *arg5) {
         gSPDisplayList((*(Gfx **)&D_800D0510)++, D_80094F50);
     }
 }
-/* mkdraft:func_816044AC end */
+/* mkdraft:Fragment11_DrawBorderedPanelFill end */
 
-extern void func_816039B0();
+extern void Fragment11_DrawThickPanelFrame();
 extern void func_81608044(s32, s32, s32, s32, f32, s32 *);
 extern u8 D_8160BE50;
 void func_816048E0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, f32 arg4) {
-    func_816039B0();
+    Fragment11_DrawThickPanelFrame();
     func_81608044(arg0 + 8, arg1 + 8, arg2 - 0x13, arg3 - 0x13, 0.0f, &D_8160BE50);
 }
 
-extern void func_81603CD0(s32, s32, s32, s32, s32 *, s32 *);
+extern void Fragment11_DrawTexturedPanelBorder(s32, s32, s32, s32, s32 *, s32 *);
 extern void func_81604024(s32, s32, s32, s32, s32, s32 *, s32 *);
 void func_81604944(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 *arg4, s32 *arg5) {
-    func_81603CD0(arg0, arg1, arg2, arg3, arg4, arg5);
+    Fragment11_DrawTexturedPanelBorder(arg0, arg1, arg2, arg3, arg4, arg5);
     func_81604024(0, arg0 + 5, arg1 + 5, arg2 - 0xD, arg3 - 0xD, arg4, arg5);
 }
 
 extern u8 D_8160BDC4;
 extern u8 D_8160BDC8;
-extern void func_81603CD0(s32, s32, s32, s32, s32 *, s32 *);
+extern void Fragment11_DrawTexturedPanelBorder(s32, s32, s32, s32, s32 *, s32 *);
 extern void func_81604024(s32, s32, s32, s32, s32, s32 *, s32 *);
 void func_816049BC(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    func_81603CD0(arg0, arg1, arg2, arg3, (s32 *)&D_8160BDC4, (s32 *)&D_8160BDC8);
+    Fragment11_DrawTexturedPanelBorder(arg0, arg1, arg2, arg3, (s32 *)&D_8160BDC4, (s32 *)&D_8160BDC8);
     func_81604024(0, arg0 + 5, arg1 + 5, arg2 - 0xD, arg3 - 0xD, (s32 *)&D_8160BDC4, (s32 *)&D_8160BDC8);
 }
 
@@ -630,12 +630,12 @@ f32 func_81606E14(f32 arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D9520/func_81606E84.s")
 
 extern void func_81606E84(s16 *, s32, s32, f32, s32);
-extern void func_816039B0();
+extern void Fragment11_DrawThickPanelFrame();
 void func_81606F88(s32 arg0, s32 arg1, f32 arg2, s32 arg3) {
     s16 sp20[4];
 
     func_81606E84(sp20, arg0, arg1, arg2, arg3);
-    func_816039B0(sp20[0], sp20[1], sp20[2], sp20[3]);
+    Fragment11_DrawThickPanelFrame(sp20[0], sp20[1], sp20[2], sp20[3]);
 }
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D9520/func_81606FE0.s")

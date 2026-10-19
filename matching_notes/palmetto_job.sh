@@ -64,18 +64,19 @@ mkdir -p "$(dirname "$STAGE")"
 if [ "$SEED_BRANCH" = "HEAD" ]; then
     rsync -a --delete --exclude '/nonmatchings/' --exclude '.claude/worktrees/' "$SRC_REPO/" "$STAGE/"
 else
-    # Committed tree of $SEED_BRANCH, then the gitignored/untracked build inputs from the
-    # live checkout (git ls-files respects .gitignore and .git/info/exclude, so the ROM,
-    # .venv, asm/, expected/, assets/, the tool clones etc. all come along). build/ and
-    # __pycache__/ are filtered out — see the SEED_BRANCH note above.
+    # Live working tree wholesale (venv, asm, expected/, tool clones, ROMs all ride along),
+    # then the committed tree of $SEED_BRANCH extracted OVER it, so tracked files become
+    # the branch's versions while the gitignored build inputs stay. build/ is excluded so
+    # the gate force-rebuilds and cannot false-pass on the live tree's ROM. (The previous
+    # git ls-files --ignored overlay silently dropped .venv/ — the node then ran
+    # tools/coalesce_cc.py under system python 3.6 and the gate died; do not go back.)
     rm -rf "$STAGE"; mkdir -p "$STAGE"
+    rsync -a --exclude '/.git/' --exclude '/build/' --exclude '/nonmatchings/' \
+        --exclude '.claude/worktrees/' "$SRC_REPO/" "$STAGE/"
     GITARCHIVE=$(mktemp)
     git -C "$SRC_REPO" archive --format=tar "$SEED_BRANCH" > "$GITARCHIVE" \
         || { echo "SEED_BRANCH '$SEED_BRANCH' not found in $SRC_REPO"; exit 1; }
     tar -x -C "$STAGE" -f "$GITARCHIVE"; rm -f "$GITARCHIVE"
-    (cd "$SRC_REPO" && git ls-files --others --ignored --exclude-standard --directory -z \
-        | grep -zv -e '^build/' -e '__pycache__/' \
-        | rsync -a --files-from=- --from0 ./ "$STAGE/")
 fi
 cd "$STAGE"
 find build -exec touch {} + 2>/dev/null || true
