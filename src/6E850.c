@@ -143,7 +143,28 @@ void func_8006E7DC(f32 (*arg0)[4], void *arg1) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/6E850/func_8006E944.s")
+/* mkdraft:func_8006E944 begin */
+typedef struct BlendWeight1F { f32 t; } BlendWeight1F;
+
+void func_8006E944(f32 (*arg0)[4], void *arg1, BlendWeight1F arg2) {
+    f32 x; f32 y; f32 z;
+    f32 dx; f32 dy; f32 dz;
+    x = (*(f32 *)((u8 *)(arg1) + (0)));
+    y = (*(f32 *)((u8 *)(arg1) + (4)));
+    z = (*(f32 *)((u8 *)(arg1) + (8)));
+    guMtxXFMF(arg0, x, y, z, &x, &y, &z);
+    if (arg2.t == 0.0f) { dx = (f32) 1; dy = (f32) 1; dz = (f32) 1; }
+    dx = x - (*(f32 *)((u8 *)(arg1) + (0xC)));
+    dy = y - (*(f32 *)((u8 *)(arg1) + (0x10)));
+    dz = z - (*(f32 *)((u8 *)(arg1) + (0x14)));
+    dx = dx * arg2.t;
+    dy = dy * arg2.t;
+    dz = dz * arg2.t;
+    (*(f32 *)((u8 *)(arg1) + (0x18))) += dx * (f32) 1;
+    (*(f32 *)((u8 *)(arg1) + (0x1C))) += dy * (f32) 1;
+    (*(f32 *)((u8 *)(arg1) + (0x20))) += dz * (f32) 1;
+}
+/* mkdraft:func_8006E944 end */
 #endif
 
 #ifdef VERSION_US

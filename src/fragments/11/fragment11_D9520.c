@@ -393,8 +393,31 @@ void func_81603984(s32 arg0, s32 arg1) {
     func_8004D19C(arg0, arg1, D_8160BDB8, 0, 0);
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D9520/func_816039B0.s")
+extern void func_81602240(f32, f32, f32, f32, s32, s32, f32, f32);
+extern void func_8004D1FC(void *);
+extern u32 D_800D0510;
+extern u8 D_80094E38[];
+extern u8 D_80094F50[];
+extern s32 D_8160BD54;
 
+void func_816039B0(arg0, arg1, arg2, arg3)
+s32 arg0; s32 arg1; s32 arg2; s32 arg3;
+{
+    if (arg2 >= 0x10 && arg3 >= 0x10) {
+        gSPDisplayList((*(Gfx **)&D_800D0510)++, D_80094E38);
+        func_8004D1FC((void *)(u32)D_8160BD54);
+        gDPSetRenderMode((*(Gfx **)&D_800D0510)++, 0, 0x0F0A7008);
+        func_81602240(arg0, arg1, 16.0f, 16.0f, 0, 0, 1.0f, 1.0f);
+        func_81602240((arg0 + arg2) - 0x10, arg1, 16.0f, 16.0f, 0, 0x10, 1.0f, 1.0f);
+        func_81602240(arg0, (arg1 + arg3) - 0x10, 16.0f, 16.0f, 0, 0x20, 1.0f, 1.0f);
+        func_81602240((arg0 + arg2) - 0x10, (arg1 + arg3) - 0x10, 16.0f, 16.0f, 0, 0x30, 1.0f, 1.0f);
+        func_81602240(arg0, arg1 + 0xF, 15.0f, arg3 - 0x1E, 0, 0xC, 1.0f, 0.0f);
+        func_81602240(arg0 + 0xF, arg1, arg2 - 0x1E, 15.0f, 0, 0x10, 0.0f, 1.0f);
+        func_81602240((arg0 + arg2) - 0xF, arg1 + 0xF, 15.0f, arg3 - 0x1E, 1, 0x1E, 1.0f, 0.0f);
+        func_81602240(arg0 + 0xF, (arg1 + arg3) - 0xF, arg2 - 0x1E, 15.0f, 0, 0x31, 0.0f, 1.0f);
+        gSPDisplayList((*(Gfx **)&D_800D0510)++, D_80094F50);
+    }
+}
 extern s32 func_81602940(s32);
 extern void func_8004D1FC(void *);
 void func_81603C84(s32 arg0, s32 arg1, s32 arg2) {
@@ -404,11 +427,76 @@ void func_81603C84(s32 arg0, s32 arg1, s32 arg2) {
     func_8004D19C(arg0, arg1, (void *)value, 0, 0);
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D9520/func_81603CD0.s")
+/* mkdraft:func_81603CD0 begin */
+extern void func_81602240(f32, f32, f32, f32, s32, s32, f32, f32);
+extern void func_8004D1FC(void *);
+extern u32 D_800D0510;
+extern u8 D_80094E38[];
+extern u8 D_80094F50[];
+extern s32 D_8160BD58;
+
+void func_81603CD0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 *arg4, s32 *arg5) {
+    if (arg2 >= 0x10 && arg3 >= 0x10) {
+        gSPDisplayList((*(Gfx **)&D_800D0510)++, D_80094E38);
+        func_8004D1FC((void *)(u32)D_8160BD58);
+        gDPSetColor((*(Gfx **)&D_800D0510)++, G_SETPRIMCOLOR, (_SHIFTL(((u8 *)arg5)[1], 16, 8) | _SHIFTL(((u8 *)arg5)[2], 8, 8) | _SHIFTL(((u8 *)arg5)[0], 24, 8)));
+        gDPSetColor((*(Gfx **)&D_800D0510)++, G_SETENVCOLOR, (_SHIFTL(((u8 *)arg4)[1], 16, 8) | _SHIFTL(((u8 *)arg4)[2], 8, 8) | _SHIFTL(((u8 *)arg4)[0], 24, 8) | _SHIFTL(0xFF, 0, 8)));
+        gDPSetCombine((*(Gfx **)&D_800D0510)++, 0x50D2A1, 0x33A5B6DB);
+        gDPSetRenderMode((*(Gfx **)&D_800D0510)++, 0, 0x0F0A7008);
+        func_81602240(arg0, arg1, 8.0f, 8.0f, 0, 0, 1.0f, 1.0f);
+        func_81602240((arg0 + arg2) - 8, arg1, 8.0f, 8.0f, 8, 0, 1.0f, 1.0f);
+        func_81602240(arg0, (arg1 + arg3) - 8, 8.0f, 8.0f, 0x10, 0, 1.0f, 1.0f);
+        func_81602240((arg0 + arg2) - 8, (arg1 + arg3) - 8, 8.0f, 8.0f, 0x18, 0, 1.0f, 1.0f);
+        func_81602240(arg0, arg1 + 8, 8.0f, arg3 - 0x10, 0, 7, 1.0f, 0.0f);
+        func_81602240(arg0 + 8, arg1, arg2 - 0x10, 8.0f, 8, 0, 0.0f, 1.0f);
+        func_81602240((arg0 + arg2) - 8, arg1 + 8, 8.0f, arg3 - 0x10, 8, 7, 1.0f, 0.0f);
+        func_81602240(arg0 + 8, (arg1 + arg3) - 8, arg2 - 0x10, 8.0f, 0x18, 0, 0.0f, 1.0f);
+        gSPDisplayList((*(Gfx **)&D_800D0510)++, D_80094F50);
+    }
+}
+/* mkdraft:func_81603CD0 end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D9520/func_81604024.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D9520/func_816044AC.s")
+/* mkdraft:func_816044AC begin */
+extern void func_81602240(f32, f32, f32, f32, s32, s32, f32, f32);
+extern void func_81609344(s32, s32, s32, s32, s32);
+extern void func_81607408(void);
+extern void func_8004D1FC(void *);
+extern u32 D_800D0510;
+extern u8 D_80094E38[];
+extern u8 D_80094F50[];
+extern s32 D_8160BDBC;
+extern s32 D_8160BDC0;
+
+void func_816044AC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u8 *arg5) {
+    if (arg2 >= 0x10 && arg3 >= 0x10) {
+        gSPDisplayList((*(Gfx **)&D_800D0510)++, D_80094E38);
+        gDPPipeSync((*(Gfx **)&D_800D0510)++);
+        gDPSetRenderMode((*(Gfx **)&D_800D0510)++, 0x504240, 0);
+        gDPSetColor((*(Gfx **)&D_800D0510)++, G_SETENVCOLOR, (_SHIFTL(arg5[1], 16, 8) | _SHIFTL(arg5[2], 8, 8) | _SHIFTL(arg5[0], 24, 8) | _SHIFTL(0xFF, 0, 8)));
+        if (arg4 == 0) {
+            func_81609344(arg0, arg1, arg2 - 4, arg3 - 4, 1);
+        }
+        func_8004D1FC((void *)(u32)D_8160BDBC);
+        func_81602240(arg0, arg1, 8.0f, 8.0f, 0, 0, 1.0f, 1.0f);
+        func_81602240((arg0 + arg2) - 8, arg1, 8.0f, 8.0f, 0, 8, 1.0f, 1.0f);
+        func_81602240(arg0, (arg1 + arg3) - 8, 8.0f, 8.0f, 0, 0x10, 1.0f, 1.0f);
+        func_81602240((arg0 + arg2) - 8, (arg1 + arg3) - 8, 8.0f, 8.0f, 0, 0x18, 1.0f, 1.0f);
+        func_81602240(arg0, arg1 + 8, 8.0f, arg3 - 0x10, 0, 7, 1.0f, 0.0f);
+        func_81602240(arg0 + 8, arg1, arg2 - 0x10, 8.0f, 7, 0, 0.0f, 1.0f);
+        func_81602240((arg0 + arg2) - 8, arg1 + 8, 8.0f, arg3 - 0x10, 0, 0xE, 1.0f, 0.0f);
+        func_81602240(arg0 + 8, (arg1 + arg3) - 8, arg2 - 0x10, 8.0f, 7, 0x10, 0.0f, 1.0f);
+        gDPSetRenderMode((*(Gfx **)&D_800D0510)++, 0x504240, 0);
+        func_8004D1FC((void *)(u32)D_8160BDC0);
+        func_81602240(arg0 + 3, arg1 + 3, arg2 - 0xA, arg3 - 0xA, 0, 0, (f32)(u32)*(u16 *)(u8 *)(u32)D_8160BDC0 / (f32)(arg2 - 6), (f32)(u32)*(u16 *)((u8 *)(u32)D_8160BDC0 + 2) / (f32)(arg3 - 6));
+        if (arg4 == 0) {
+            func_81607408();
+        }
+        gSPDisplayList((*(Gfx **)&D_800D0510)++, D_80094F50);
+    }
+}
+/* mkdraft:func_816044AC end */
 
 extern void func_816039B0();
 extern void func_81608044(s32, s32, s32, s32, f32, s32 *);
@@ -445,13 +533,28 @@ void func_816054FC(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_81604A44(arg0, arg1, arg2, arg3, 0);
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D9520/func_8160551C.s")
+/* mkdraft:func_8160551C begin */
+extern u8 *func_8004CA60(u8 *);
+extern void func_800459AC(u8 *, u8, u8, u16, u16, s32, s32, s32, s32, s32, s32, s32, s32);
+extern s32 D_8160BD64;
+
+void func_8160551C(void) {
+    func_800459AC(
+        func_8004CA60((u8 *)(u32)D_8160BD64),
+        ((u8 *)(u32)D_8160BD64)[4],
+        ((u8 *)(u32)D_8160BD64)[5],
+        *(u16 *)(u8 *)(u32)D_8160BD64,
+        *(u16 *)((u8 *)(u32)D_8160BD64 + 2),
+        1, 0, 1, 1, 5, 5, 0, 0
+    );
+}
+/* mkdraft:func_8160551C end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D9520/func_81605598.s")
 
-extern void func_8160551C(s32, s32, s32, s32);
+extern void func_8160551C(void);
 extern void func_81605598(s32, s32, s32, s32, s32);
-void func_81605908(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) { func_8160551C(arg0, arg1, arg2, arg3); func_81605598(arg0, arg1, arg2, arg3, arg4); }
+void func_81605908(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) { func_8160551C(); func_81605598(arg0, arg1, arg2, arg3, arg4); }
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/11/fragment11_D9520/func_81605950.s")
 

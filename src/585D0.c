@@ -1436,7 +1436,23 @@ s32 func_8005CB38(s32 arg0, s32 arg1) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005CBA0.s")
+/* mkdraft:func_8005CBA0 begin */
+s32 func_8005CBA0(s32 arg0) {
+    s32 result = 0;
+    switch (arg0) {
+    case 0x20: result = 0x58; break;
+    case 0x21: result = 0x58; break;
+    case 0x22: result = 0x2; break;
+    case 0x23: result = 0x98; break;
+    case 0x24: result = 0x76; break;
+    case 0x25: result = 0x76; break;
+    case 0x26: result = 0x44; break;
+    case 0x27: result = 0x490; break;
+    case 0x28: result = 0x1B5; break;
+    }
+    return result;
+}
+/* mkdraft:func_8005CBA0 end */
 #endif
 
 #ifdef VERSION_US
@@ -1480,7 +1496,72 @@ s32 func_8005CC14(s32 arg0, s32 arg1, s32 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005CDDC.s")
+/* mkdraft:func_8005CDDC begin */
+extern u8 D_80128570[];
+extern s32 D_80128730[];
+extern u8 D_80128744[];
+extern s32 GbSave_GetBoxEntryCount(s32, s32);
+extern s32 func_8005CAA4(s32);
+
+s32 func_8005CDDC(s32 arg0, s32 arg1, s32 arg2) {
+    s32 result = 0;
+    s32 base = *(s32 *)(D_80128570 + arg1 * 112 + 0x60);
+    s32 data = *(s32 *)(D_80128570 + arg1 * 112 + 0x68);
+    s32 ret;
+
+    switch (arg0) {
+    case 0x20:
+        result = *(u8 *)(base + 0x865);
+        break;
+    case 0x21:
+        result = GbSave_GetBoxEntryCount(arg1, arg2);
+        break;
+    case 0x22:
+        result = *(u8 *)(base + 0x47F);
+        break;
+    case 0x23:
+        result = 1;
+        break;
+    case 0x24:
+        result = *(u8 *)(data + 0x40B);
+        if (result >= 0xB) {
+            result = 0;
+        }
+        break;
+    case 0x25:
+        result = 6;
+        break;
+    case 0x26:
+        result = *(u8 *)(D_80128730[arg1] + 1);
+        break;
+    case 0x27:
+        result = *(u8 *)D_80128730[arg1];
+        break;
+    case 0x28:
+        result = D_80128744[arg1];
+        break;
+    case 0x2A:
+        result = 0x39;
+        break;
+    case 0x2B:
+        result = *(u8 *)(base + 0x420);
+        break;
+    case 0x2C:
+        result = *(u8 *)(base + 0x44A);
+        break;
+    case 0x2D:
+        result = *(u8 *)(base + 0x465);
+        break;
+    }
+
+    if (result < func_8005CAA4(arg0)) {
+        ret = result;
+    } else {
+        ret = func_8005CAA4(arg0);
+    }
+    return ret;
+}
+/* mkdraft:func_8005CDDC end */
 #endif
 
 #ifdef VERSION_US
@@ -2506,7 +2587,23 @@ void func_8005FDB0(s32 arg0, u8 arg1, u8 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_8005FF0C.s")
+/* mkdraft:func_8005FF0C begin */
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+
+u8 *func_8005FF0C(s32 arg0, u8 arg1) {
+    if ((*(s32 *)(D_80128570 + arg0 * 112) & 1) == 0) {
+        return 0;
+    }
+    switch ((u32)func_8005D92C(arg0)) {
+    case 5:
+    case 6:
+        return *(u8 **)(D_80128570 + arg0 * 112 + 0x60) + arg1 * 0x10 + 0x2AD;
+    case 7:
+        return *(u8 **)(D_80128570 + arg0 * 112 + 0x60) + arg1 * 0x10 + 0x2AC;
+    }
+}
+/* mkdraft:func_8005FF0C end */
 #endif
 
 #ifdef VERSION_US

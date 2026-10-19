@@ -2,7 +2,32 @@
 
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/AC80/func_8000A080.s")
+/* mkdraft:func_8000A080 begin */
+void func_8000A080(s32 arg0) {
+    typedef struct {
+        s16 count;
+        u8 pad[6];
+        OSTime times[4];
+        u8 tail[0xA0];
+    } ProfilerRecordWorker;
+    extern u8 D_800D0F90;
+    extern OSTime D_800CDA28;
+    extern OSTime osGetTime(void);
+    if (arg0 == 0) {
+        ((ProfilerRecordWorker *)&D_800D0F90)[*(s16 *)((u8 *)&D_800D0F90 + 0x25A)].times[arg0] = D_800CDA28;
+    } else {
+        ((ProfilerRecordWorker *)&D_800D0F90)[*(s16 *)((u8 *)&D_800D0F90 + 0x25A)].times[arg0] = osGetTime();
+    }
+    if (arg0 == 3) {
+        if (*(s16 *)((u8 *)&D_800D0F90 + 0x25A) == 2) {
+            *(s16 *)((u8 *)&D_800D0F90 + 0x25A) = 0;
+        } else {
+            *(s16 *)((u8 *)&D_800D0F90 + 0x25A) += 1;
+        }
+        ((ProfilerRecordWorker *)&D_800D0F90)[*(s16 *)((u8 *)&D_800D0F90 + 0x25A)].count = 0;
+    }
+}
+/* mkdraft:func_8000A080 end */
 
 extern u8 D_800D0F90;
 extern OSTime osGetTime(void);
