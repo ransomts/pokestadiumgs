@@ -95,6 +95,17 @@ D_80128C5C = D_80128C54 + 0x8;
 /* Attachment scales retain their original addresses inside this C data block. */
 D_86409C4C = fragments_52_fragment52_285F60 + 0xC;
 D_86409C50 = fragments_52_fragment52_285F60 + 0x10;
+
+/* Fragment16 fade-state fields retain their original addresses inside the
+ * C-owned data block (func_82000794's mode/counter/alpha words; the three
+ * still-asm fade users and the in-file C externs keep these spellings). */
+D_82001EA0 = fragments_16_fragment16_code;
+D_82001EA2 = fragments_16_fragment16_code + 0x2;
+D_82001EA4 = fragments_16_fragment16_code + 0x4;
+D_82001EA6 = fragments_16_fragment16_code + 0x6;
+D_82001EA8 = fragments_16_fragment16_code + 0x8;
+D_82001EAA = fragments_16_fragment16_code + 0xA;
+D_82001EAC = fragments_16_fragment16_code + 0xC;
 func_87D00020 = fragment65_main;
 func_8F2007B4 = fragment70_main;
 func_8F0007E8 = fragment68_main;
