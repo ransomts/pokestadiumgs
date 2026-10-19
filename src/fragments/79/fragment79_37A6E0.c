@@ -3572,7 +3572,47 @@ void func_8411A544(u8 *arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_37A6E0/func_8411A620.s")
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+s32 func_8411E244(u8 *, M2C_UNK);                   /* extern */
+
+void func_8411A620(u8 *arg0) {
+    if ((M2C_FIELD(arg0, s8 *, 0x7F6) != 3) && (func_841133EC((s32) arg0) == 0)) {
+        if (M2C_FIELD(arg0, s8 *, 0x7F6) == 0) {
+            if (M2C_FIELD(arg0, u8 *, 0x619) == M2C_FIELD(arg0, s16 *, 0x7E8)) {
+                if (func_8411E244(arg0, 0x119) != 0xFF) {
+                    func_8410890C(0x119, (s32) arg0);
+                    func_80023A3C(7, (s32) M2C_FIELD(arg0, s16 *, 0x1A), 0);
+                }
+                func_84112580((s32) arg0);
+            }
+            if (M2C_FIELD(arg0, u8 *, 0x61A) == M2C_FIELD(arg0, s16 *, 0x7E8)) {
+                func_80023A3C(6, 0, 0);
+                func_8410890C(0x11A, (s32) arg0);
+                func_8411FEE8(0);
+                M2C_FIELD(arg0, s8 *, 0x7F6) = 2;
+            }
+        }
+        if ((M2C_FIELD(arg0, u16 *, 0x7EC) & 1) && ((M2C_FIELD(arg0, u8 *, 0x61A) + 0x19) == M2C_FIELD(arg0, s16 *, 0x7E8))) {
+            func_8411EE74(arg0);
+        }
+        func_8411A310(arg0);
+    }
+}
 #endif
 
 #ifdef VERSION_US
@@ -4129,7 +4169,98 @@ void BattleAnim_Dispatch_177(u8 *arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_37A6E0/func_8411B898.s")
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+void func_8411B898(u8 *arg0) {
+    s8 temp_v0;
+    u16 temp_v0_2;
+    u16 temp_v0_3;
+
+    temp_v0 = M2C_FIELD(arg0, s8 *, 0x7F6);
+    switch (temp_v0) {                              /* switch 1; irregular */
+    case 1:                                         /* switch 1 */
+        M2C_FIELD(arg0, s16 *, 0x7E8) = 0;
+        M2C_FIELD(arg0, s8 *, 0x7F6) = 2;
+        if (M2C_FIELD(D_841911E0, s16 *, 0x98) != 0x21) {
+            M2C_FIELD(arg0, s16 *, 0x7EA) = 0;
+            M2C_FIELD(D_841911E0, s16 *, 0x98) = 0;
+            func_84111348((s32) arg0, 0);
+            return;
+        }
+        return;
+    case 2:                                         /* switch 1 */
+        if (M2C_FIELD(arg0, s16 *, 0x7E8) == 5) {
+            temp_v0_2 = M2C_FIELD(D_84193DD0, u16 *, 4);
+            switch (temp_v0_2) {                    /* switch 2; irregular */
+            case 45:                                /* switch 2 */
+                func_84112158((s32) arg0, 0xFB);
+                break;
+            case 46:                                /* switch 2 */
+                func_84112464(arg0);
+                break;
+            case 47:                                /* switch 2 */
+                func_84112324(arg0);
+                break;
+            }
+            M2C_FIELD(arg0, s16 *, 0x7E8) = 0;
+            M2C_FIELD(arg0, s8 *, 0x7F6) = 3;
+            func_84112564((s32) arg0);
+            return;
+        }
+        break;
+    case 3:                                         /* switch 1 */
+        temp_v0_3 = M2C_FIELD(D_84193DD0, u16 *, 4);
+        switch (temp_v0_3) {                        /* switch 3; irregular */
+        case 45:                                    /* switch 3 */
+            if (M2C_FIELD(arg0, s16 *, 0x7E8) == 0x3C) {
+                func_841206D0(arg0);
+                func_8411FEE8(0);
+                M2C_FIELD(arg0, s8 *, 0x7F6) = 6;
+                return;
+            }
+            break;
+        case 47:                                    /* switch 3 */
+            if (M2C_FIELD(arg0, s16 *, 0x7E8) == 6) {
+                func_8410890C(0x100, (s32) arg0);
+            }
+            func_84112418(arg0);
+            if (M2C_FIELD(arg0, s16 *, 0x7E8) == 0x3C) {
+                M2C_FIELD(arg0, u16 *, 0x7F4) = (u16) (M2C_FIELD(arg0, u16 *, 0x7F4) & 0xFFFE);
+                func_841206D0(arg0);
+                func_8411FEE8(0);
+                M2C_FIELD(arg0, s8 *, 0x7F6) = 6;
+                return;
+            }
+            break;
+        case 46:                                    /* switch 3 */
+            if (M2C_FIELD(arg0, s16 *, 0x7E8) == 6) {
+                func_8410890C(0xFE, (s32) arg0);
+            }
+            if (M2C_FIELD(arg0, s16 *, 0x7E8) == 0x3C) {
+                M2C_FIELD(arg0, u16 *, 0x7F4) = (u16) (M2C_FIELD(arg0, u16 *, 0x7F4) & 0xFFFD);
+                func_841206D0(arg0);
+                func_8411FEE8(0);
+                M2C_FIELD(arg0, s8 *, 0x7F6) = 6;
+            }
+            break;
+        }
+        break;
+    }
+}
 #endif
 
 #ifdef VERSION_US
@@ -4190,7 +4321,42 @@ void BattleAnim_Dispatch_169(s32 arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_37A6E0/func_8411C310.s")
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK func_8410C544(s32, s32, s16);               /* extern */
+
+void func_8411C310(s32 arg0) {
+    func_84112158(D_84191208, 0xFC);
+    func_80024480(M2C_FIELD(D_84191208, s16 *, 0x1A), 4);
+    func_84112158(D_8419120C, 0xFB);
+    M2C_FIELD(D_84191208, s16 *, 0x7EA) = 0;
+    M2C_FIELD(D_8419120C, s16 *, 0x7EA) = 0;
+    M2C_FIELD(D_84191208, s8 *, 0x7F6) = 1;
+    M2C_FIELD(D_841911E0, s16 *, 0x98) = 0;
+    func_84111348(arg0, 0x1A);
+    M2C_FIELD(D_841911E4, s16 *, 0x98) = 0;
+    func_8410C544(M2C_FIELD(D_841911E4, s32 *, 0), D_8419120C, M2C_FIELD(D_841911E4, s16 *, 0x98));
+    func_8411EF08((u8 *) arg0);
+    M2C_FIELD(arg0, s8 *, 0x1D) = 0;
+    func_8411EF20((u8 *) D_8419120C);
+    func_8411EE74((u8 *) D_8419120C);
+    func_84112564(arg0);
+    M2C_FIELD((arg0 + (D_841911F4 * 4)), s32 *, 0x5C8) = (s32) D_84183D50;
+}
 #endif
 
 #ifdef VERSION_US
@@ -4300,7 +4466,43 @@ void BattleAnim_Dispatch_239(s32 arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_37A6E0/func_8411CC2C.s")
+#ifndef M2C_FIELD /* sweep: m2c --valid-syntax helpers (mirrors mkdraft.py) */
+#define M2C_UNK s32
+#define M2C_UNK8 s8
+#define M2C_UNK16 s16
+#define M2C_UNK32 s32
+#define M2C_UNK64 s64
+#define M2C_FIELD(expr, type, offset) (*(type)((u8*)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) 0
+#define M2C_TRAP_IF(cond) ((void)0)
+#define M2C_BREAK() ((void)0)
+#define M2C_SYNC() ((void)0)
+#define M2C_CARRY 0
+#define M2C_STRUCT_COPY(dst, src) ((dst) = (src))
+#endif
+
+M2C_UNK func_84113590(M2C_UNK);                     /* extern */
+
+void func_8411CC2C(s32 arg0) {
+    func_84112158(D_84191208, 0xFC);
+    func_80024480(M2C_FIELD(D_84191208, s16 *, 0x1A), 4);
+    func_84112158(D_8419120C, 0xFB);
+    M2C_FIELD(D_84191208, s16 *, 0x7EA) = 0;
+    M2C_FIELD(D_8419120C, s16 *, 0x7EA) = 0;
+    M2C_FIELD(D_84191208, s8 *, 0x7F6) = 1;
+    M2C_FIELD(D_841911E0, s16 *, 0x98) = 0;
+    func_84111348(arg0, 0x1A);
+    func_841112C8();
+    func_84113590(4);
+    func_8410C304(M2C_FIELD(D_841911E4, u8 **, 0), D_8419120C, (s32) M2C_FIELD(D_841911E4, s16 *, 0x98));
+    func_8411EF08((u8 *) arg0);
+    M2C_FIELD(arg0, s8 *, 0x1D) = 0;
+    func_8411EF20((u8 *) D_8419120C);
+    func_8411EE74((u8 *) D_8419120C);
+    func_84112564(arg0);
+    M2C_FIELD((arg0 + (D_841911F4 * 4)), s32 *, 0x5C8) = (s32) D_84183D50;
+}
 #endif
 
 #ifdef VERSION_US
