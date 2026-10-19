@@ -643,7 +643,31 @@ void func_80070C14(f32 *arg0, f32 *arg1, f32 *arg2) { f32 x = *arg0; f32 y = *ar
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/6E850/func_80070DEC.s")
+void func_80070DEC(f32 *arg0, f32 *arg1) {
+    f32 r0;
+    f32 r1;
+    f32 r2;
+
+    r0 = sqrtf((arg1[0] * arg1[0]) + (arg1[1] * arg1[1]) + (arg1[2] * arg1[2]));
+    r1 = sqrtf((arg1[4] * arg1[4]) + (arg1[5] * arg1[5]) + (arg1[6] * arg1[6]));
+    r2 = sqrtf((arg1[8] * arg1[8]) + (arg1[9] * arg1[9]) + (arg1[10] * arg1[10]));
+    arg0[0] = arg1[0] * r0;
+    arg0[1] = arg1[4] * r0;
+    arg0[2] = arg1[8] * r0;
+    arg0[3] = 0;
+    arg0[4] = arg1[1] * r1;
+    arg0[5] = arg1[5] * r1;
+    arg0[6] = arg1[9] * r1;
+    arg0[7] = 0;
+    arg0[8] = arg1[2] * r2;
+    arg0[9] = arg1[6] * r2;
+    arg0[10] = arg1[10] * r2;
+    arg0[11] = 0;
+    arg0[12] = 0;
+    arg0[13] = 0;
+    arg0[14] = 0;
+    arg0[15] = 1.0f;
+}
 #endif
 
 #ifdef VERSION_US
@@ -683,7 +707,7 @@ void func_80070FDC(f32 arg0[4][4]) {
 
 #ifdef VERSION_US
 extern u8 *D_80094908;
-extern void func_80070DEC(float [4][4], void *);
+extern void func_80070DEC(f32 *, f32 *);
 void func_80071068(float arg0[4][4]) {
     float temp[18];
     func_80070DEC((float (*)[4])(temp + 1), D_80094908 + 0x64);
