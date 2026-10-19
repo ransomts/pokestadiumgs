@@ -77,7 +77,34 @@ void func_88903B00(void) {
     *temp_v0 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/38/fragment38_1D8990/func_88903B2C.s")
+s32 Input_SetRepeatController(s32);
+s32 Util_Free(void *);
+s32 func_88001900();
+extern void *D_80087200;
+extern s32 D_889041B4;
+extern s8 D_889041B8;
+
+void func_88903B2C(void)
+{
+  s32 (*temp_t9)();
+  s32 *temp_v0;
+  Input_SetRepeatController(D_80087200);
+  func_88001900();
+  temp_v0 = *((s32 **) (((u8 *) D_889041B0) + 0x23C));
+  if (temp_v0 != NULL)
+  {
+    *temp_v0 = 1;
+  }
+  if ((*((s32 *) (((u8 *) D_889041B0) + 0x240))) == 0)
+  {
+    D_889041B8 = 2;
+    D_889041B4 = 0;
+  }
+  temp_t9 = *((s32 (**)()) (((u8 *) D_889041B0) + 0x244));
+  temp_t9 = temp_t9;
+  Util_Free(D_889041B0);
+  temp_t9();
+}
 
 extern void func_88004990(u8, s32);
 extern void *D_80087200;

@@ -24,7 +24,31 @@ void func_8AF03624(void *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/44/fragment44_1F1850/func_8AF03678.s")
+void func_8AF03624(void *arg0);
+f32 Math_AbsF32(f32);
+extern s32 func_8AC06D8C(s32, s32);
+void func_8AF03624(void *);
+extern s32 D_8AF2BF78;
+
+void func_8AF03678(void *arg0, s32 arg1)
+{
+  int new_var;
+  s16 sp22;
+  s16 temp_v1;
+  func_8AF03624(arg0);
+  temp_v1 = (sp22 = D_8AF2BF78 - (*((s16 *) (((u8 *) func_8AC06D8C(arg1, *((s32 *) (((u8 *) arg0) + 0x4B8)))) + 0xA))));
+  if (((f32) (((s32) D_8AF2BF78) / 2)) < Math_AbsF32((f32) (temp_v1 - (*((s32 *) (((u8 *) arg0) + 0x4E8))))))
+  {
+    *((s32 *) (((u8 *) arg0) + 0x4E4)) = 0;
+    *((s32 *) (((u8 *) arg0) + 0x4E8)) = (s32) temp_v1;
+    new_var = 0;
+    if (temp_v1 > new_var)
+    {
+      *((s32 *) (((u8 *) arg0) + 0x4E8)) = 0;
+    }
+    *((s32 *) (((u8 *) arg0) + 0x4EC)) = (s32) (*((s32 *) (((u8 *) arg0) + 0x4E8)));
+  }
+}
 
 /* mkdraft:func_8AF03730 begin */
 extern void func_8005053C(void *, void *);
