@@ -9,6 +9,7 @@
 #   <group> is one of:
 #     frag<N>     all our final-state changes under src/fragments/<N>/
 #     <name>      one main-segment file src/<name>.c (e.g. 585D0, dp_intro)
+#     C380-jpeg   src/C380.c plus its Makefile CC_OLD rule (owner group C380)
 #     renames     catch-all: linker_scripts/us/symbol_addrs_code.txt rename
 #                 lines whose symbol is NOT solely owned by a single src
 #                 group (referenced by 0 or >=2 groups' files)
@@ -52,8 +53,14 @@ if [ -z "$group" ] || { [ -n "$mode" ] && [ "$mode" != "--dry-run" ]; }; then
 fi
 
 # --- resolve group -> pathspec --------------------------------------------
+# pathspec may list several files; leave it UNQUOTED at use sites so it
+# word-splits into multiple pathspecs.
 pathspec=""
-if [ "$group" != "renames" ]; then
+owner=""    # ownership group when it differs from the branch name
+case "$group" in
+    C380-jpeg) pathspec="src/C380.c Makefile"; owner="C380" ;;
+esac
+if [ "$group" != "renames" ] && [ -z "$pathspec" ]; then
     if git cat-file -e "$SRC_REF:src/${group}.c" 2>/dev/null; then
         pathspec="src/${group}.c"
     elif [ -n "$(git ls-tree --name-only "$SRC_REF" "src/fragments/${group}" 2>/dev/null)" ]; then
@@ -111,7 +118,7 @@ for new in "${!NEW2OLD[@]}"; do
         if [ "${#os[@]}" -ne 1 ] || ! printf '%s\n' "$ALL_GROUPS" | grep -qx "${os[0]}"; then
             take=true
         fi
-    elif [ "${#os[@]}" -eq 1 ] && [ "${os[0]}" = "$group" ]; then
+    elif [ "${#os[@]}" -eq 1 ] && [ "${os[0]}" = "${owner:-$group}" ]; then
         take=true
     fi
     if $take; then
@@ -141,8 +148,8 @@ faillog="$(mktemp /tmp/opencode/up_apply.XXXXXX)"
 
 # --- 1) group's src files: final-state diff, three-way apply ----------------
 if [ -n "$pathspec" ]; then
-    echo "src diff:    $(git diff --name-only "$BASE..$SRC_REF" -- "$pathspec" | wc -l) file(s) vs $BASE"
-    if ! git diff "$BASE..$SRC_REF" -- "$pathspec" \
+    echo "src diff:    $(git diff --name-only "$BASE..$SRC_REF" -- $pathspec | wc -l) file(s) vs $BASE"
+    if ! git diff "$BASE..$SRC_REF" -- $pathspec \
          | git -C "$WT" apply --3way --whitespace=nowarn - >"$faillog" 2>&1; then
         status=CONFLICT
     fi
