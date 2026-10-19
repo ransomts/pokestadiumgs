@@ -252,27 +252,34 @@ void func_8413F498(s16 arg0, s16 arg1, s16 arg2, u16 arg3) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3ADCA0/func_8413F5A8.s")
+/* mkdraft:func_8413F5A8 begin */
+extern void func_8004D19C(s32, s32, s32, s32, s32);
+
+void func_8413F5A8(s16 arg0, s16 arg1, u16 arg2, u16 arg3) {
+    s32 value = (s32)func_8004C990((s32)arg2, (s32)arg3);
+    func_8004D19C((s32)arg0, (s32)arg1, value, 0, 0);
+}
+/* mkdraft:func_8413F5A8 end */
 #endif
 
 #ifdef VERSION_US
 extern u8 D_84186FE0[];
-extern void func_8413F5A8(s32,s32,s32,s32);
+extern void func_8413F5A8(s16,s16,u16,u16);
 void func_8413F5F4(s16 arg0, s16 arg1, s32 arg2) {
     func_8413F5A8(arg0, arg1, 0x23, D_84186FE0[arg2]);
 }
 #endif
 
 #ifdef VERSION_US
-extern void func_8413F5A8(s32,s32,s32,s32);
-extern s32 func_800630F0(s32);
+extern void func_8413F5A8(s16,s16,u16,u16);
+extern s32 Type_IdToChartIndex(s32);
 extern u8 D_84186F98[];
 extern u8 D_84186FE8[];
 void func_8413F640(s16 arg0, s16 arg1, s32 arg2) {
     s32 temp_v0;
     s32 saved_index;
     u8 *temp_v0_2;
-    temp_v0 = func_800630F0(arg2 & 0xFF);
+    temp_v0 = Type_IdToChartIndex(arg2 & 0xFF);
     if (temp_v0 != 0x12) {
         saved_index = temp_v0;
         temp_v0_2 = D_84186F98 + saved_index * 3;
@@ -283,9 +290,9 @@ void func_8413F640(s16 arg0, s16 arg1, s32 arg2) {
 #endif
 
 #ifdef VERSION_US
-extern void func_8413F5A8(s32, s32, s32, s32);
+extern void func_8413F5A8(s16, s16, u16, u16);
 void func_8413F6C0(s16 arg0, s16 arg1, u16 arg3) {
-    func_8413F5A8(arg0, arg1, 0x1E, arg3);
+    func_8413F5A8(arg0, arg1, 0x1E, (u16)(s32)arg3);
 }
 #endif
 
@@ -530,7 +537,7 @@ void func_84140690(void *arg0) {
 
 #ifdef VERSION_US
 extern u8 D_84186B60[];
-extern void func_8413F5A8(s32,s32,s32,s32);
+extern void func_8413F5A8(s16,s16,u16,u16);
 void func_84140B64(void *arg0) {
     u8 sp27;
     s32 temp_v0;
@@ -736,7 +743,7 @@ void func_841410A0(void *arg0) {
 extern u8 *D_84195208[];
 extern s32 func_80062D98(u8);
 extern void ParticleGfx_SetPrimColor_fragment79(u8 r, u8 g, u8 b, u8 a);
-extern s32 func_800630F0(s32);
+extern s32 Type_IdToChartIndex(s32);
 extern void func_8413F2A8(s16 arg0, s16 arg1);
 extern u8 D_84186F98[];
 void func_84141BE0(u8 *arg0)
@@ -757,7 +764,7 @@ void func_84141BE0(u8 *arg0)
         move = D_84195208[index][i + 5];
         if ((move != 0) && (color != 0x12))
         {
-          color = func_800630F0((u8) func_80062D98((u8) move));
+          color = Type_IdToChartIndex((u8) func_80062D98((u8) move));
         }
         else
         {
@@ -831,7 +838,7 @@ typedef struct {
     u8 r, g, b, a;
 } Candidate84142B78Record;
 extern void ParticleGfx_SetPrimColor_fragment79(u8 r, u8 g, u8 b, u8 a);
-extern void func_8413F5A8(s32,s32,s32,s32);
+extern void func_8413F5A8(s16,s16,u16,u16);
 extern void func_8413F700(s16 arg0, s16 arg1);
 extern void func_8413F73C(s16 arg0, s16 arg1);
 extern void func_8413F778(s16 arg0, s16 arg1);
@@ -1884,7 +1891,37 @@ void func_8414735C(u8 *arg0, s16 arg1, s16 arg2, u8 arg3, s16 arg4)
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3ADCA0/func_841474B4.s")
+/* mkdraft:func_841474B4 begin */
+extern u8 D_84186F1B[];
+extern u8 D_84186F1C[];
+
+void func_841474B4(u8 *arg0, s16 arg1, s16 arg2, u8 arg3, s16 arg4)
+{
+    s32 direction;
+    s32 sign;
+    s32 value;
+
+    value = arg0[1];
+    direction = value ? -1 : 1;
+    if (arg1 > 0) {
+        sign = 1;
+    } else {
+        sign = -1;
+    }
+    value = arg3;
+    if (value >= arg0[9]) {
+        arg0[8] &= ~1;
+        if (arg2 < 0) {
+            *(s16 *)(arg0 + 0xC) += sign * direction * D_84186F1B[arg0[9]];
+        } else if (arg2 > 0) {
+            *(s16 *)(arg0 + 0xC) += sign * direction * D_84186F1C[value + arg0[9] * -1];
+        } else {
+            *(s16 *)(arg0 + 0xC) += arg1 * direction / value;
+        }
+        func_84147270(arg0, arg3, arg4);
+    }
+}
+/* mkdraft:func_841474B4 end */
 #endif
 
 #ifdef VERSION_US
@@ -2022,7 +2059,7 @@ void func_84147B20(void *arg0) {
 #ifdef VERSION_US
 extern u8 D_84186F00;
 extern u8 D_84186F10;
-extern void func_841474B4(void *, s16, s16, u8, s32);
+extern void func_841474B4(u8 *, s16, s16, u8, s16);
 
 void func_84147FF4(u8 *arg0) {
     switch (arg0[0]) {
@@ -2040,7 +2077,7 @@ void func_84147FF4(u8 *arg0) {
 #ifdef VERSION_US
 extern u8 D_84186F00;
 extern u8 D_84186F10;
-extern void func_841474B4(void *, s16, s16, u8, s32);
+extern void func_841474B4(u8 *, s16, s16, u8, s16);
 
 void func_84148054(void *arg0) {
     switch (*(u8 *)arg0) {
