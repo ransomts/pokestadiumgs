@@ -4,7 +4,7 @@
 #ifdef VERSION_US
 const u32 D_800A5090[1] = { 0 };
 
-s32 func_800630F0(u8 arg0) {
+s32 Type_IdToChartIndex(u8 arg0) {
     switch (arg0) {
         case 0:
             return 0;
@@ -45,7 +45,7 @@ s32 func_800630F0(u8 arg0) {
     }
     return 0x12;
 }
-s32 func_800631B4(s32 arg0) {
+s32 Type_ChartIndexToId(s32 arg0) {
     switch (arg0) {
         case 0:
             return 0;
@@ -91,7 +91,7 @@ extern u8 D_80097FD8[];
 s32 func_80063270(u8 arg0) {
     s32 result;
     if (arg0 < 0x1C) {
-        result = func_8004C874(0xC, D_80097FD8[func_800630F0(arg0)]);
+        result = func_8004C874(0xC, D_80097FD8[Type_IdToChartIndex(arg0)]);
         if (result != 0) {
             return result;
         }

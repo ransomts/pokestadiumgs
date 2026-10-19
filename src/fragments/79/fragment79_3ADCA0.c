@@ -272,14 +272,14 @@ void func_8413F5F4(s16 arg0, s16 arg1, s32 arg2) {
 
 #ifdef VERSION_US
 extern void func_8413F5A8(s16,s16,u16,u16);
-extern s32 func_800630F0(s32);
+extern s32 Type_IdToChartIndex(s32);
 extern u8 D_84186F98[];
 extern u8 D_84186FE8[];
 void func_8413F640(s16 arg0, s16 arg1, s32 arg2) {
     s32 temp_v0;
     s32 saved_index;
     u8 *temp_v0_2;
-    temp_v0 = func_800630F0(arg2 & 0xFF);
+    temp_v0 = Type_IdToChartIndex(arg2 & 0xFF);
     if (temp_v0 != 0x12) {
         saved_index = temp_v0;
         temp_v0_2 = D_84186F98 + saved_index * 3;
@@ -743,7 +743,7 @@ void func_841410A0(void *arg0) {
 extern u8 *D_84195208[];
 extern s32 func_80062D98(u8);
 extern void ParticleGfx_SetPrimColor_fragment79(u8 r, u8 g, u8 b, u8 a);
-extern s32 func_800630F0(s32);
+extern s32 Type_IdToChartIndex(s32);
 extern void func_8413F2A8(s16 arg0, s16 arg1);
 extern u8 D_84186F98[];
 void func_84141BE0(u8 *arg0)
@@ -764,7 +764,7 @@ void func_84141BE0(u8 *arg0)
         move = D_84195208[index][i + 5];
         if ((move != 0) && (color != 0x12))
         {
-          color = func_800630F0((u8) func_80062D98((u8) move));
+          color = Type_IdToChartIndex((u8) func_80062D98((u8) move));
         }
         else
         {
