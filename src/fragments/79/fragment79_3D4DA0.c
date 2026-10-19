@@ -55,8 +55,61 @@ void func_8416654C(f32 arg0, f32 *arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3D4DA0/func_841665D4.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3D4DA0/func_8416691C.s")
+s32 func_841094EC();
+s32 func_841665D4(s32 *);
+extern s32 D_8419F070;
+extern s16 D_841A4DB0;
+extern s16 D_841A4DB2;
+extern s16 D_841A4DB4;
 
+s32 func_8416691C(void)
+{
+  u8 *new_var;
+  s32 var_s1;
+  D_841A4DB2 += 1;
+  if ((func_841094EC() == 1) && (D_841A4DB4 == 0))
+  {
+    D_841A4DB0 = D_841A4DB2 + 0x46;
+    D_841A4DB4 = 1;
+    goto block_9;
+  }
+  if (D_841A4DB4 == 1)
+  {
+    if ((D_841A4DB0 - 0x32) < D_841A4DB2)
+    {
+      D_841A4DB4 = 2;
+    }
+    goto block_9;
+  }
+  if ((D_841A4DB4 == 2) && (D_841A4DB0 < D_841A4DB2))
+  {
+    return -1;
+  }
+  block_9:
+  new_var = &D_8419F070;
+
+  var_s1 = 0;
+  do
+  {
+    if ((*((s16 *) (((u8 *) new_var) + 0))) == 1)
+    {
+      new_var = (u8 *) new_var;
+      *((s16 *) (((u8 *) new_var) + 4)) = (s16) ((*((s16 *) (new_var + 4))) + 1);
+      if (((*((s16 *) (((u8 *) new_var) + 2))) == 1) && ((*((s16 *) (((u8 *) new_var) + 6))) < (*((s16 *) (((u8 *) new_var) + 4)))))
+      {
+        *((s16 *) (((u8 *) new_var) + 0)) = 0;
+      }
+      else
+      {
+        func_841665D4(new_var);
+      }
+    }
+    var_s1 += 1;
+    new_var += 0x360;
+  }
+  while (var_s1 != 0x1A);
+  return 0;
+}
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3D4DA0/func_84166A64.s")
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3D4DA0/func_84166F60.s")

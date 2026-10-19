@@ -2026,7 +2026,7 @@ void BattleAnim_Dispatch_218(u8 *arg0) {
 #ifdef VERSION_US
 void func_84114600(void *arg0) {
     extern void func_84108728(u8, void *, s32);
-    extern void func_800231A0(u8, s16, s32, ...);
+    extern void func_800231A0(short, s16, s32, ...);
     s32 result;
 
     result = func_8411E164(arg0);
@@ -2042,7 +2042,7 @@ void func_84114600(void *arg0) {
 #endif
 
 #ifdef VERSION_US
-extern void func_800231A0(u8, s16, s32, ...);
+extern void func_800231A0(short, s16, s32, ...);
 void func_84114678(void *arg0) {
     if (((*(u8 *)((u8 *)(D_84193DD0) + (9))) & 7) == 1) {
         func_800231A0((*(u8 *)((u8 *)(arg0) + (0x618))), (*(s16 *)((u8 *)(arg0) + (0x658))), 2, arg0);
@@ -2399,7 +2399,7 @@ void BattleAnim_Dispatch_107(u8 *arg0) {
 #endif
 
 #ifdef VERSION_US
-extern void func_800231A0(u8, s16, s32, ...);
+extern void func_800231A0(short, s16, s32, ...);
 extern void func_84108728(u8, void *, s32);
 extern void func_84115D98(u8 *arg0);
 void BattleAnim_Dispatch_108(u8 *arg0) {
@@ -2478,7 +2478,7 @@ void BattleAnim_Dispatch_058(u8 *arg0) {
 #ifdef VERSION_US
 extern void func_841088CC();
 extern void func_8003F4E8();
-extern void func_800231A0(u8, s16, s32, ...);
+extern void func_800231A0(short, s16, s32, ...);
 extern void func_8410B578(f32 arg0);
 extern void func_84112158(s32 arg0, s32 arg1);
 extern void func_84112564(s32 arg0);
@@ -2638,7 +2638,7 @@ void func_84116604(u8 *arg0) {
 #endif
 
 #ifdef VERSION_US
-extern void func_800231A0(u8, s16, s32, ...);
+extern void func_800231A0(short, s16, s32, ...);
 extern void func_84108728(u8, void *, s32);
 extern void func_8410B578(f32 arg0);
 extern void func_84112158(s32 arg0, s32 arg1);
@@ -2779,7 +2779,36 @@ void func_84116A3C(u8 *arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_37A6E0/func_84116AC4.s")
+s32 func_841133EC(s32 arg0);
+void func_84116A3C(u8 *arg0);
+s32 func_841133EC(s32);
+void func_84116A3C(u8 *);
+
+void func_84116AC4(void *arg0)
+{
+  if ((func_841133EC(arg0) == 0) && ((*((s8 *) (((u8 *) arg0) + 0x7F6))) == 0))
+  {
+    if ((*((u8 *) (((u8 *) arg0) + 0x619))) == (*((s16 *) (((u8 *) arg0) + 0x7E8))))
+    {
+      func_84108728(*((u8 *) (((u8 *) arg0) - -0x618)), arg0, func_8411E164(arg0));
+      func_800231A0(0x12C, *((s16 *) (((u8 *) arg0) + 0x658)), 0);
+    }
+    func_84116A3C(arg0);
+  }
+}
+
+extern s32 func_8411E164();
+extern s32 func_8411E164();
+extern s32 func_8411E164(s32 arg0);
+extern s32 func_8411E164();
+extern s32 func_8411E164(s32 arg0);
+extern s32 func_8411E164(s32 arg0);
+extern void func_800231A0(short, s16, s32, ...);
+extern void func_84108728(u8, void *, s32);
+extern s32 func_8411E164();
+extern void func_84108728(u8, void *, s32);
+extern s32 func_8411E164();
+extern s32 func_8411E164(s32 arg0);
 #endif
 
 #ifdef VERSION_US
@@ -3822,7 +3851,7 @@ void BattleAnim_Dispatch_099(u8 *arg0) { s32 first; s32 second; u8 saved; s32 re
 #endif
 
 #ifdef VERSION_US
-extern void func_800231A0(u8, s16, s32, ...);
+extern void func_800231A0(short, s16, s32, ...);
 extern s32 func_800427B8(s32);
 extern void func_84108728(u8, void *, s32);
 extern void func_84111348(s32 arg0, s32 arg1);

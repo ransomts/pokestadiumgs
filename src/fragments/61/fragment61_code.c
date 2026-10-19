@@ -687,7 +687,56 @@ void func_86B0B6CC(s32 arg0, s32 arg1) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/61/fragment61_code/func_86B0B7B4.s")
+s32 func_8003EC54(s32 *);
+extern s32 D_86B17910;
+extern s32 D_86B17ABC;
+
+void func_86B0B7B4(void)
+{
+  f32 temp_fa0;
+  f32 temp_fa0_2;
+  f32 temp_fv0;
+  f32 temp_fv1_2;
+  f64 temp_fv0_2;
+  f64 temp_fv0_3;
+  f64 temp_fv1;
+  int new_var;
+  switch (D_86B17ABC)
+  {
+    case 0:
+      *((f32 *) (((u8 *) D_87F119DC) + 0x5C)) = 7.0f;
+      temp_fv0 = *((f32 *) (((u8 *) D_87F119DC) + 0x5C));
+      *((f32 *) (((u8 *) D_87F119DC) + 0x58)) = temp_fv0;
+      *((f32 *) (((u8 *) D_87F119DC) + 0x54)) = temp_fv0;
+      new_var = 0xFF;
+      *((s8 *) (((u8 *) D_87F119DC) + 0x41)) = new_var;
+      return;
+
+    case 1:
+      temp_fv0_2 = (f64) (((f32) (func_8003EC54(&D_86B17910) - 1)) / 30.0f);
+      temp_fv1 = 1.0 - temp_fv0_2;
+      temp_fa0 = (f32) ((temp_fv1 * 7.0) + (3.5 * temp_fv0_2));
+      *((f32 *) (((u8 *) D_87F119DC) + 0x5C)) = temp_fa0;
+      *((f32 *) (((u8 *) D_87F119DC) + 0x58)) = temp_fa0;
+      *((f32 *) (((u8 *) D_87F119DC) + 0x54)) = temp_fa0;
+      *((s32 *) (((u8 *) D_87F119DC) + 0x38)) = (s32) ((temp_fv1 * 128.0) + (64.0 * temp_fv0_2));
+      return;
+
+    case 2:
+      temp_fv1_2 = ((f32) (func_8003EC54(&D_86B17910) - 1)) / 27.0f;
+      temp_fv0_3 = 1.0 - ((f64) temp_fv1_2);
+      temp_fa0_2 = (f32) ((temp_fv0_3 * 3.5) + ((f64) (7.0f * temp_fv1_2)));
+      *((f32 *) (((u8 *) D_87F119DC) + 0x5C)) = temp_fa0_2;
+      *((f32 *) (((u8 *) D_87F119DC) + 0x58)) = temp_fa0_2;
+      *((f32 *) (((u8 *) D_87F119DC) + 0x54)) = temp_fa0_2;
+      *((s8 *) (((u8 *) D_87F119DC) + 0x41)) = (s8) ((s32) ((temp_fv0_3 * 64.0) + ((f64) (128.0f * temp_fv1_2))));
+      return;
+
+  }
+
+}
+
+extern void func_86B0B7B4(void);
 #endif
 
 #ifdef VERSION_US
