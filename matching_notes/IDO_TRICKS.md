@@ -215,3 +215,33 @@ away entirely - only the mask forces the temp), and a mask that is load-bearing 
 two working placements by search (the unk_4D mask, then a cast on an sp103 array index - the
 second made the first removable, 5479 -> 4724). Sweep sites, don't reason about them; expect
 interaction effects between multiple perturbations.
+
+## Wave-1 lessons (pokestadiumgs, 2026-10-18)
+
+- uopt's constant-address load routing is SYMBOL-based, not value-based: a `*(s16 *)SYM`
+  load becomes `lh 0(reg)` through any live `la` of the SAME symbol+addend. Spelling the
+  same address via a different symbol (`*(s16 *)(D_8AF2BEA4 - 0xC)` for D_8AF2BE98)
+  keeps the direct lui/lh form - identical ROM bytes, different reloc text. asm-differ
+  shows such data-symbol reloc-text diffs as `i` lines even when the ROM matches; only
+  the full make decides.
+- Pointer increments from a BARE-symbol expression rematerialize (`la sym+off`); from a
+  sym+off expression they stay relative (`addiu r,r,K`). Chain `p = base; p += K; p += K;`
+  to get remat-then-relative (bnel delay-slot addiu + dead copy in unrolled lookups).
+- A file's bootstrap guessed `extern` for an unimplemented function conflicts once the
+  true signature is spliced in: fix the extern (callers passing constants that fit the
+  narrowed type are codegen-neutral) and verify with a pristine-vs-spliced object
+  compare (.text byte-identical, reloc set identical, only .strtab/.mdebug differ).
+- A matched neighbor may call the function you are matching through a fake prototype
+  (e.g. a 4-arg void hack). Fixing the neighbor's extern AND call is byte-identical when
+  the extra args are forwarded untouched (O32 passes a position-3 f32 arg in $a2 as raw
+  bits: a mistyped s32 prototype still compiles to raw-a2 passthrough; retype both
+  prototype and forwarding caller to f32).
+- `jal` label diffs: calling a function by an nm-alias where the target .s says
+  `func_XXXXXXXX` (same address) scores ~5 but is byte-identical; use the .s's label.
+- `const f32 D_X[1] = {v};` is emitted by IDO into .rodata AHEAD of switch jump tables -
+  usable as a 4-byte alignment prefix when a jtbl must land at a non-16-aligned address
+  inside a C-owned .rodata (verified with readelf).
+- diff.py objfile mode attributes rodata-ref display lines from each side's own .o;
+  when the target's jtbl lives in the data blob (not the expected .o), a correct
+  switch match scores ~100/line structurally - check the aligned instruction pairs,
+  not the score.

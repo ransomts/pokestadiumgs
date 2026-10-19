@@ -66,6 +66,35 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
   return ret`, separate decl+assign, empty-if and self-assign blockers; permuter
   35k iterations, never below 300. Likely a structural shape (loop phi / ternary /
   macro) the permuter cannot synthesize.
+- `func_82202628` (src/fragments/17/fragment17_10FFC0.c) score 700 STRUCTURAL (body
+  25/25 identical; jtbl owned by fragment17 data blob). Full verified data-migration
+  recipe in matching_notes/spool/func_82202628.meta: truncate the blob after
+  D_8220E0CC, carry `const f32 D_8220E0D0[1] = { 0.001f };` in the prologue, yaml
+  [.rodata, fragments/17/fragment17_10FFC0] start 0x11DAB0 -> 0x11DA90. Do this as a
+  datamig-style change when convenient.
+
+## Wave log
+
+### Wave 1 (2026-10-18 evening): 25 matches, ROM-identical
+- 25 functions matched via cross-overlay sibling twins (commit 0652592f); func
+  count 6,748/10,532 (64.1%), 3,784 owners left. All fd.sh score 0 except
+  func_8AF00240 (20 = reloc-SYMBOL-TEXT only; ROM byte-identical, confirmed by the
+  full make).
+- 8 semantic renames applied after the match commit (US table only, per upstream
+  convention - jp tables keep their own names; verified MoveDamage_ComputeBase_fragment80
+  has no jp entry): MoveDamage_ComputeBase_fragment79, ModelPreview_UpdateAutoRotation_fragment33,
+  MathUtil_Atan2d_fragment14/48, Rect_Contains, Gfx_SetupOrthoProjection,
+  Gfx_DrawTexturedFrame16, Envelope_Advance.
+- Integration protocol that worked: agents spool to matching_notes/spool/<func>.{c,meta}
+  (never commit, restore src); integrator applies fixups -> try_candidate --keep each ->
+  `rm -r build/src` (NFS stale-object paranoia) -> full make must print
+  `build/pokestadiumgs-us.z64: OK` -> commit -> rename batch (symbol_addrs_code.txt us +
+  word-boundary src rewrites) -> `make extract` + full make -> commit.
+- FLEET RULE: no agent fd.sh/make activity while the integrator runs `make extract` or a
+  full `make` (extract regenerates asm/ under the agents' feet).
+- After each integration, rebuild the objects the agents' experiments dirtied
+  (corpus selftest flags them) and re-run `corpus.py build` before trusting the index.
+
 
 ## Upstreaming
 
