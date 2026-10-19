@@ -84,13 +84,17 @@ def apply_edit(file, find, replace):
 
 
 def apply_yaml(find, replace=None, insert_after=None):
-    apply_edit("yamls/us/rom.yaml", find, replace)
+    if replace is not None:
+        apply_edit("yamls/us/rom.yaml", find, replace)
     if insert_after:
         text = read("yamls/us/rom.yaml")
         if text.count(find) != 1:
             sys.exit(f"yaml anchor {find!r} not unique")
+        line = next(l for l in text.split("\n") if find in l)
+        ind = re.match(r"\s*", line).group(0)
+        lines = [ind + l if l else l for l in insert_after]
         write("yamls/us/rom.yaml",
-              text.replace(find, find + "\n" + "\n".join(insert_after)))
+              text.replace(find, find + "\n" + "\n".join(lines)))
 
 
 def apply_ld(lines):
@@ -117,10 +121,12 @@ def run_steps(steps, dry):
             apply_edit(st["file"], st["find"], st.get("replace"))
             print(f"  edit: {st['file']}")
         elif op == "yaml":
-            if st.get("replace") is not None:
+            if st.get("replace") is not None and st["replace"] != st["find"]:
                 apply_yaml(st["find"], st["replace"])
-            else:
-                apply_yaml(st["find"], insert_after=st.get("insert_after", []))
+            if st.get("insert_after"):
+                apply_yaml(st["find"], insert_after=st["insert_after"])
+            if st.get("replace") is None and not st.get("insert_after"):
+                sys.exit("yaml step needs replace or insert_after")
             print(f"  yaml: {st['find'][:60]}")
         elif op == "ld":
             apply_ld(st["lines"])
