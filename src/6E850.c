@@ -456,7 +456,76 @@ void Model_OffsetVertexHeightsByClass(u8 *arg0, u8 *arg1, f32 arg2) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/6E850/func_8006F83C.s")
+void func_8006F83C(u8 *arg0, u8 *arg1, f32 arg2, BlendWeight1F arg3)
+{
+  s16 *classes;
+  s16 *indices;
+  s32 cls1;
+  s32 cls2;
+  float new_var2;
+  s32 i;
+  u16 count;
+  u8 *record;
+  f32 new_var3;
+  u8 *target;
+  int new_var;
+  classes = (s16 *) Memmap_GetSegmentVaddr(*((u32 *) (arg0 + 0x10)));
+  if (1)
+  {
+  }
+  if (1)
+  {
+    if (1)
+    {
+    }
+  }
+  if (1)
+  {
+  }
+  if (1)
+  {
+  }
+  if (1)
+  {
+  }
+  new_var2 = 0.25f;
+  new_var = 0x14;
+  indices = (s16 *) Memmap_GetSegmentVaddr(*((u32 *) (arg0 + new_var)));
+  count = *((u16 *) (arg0 + 4));
+  record = arg1;
+  i = 0;
+  new_var3 = arg2;
+  while (i < count)
+  {
+    cls1 = Model_GetVertexClass(classes, i);
+    if ((cls1 != 0) && (i == (*indices)))
+    {
+      cls2 = func_8006DE9C(classes, i);
+      switch (cls2)
+      {
+        case 1:
+          target = record + new_var;
+          *((f32 *) (target + 0xC)) += new_var3 * ((f32) 0);
+          *((f32 *) (target + 0x10)) += new_var3 * ((f32) 1);
+          *((f32 *) (target + 0x14)) += new_var3 * ((f32) 0);
+          break;
+
+        case 2:
+          target = record + new_var;
+          *((f32 *) (target + 0xC)) += (new_var3 * new_var2) * ((f32) 0);
+          *((f32 *) (target + 0x10)) += (new_var2 * arg2) * ((f32) 1);
+          *((f32 *) (target + 0x14)) += (new_var3 * new_var2) * ((f32) 0);
+          break;
+
+      }
+
+    }
+    i++;
+    record += 0x50;
+    indices++;
+  }
+
+}
 #endif
 
 #ifdef VERSION_US

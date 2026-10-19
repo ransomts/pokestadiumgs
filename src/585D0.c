@@ -2629,7 +2629,106 @@ s32 func_80060110(s32 arg0) {
 #endif
 
 #ifdef VERSION_US
-#pragma GLOBAL_ASM("asm/us/nonmatchings/585D0/func_800601A4.s")
+
+
+#define NULL 0
+
+
+extern float sqrtf(float value);
+#pragma intrinsic(sqrtf);
+u8 func_8005D92C(s32);
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 func_8005D92C(s32 index);
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 func_8005D92C(s32 index);
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+s32 func_800601A4(s32 arg0, u8 arg1)
+{
+  int new_var;
+  if (((*((s32 *) (D_80128570 + (arg0 * 112)))) & 1) != 0)
+  {
+    new_var = 112;
+    if (arg1 < 0x1A)
+    {
+      arg1 += 0;
+      switch ((u32) func_8005D92C(arg0))
+      {
+        case 5:
+
+        case 6:
+          return *((u8 *) (((*((s32 *) ((D_80128570 + (arg0 * new_var)) + 0x60))) + arg1) + 0xA8C));
+
+        case 7:
+          return *((u8 *) (((*((s32 *) ((D_80128570 + (arg0 * new_var)) + 0x60))) + arg1) + 0xA67));
+
+      }
+
+    }
+  }
+  return 0;
+}
+
+extern u8 func_8005D92C(s32 index);
+extern u8 D_80128570[];
+extern u8 D_80128570[];
+extern u8 func_8005D92C(s32 index);
 #endif
 
 #ifdef VERSION_US
