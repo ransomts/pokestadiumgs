@@ -364,7 +364,6 @@ SECTIONS
         _9E00 = .;
         build/src/9E00.o(.data);
         AC80 = .;
-        build/src/AC80.o(.data);
         BF50 = .;
         build/src/BF50.o(.data);
         C180 = .;
@@ -493,6 +492,10 @@ SECTIONS
         build/src/74020.o(.data);
         _85DA0_data = .;
         build/asm/us/data/85DA0.data.o(.data);
+        _AC80_data = .;
+        build/src/AC80.o(.data);
+        _88A40_data = .;
+        build/asm/us/data/88A40.data.o(.data);
         build/lib/libultra.a:exceptasm.o(.data);
         build/lib/libultra.a:thread.o(.data);
         build/lib/libultra.a:controller.o(.data);
@@ -660,7 +663,6 @@ SECTIONS
         build/src/57C0.o(.bss);
         build/src/62E0.o(.bss);
         build/src/6670.o(.bss);
-        build/src/7140.o(.bss);
         build/src/78D0.o(.bss);
         build/src/7A50.o(.bss);
         build/src/8470.o(.bss);
@@ -732,6 +734,10 @@ SECTIONS
         build/src/74020.o(.bss);
         build/asm/us/data/unk_bss.bss.o(.bss);
         build/asm/us/data/unk_bss2.bss.o(.bss);
+        _7140_bss = .;
+        build/src/7140.o(.bss);
+        _unk_bss3 = .;
+        build/asm/us/data/unk_bss3.bss.o(.bss);
         build/lib/libultra.a:sptask.o(.bss);
         build/lib/libultra.a:controller.o(.bss);
         build/lib/libultra.a:siacs.o(.bss);
