@@ -75,6 +75,22 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
 
 ## Wave log
 
+### Farm seeds 5 + spinoff match (2026-10-19, after A_adopt): 1 match (167 total)
+- farm-seeds-5 (700887f8): fresh mkdraft seeds for the sweep's 13 best B_farm
+  targets + func_8AF1BAE8. mkdraft needed per-draft prologue surgery (the sweep's
+  splice machinery auto-fixes these, mkdraft does not): rets/params redeclared to
+  the file's established signatures (func_8AC06D8C s32, D_8419A0A2-class u8 vs
+  s8, K&R `()` forms for mixed-arity callers like func_8411E164, address-taken
+  callbacks declared as functions not M2C_UNK variables, D_88601890 u8* so cfe
+  accepts pointer arithmetic). fd.sh full scores on the branch: 4, 5 x10, 10, 8 x2.
+- func_8AF1BAE8 adopted on farm-port (5918a1e9) before farming: its only diffs
+  were jal-reloc text (target .s still says func_8004A858, the pre-rename label)
+  — full make OK, byte-identical. Seed fixups that mattered: no u16 mask on the
+  Ui_DrawGradientQuad args (s32 prototype per src/4AC10.c), sp24 declared
+  second for home slot 0x24.
+- Farm job 17663103 (work1, 8h, SEED_BRANCH=farm-seeds-5): 13 functions x
+  3 workers x 2 copies; staged build verified locally (COMPARE=0) before sbatch.
+
 ### Sweep A_adopt adoption (2026-10-19): 59 matches (166 total)
 - All 59 score-0 sweep drafts spliced from matching_notes/sweep_zero/ in four
   ROM-gated batches (559ee32c, 6606a640, eac0d6c6, 2b0d3a7a), ~15 at a time.
