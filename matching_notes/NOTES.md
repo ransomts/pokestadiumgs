@@ -75,6 +75,35 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
 
 ## Wave log
 
+### Wave 6 (2026-10-19, S1 cross-ports, matcher agents): 10 matches (177 total)
+- fc0216e2: all 10 remaining >=1.000 crossport twins (func_800052C4, func_8410A4F8,
+  func_84120464, func_841569E0, func_84156AB4, func_84168B00, func_84168C18,
+  func_88508B10, func_88508CAC, func_885096E0) via 6 agents on disjoint files,
+  spools in matching_notes/spool/. 9 scored fd.sh 0 (several objdump-verified
+  beyond the score); func_800052C4 sits at the file floor 10 — its own bytes all
+  match, the 2 flagged lines are pre-existing neighbor reloc-text (per its meta,
+  spelling D_800CDA30 directly scores 315: do not "fix" it).
+- Neighbor-fixup classes this wave (agents verified codegen-neutral per object
+  before spooling): three stale bootstrap externs for the target function
+  retyped to the true signature + call-site spelling fixes (fragment79_38EFE0:
+  func_84120464 (void*,f32,s16), D_84183C90 f32, 0x3F800000->1.0f,
+  0x3F666666->0.9f); a matched forwarder's (void) -> () K&R retype
+  (fragment79_3C60B0 line 46, BattleAnim_EffectTertiaryOwnerBonePosition —
+  pure jal wrapper); a bootstrap extern + caller cast (fragment34_1C5AA0:
+  func_885096E0 void(unk_D_88523050*)). Blob-symbol discipline held:
+  func_84168C18's divisor is extern f32 D_8418C920 (resolves against the
+  existing 3FC0A0 blob; that blob also feeds the PARKED func_84168CA4 — do not
+  migrate it without that sibling).
+- Stale-.s cleanup after the wave: splice-based adoptions leave the function's
+  .s in asm/us/nonmatchings (adopt_candidate.py deletes it; manual splices do
+  not), which made progress.py undercount. Deleted the 70 session-adopted
+  .s files by hand (59 A_adopt + 10 wave 6 + 8AF1BAE8 via adopt_candidate).
+  progress.py -v us now reads 32.1819% (handoff baseline 30.6320%).
+  do_c_func_detection regenerates nonmatchings per remaining pragma on every
+  make extract, so a deleted .s for a C-owned function stays deleted. Known
+  leftovers predating this session: func_80047104.s (wave-4 manual match) and
+  the hand_asm pair func_8000B6C0/func_8001FC60 nonmatchings copies.
+
 ### Farm seeds 5 + spinoff match (2026-10-19, after A_adopt): 1 match (167 total)
 - farm-seeds-5 (700887f8): fresh mkdraft seeds for the sweep's 13 best B_farm
   targets + func_8AF1BAE8. mkdraft needed per-draft prologue surgery (the sweep's
