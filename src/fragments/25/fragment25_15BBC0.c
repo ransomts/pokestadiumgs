@@ -9,8 +9,20 @@ u8 *func_82101B80(u8 *arg0)
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/25/fragment25_15BBC0/func_82101B94.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/25/fragment25_15BBC0/func_82101CB4.s")
+extern f32 __sinf(f32);
+extern f32 __cosf(f32);
 
+void func_82101CB4(f32 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
+    f32 *var_s1;
+    f32 temp_fs0;
+    s32 var_s0;
+
+    for (var_s0 = 0, var_s1 = arg0; var_s0 != 4; var_s0++, var_s1 += 2) {
+        temp_fs0 = arg5 - ((f32) (3 - var_s0) * arg4);
+        *(f32 *)((u8 *)var_s1 + 4) = (f32) ((__sinf(temp_fs0) * arg3) + arg1);
+        *(f32 *)((u8 *)var_s1 + 8) = (__cosf(temp_fs0) * arg3) + arg2;
+    }
+}
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/25/fragment25_15BBC0/func_82101D88.s")
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/25/fragment25_15BBC0/func_82101E70.s")

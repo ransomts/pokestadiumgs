@@ -39,8 +39,35 @@ void func_87E05874(s32 arg0, s32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/63/fragment63_308D70/func_87E05944.s")
+extern void func_87F0B4AC(void *, f32 *, f32 *, s16 *);
+extern void *D_87E1EB90;
+extern void *D_87F119DC;
 
+void func_87E05944(void) {
+    s32 temp_t0;
+    s32 var_a0;
+    u8 *var_v1;
+
+    temp_t0 = *(s32 *)((u8 *)D_87F119DC + 0x20);
+    var_v1 = (u8 *)temp_t0 + 0x90;
+    for (var_a0 = 0; var_a0 != 0xC; var_a0 += 1, var_v1 += 8) {
+        if (var_a0 == *(s32 *)((u8 *)D_87E1EB90 + 8)) {
+            if (*(u8 *)(var_v1 + 4) >= 0xE7) {
+                *(u8 *)(var_v1 + 4) = 0xFF;
+            } else {
+                *(u8 *)(var_v1 + 4) = *(u8 *)(var_v1 + 4) + 0x19;
+            }
+        } else {
+            if (*(u8 *)(var_v1 + 4) < 0x19) {
+                *(u8 *)(var_v1 + 4) = 0;
+            } else {
+                *(u8 *)(var_v1 + 4) = *(u8 *)(var_v1 + 4) - 0x19;
+            }
+        }
+    }
+    func_87F0B4AC((u8 *)temp_t0 + 8, (f32 *)((u8 *)D_87F119DC + 0x48),
+                  (f32 *)((u8 *)D_87F119DC + 0x54), (s16 *)((u8 *)D_87F119DC + 0x42));
+}
 extern Gfx *D_800D0510;
 extern void *D_8009491C;
 extern void GeoRender_ApplyMaterialState();

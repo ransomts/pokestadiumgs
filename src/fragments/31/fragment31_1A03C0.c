@@ -51,10 +51,30 @@ loop_3:
 }
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/31/fragment31_1A03C0/func_8822D238.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/31/fragment31_1A03C0/func_8822D2F4.s")
+extern u8 D_88233920[250];
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/31/fragment31_1A03C0/func_8822D3A8.s")
+u8 func_8822D2F4(u8 arg0) {
+    s32 i;
 
+    for (i = 0; i < 250; i++) {
+        if (arg0 == D_88233920[i]) {
+            return i;
+        }
+    }
+    return 0;
+}
+extern u8 D_88233A1C[250];
+
+u8 func_8822D3A8(u8 arg0) {
+    s32 i;
+
+    for (i = 0; i < 250; i++) {
+        if (arg0 == D_88233A1C[i]) {
+            return i;
+        }
+    }
+    return 0;
+}
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/31/fragment31_1A03C0/func_8822D45C.s")
 
 extern void Input_SetRepeatController(s32);
