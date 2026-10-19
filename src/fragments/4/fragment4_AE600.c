@@ -26,14 +26,14 @@ f32 func_818006B4(void) {
 #endif
 
 #ifdef VERSION_US
-/* mkdraft:func_81800A90 begin */
+/* mkdraft:Gfx_SetupOrthoProjection begin */
 extern s32 func_8000731C(void);
 extern void *Gfx_AllocDisplayList(s32);
 extern void Gfx_SetViewportDimensions(void *, s16, s16);
 extern Mtx D_80094890;
 extern u32 D_800D0510;
 
-void func_81800A90(void) {
+void Gfx_SetupOrthoProjection(void) {
     s16 *dims;
     Mtx *matrix;
     Vp *viewport;
@@ -47,7 +47,7 @@ void func_81800A90(void) {
     gSPMatrix((*(Gfx **)&D_800D0510)++, (u32)matrix & 0x1FFFFFFF, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix((*(Gfx **)&D_800D0510)++, (u32)&D_80094890 & 0x1FFFFFFF, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
-/* mkdraft:func_81800A90 end */
+/* mkdraft:Gfx_SetupOrthoProjection end */
 #endif
 
 #ifdef VERSION_US

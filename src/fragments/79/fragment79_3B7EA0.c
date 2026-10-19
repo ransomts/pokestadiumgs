@@ -136,12 +136,12 @@ u8 func_84149424(void) { return D_8419D7B2; }
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3B7EA0/func_84149430.s")
 
-/* mkdraft:func_84149568 begin */
+/* mkdraft:MoveDamage_ComputeBase_fragment79 begin */
 typedef struct Fragment79DamageContext { u8 unk_00, unk_01; u8 effect, power, type, level; u8 unk_06, unk_07; u16 attack, defense; s32 damage; u8 *attacker, *defender; u8 *unk_18; u8 *unk_1C; } Fragment79DamageContext;
 extern s32 func_800636C0(u8, u8);
 extern u8 func_80063690(u8);
 
-void func_84149568(void *arg0) {
+void MoveDamage_ComputeBase_fragment79(void *arg0) {
     Fragment79DamageContext *ctx = arg0;
     if (ctx->power != 0) {
         if (ctx->effect == 7) {
@@ -161,7 +161,7 @@ void func_84149568(void *arg0) {
         ctx->damage += 2;
     }
 }
-/* mkdraft:func_84149568 end */
+/* mkdraft:MoveDamage_ComputeBase_fragment79 end */
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/79/fragment79_3B7EA0/func_841496C0.s")
 

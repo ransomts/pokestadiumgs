@@ -52,10 +52,10 @@ void func_8FC001E8_padding5(void) {}
 #endif
 
 #ifdef VERSION_US
-/* mkdraft:func_8FC00218 begin */
+/* mkdraft:Gfx_DrawTexturedFrame16 begin */
 extern void GfxRect_DrawTextured(s16, s16, s16, s16, s16, s16, s16, s16, s32);
 
-void func_8FC00218(s16 x, s16 y, u16 width, u16 height) {
+void Gfx_DrawTexturedFrame16(s16 x, s16 y, u16 width, u16 height) {
     if (width >= 32 && height >= 32) {
         func_8FC000F4(0x101, 4);
         GfxRect_DrawTextured(x, y, (s16)(width - 16), 16, 0, 0, 0x400, 0x400, 0);
@@ -66,7 +66,7 @@ void func_8FC00218(s16 x, s16 y, u16 width, u16 height) {
         GfxRect_DrawTextured((s16)(x + width - 16), (s16)(y + height - 16), 16, 16, 0, 0x600, 0x400, 0x400, 0);
     }
 }
-/* mkdraft:func_8FC00218 end */
+/* mkdraft:Gfx_DrawTexturedFrame16 end */
 #endif
 
 #ifdef VERSION_US

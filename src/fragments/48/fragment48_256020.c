@@ -329,8 +329,8 @@ void *func_87C00C80(void *arg0, void *arg1) {
     return arg0;
 }
 
-/* mkdraft:func_87C00D14 begin */
-f64 func_87C00D14(f64 arg0, f64 arg1) {
+/* mkdraft:MathUtil_Atan2d_fragment48 begin */
+f64 MathUtil_Atan2d_fragment48(f64 arg0, f64 arg1) {
     extern f64 D_87C03DB8, D_87C03DC0, D_87C03DC8, D_87C03DD0, D_87C03DD8, D_87C03DE0;
     f64 ratio;
     f64 reduced;
@@ -367,10 +367,10 @@ f64 func_87C00D14(f64 arg0, f64 arg1) {
     }
     return reduced - D_87C03DE0;
 }
-/* mkdraft:func_87C00D14 end */
+/* mkdraft:MathUtil_Atan2d_fragment48 end */
 
 extern f64 D_87C03DE8;
-extern f64 func_87C00D14(f64, f64);
+extern f64 MathUtil_Atan2d_fragment48(f64, f64);
 f64 func_87C00F9C(f64 arg0) {
     f64 root;
     f64 abs_value;
@@ -384,7 +384,7 @@ f64 func_87C00F9C(f64 arg0) {
     }
     root = (f64)sqrtf((f32)(1.0 - (arg0 * arg0)));
     if (root != 0.0) {
-        return -func_87C00D14(arg0, root);
+        return -MathUtil_Atan2d_fragment48(arg0, root);
     }
     if (arg0 > 0.0) {
         return 0.0;

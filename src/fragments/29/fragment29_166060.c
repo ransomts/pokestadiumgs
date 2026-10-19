@@ -21,10 +21,10 @@ s32 func_8800005C(void) {
     return fragment29_main(D_8800686C);
 }
 
-/* mkdraft:func_88000080 begin */
+/* mkdraft:Envelope_Advance begin */
 typedef struct { s16 tick, value, start, end; u8 delay, rise, hold, fall; } Fragment29Envelope;
 
-s16 func_88000080(Fragment29Envelope *envelope) {
+s16 Envelope_Advance(Fragment29Envelope *envelope) {
     f32 bias;
     f32 delta;
     if (envelope->tick <= envelope->delay) {
@@ -54,9 +54,9 @@ s16 func_88000080(Fragment29Envelope *envelope) {
     }
     return envelope->value;
 }
-/* mkdraft:func_88000080 end */
+/* mkdraft:Envelope_Advance end */
 
-extern s16 func_88000080(Fragment29Envelope *);
+extern s16 Envelope_Advance(Fragment29Envelope *);
 void func_88000288(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 arg4, u8 arg5, u8 arg6, u8 arg7) {
     *(s16 *)((u8 *)arg0 + 0) = arg1;
     *(s16 *)((u8 *)arg0 + 4) = arg2;
@@ -65,7 +65,7 @@ void func_88000288(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 arg4, u8 arg5, u
     *(u8 *)((u8 *)arg0 + 9) = arg5;
     *(u8 *)((u8 *)arg0 + 10) = arg6;
     *(u8 *)((u8 *)arg0 + 11) = arg7;
-    func_88000080(arg0);
+    Envelope_Advance(arg0);
 }
 
 void func_880002F4(u8 *arg0, s16 arg1) {

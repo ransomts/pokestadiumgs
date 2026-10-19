@@ -218,8 +218,8 @@ void func_8130FFE0(f32 arg0, f32 arg1) {
 #endif
 
 #ifdef VERSION_US
-/* mkdraft:func_8131001C begin */
-f64 func_8131001C(f64 arg0, f64 arg1) {
+/* mkdraft:MathUtil_Atan2d_fragment14 begin */
+f64 MathUtil_Atan2d_fragment14(f64 arg0, f64 arg1) {
     extern f64 D_81312998, D_813129A0, D_813129A8, D_813129B0, D_813129B8, D_813129C0;
     f64 ratio;
     f64 reduced;
@@ -256,7 +256,7 @@ f64 func_8131001C(f64 arg0, f64 arg1) {
     }
     return reduced - D_813129C0;
 }
-/* mkdraft:func_8131001C end */
+/* mkdraft:MathUtil_Atan2d_fragment14 end */
 #endif
 
 #ifdef VERSION_US
