@@ -75,6 +75,25 @@ dual symbol tables, aliases.ld, hand_asm/, REWRITE_FUNCTION pragmas).
 
 ## Wave log
 
+### Farm 17663884 adoptions (2026-10-19 afternoon): 8 matches (199 total)
+- a2bcec9b (4: func_88228BCC, func_8822B43C, func_88903B2C, func_8AF03678),
+  54551426 (3: func_8416691C, func_86B0B7B4, func_84116AC4), 0dc661ee
+  (func_8F10282C) — permuter zeros from the farm-seeds-6 run, all full-make
+  gated. ADOPTION TOOLING LESSON: raw permuter candidates do not splice into
+  real translation units — their prologues carry m2c's full context (basic-type
+  typedefs that clash with ultratypes.h, GBI struct typedefs that clash with
+  gbi.h, plus permuter-mutated decls like short-vs-u8 that conflict with the
+  file's established spellings). Sanitizer (/tmp/opencode/sanitize_cand.py,
+  recreate in matching_notes/ if needed): drop defines/pragmas, basic typedefs,
+  GBI typedef blocks, and any decl whose symbol the file already declares
+  pre-splice; keep novel externs. try_candidate.py additionally refuses
+  brace-bearing prologues ("not splice-safe") — for those, splice_manual.py the
+  sanitized candidate directly, then fd.sh + full make.
+- SIGNATURE FIX RIDING func_84116AC4's adoption: func_800231A0's first param is
+  short, not u8 (the call passes 0x12C = 300, which does not fit u8); the
+  file's six decls retyped, all five existing callers verified fd.sh 0 (u8
+  loads promote without instructions under a short param).
+
 ### Wave 7 (2026-10-19, C_agent tier, matcher agents): 12 matches (189 total)
 - 89667321: 12 matches from the sweep's lowest C_agent scores (300-345 band),
   6 agents on disjoint files, sweep logs (/tmp/opencode/sweep_scratch/full2/
