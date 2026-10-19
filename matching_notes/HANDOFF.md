@@ -8,8 +8,8 @@ branch farm-port. Last verified state: 177 functions matched this campaign
 ---
 
 Continue the Pokemon Stadium 2 decompilation campaign at /home/tsranso/Code/pokestadiumgs
-(branch farm-port, HEAD d093a741 or later; ROM builds byte-identical, tree is extract-stable).
-177 campaign matches so far (65.5%, 3,634 owners left), 31 evidenced renames applied.
+(branch farm-port, HEAD c7bc586f or later; ROM builds byte-identical, tree is extract-stable).
+199 campaign matches so far (65.8%, 3,427 owners left), 31 evidenced renames applied.
 Work autonomously in the established pattern; ask me only for pushes/PRs.
 
 READ FIRST (in this order):
