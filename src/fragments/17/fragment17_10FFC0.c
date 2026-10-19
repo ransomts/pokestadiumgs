@@ -53,7 +53,7 @@ void func_822006CC(F822006CC_Particle *arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/17/fragment17_10FFC0/func_822007D8.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/17/fragment17_10FFC0/func_82200918.s")
+#pragma GLOBAL_ASM("hand_asm/fragments/17/func_82200918_manual.s")
 
 extern void _bzero(void *, s32);
 void func_82200C3C(u8* arg0) {
@@ -366,8 +366,38 @@ s32 func_822023D8(s32 arg0, u8 *arg1)
 
 #pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/17/fragment17_10FFC0/func_82202534.s")
 
-#pragma GLOBAL_ASM("asm/us/nonmatchings/fragments/17/fragment17_10FFC0/func_82202628.s")
+const f32 D_8220E0D0[1] = { 0.001f };
 
+s32 func_82202628(s32 arg0) {
+    s32 var_v1;
+
+    var_v1 = 5;
+    switch (arg0) {
+        case 1:
+            var_v1 = 11;
+            break;
+        case 2:
+            var_v1 = 7;
+            break;
+        case 3:
+            var_v1 = 1;
+            break;
+        case 4:
+            var_v1 = 15;
+            break;
+        case 5:
+            var_v1 = 9;
+            break;
+        case 6:
+            var_v1 = 13;
+            break;
+        case 7:
+            var_v1 = 3;
+            break;
+    }
+
+    return var_v1;
+}
 extern s32 func_82202628(s32 arg0);
 s32 func_8220268C(s32 arg0, s32 arg1) {
     s32 sp1C = 4;
