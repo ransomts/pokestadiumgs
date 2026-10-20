@@ -3,8 +3,8 @@
 # Decompilation coverage
 
 <!-- AUTO_COVERAGE:START -->
-- US functions with C implementations: **6,957 / 10,532 (66.1%)**
-- Remaining `GLOBAL_ASM` owners: **3,575**
+- US functions with C implementations: **6,970 / 10,532 (66.2%)**
+- Remaining `GLOBAL_ASM` owners: **3,562**
 - Baseline: **10,532** US `GLOBAL_ASM` owners in the original pragma snapshot
 <!-- AUTO_COVERAGE:END -->
 
@@ -31,7 +31,7 @@
 | `src/641E0.c` | 2 | 44 | 95.5% |
 | `src/654A0.c` | 6 | 11 | 45.5% |
 | `src/65E20.c` | 3 | 6 | 50.0% |
-| `src/6670.c` | 4 | 19 | 78.9% |
+| `src/6670.c` | 3 | 19 | 84.2% |
 | `src/674D0.c` | 3 | 5 | 40.0% |
 | `src/67F00.c` | 3 | 10 | 70.0% |
 | `src/69650.c` | 3 | 5 | 40.0% |
@@ -68,7 +68,7 @@
 | `src/fragments/15/fragment15_code.c` | 2 | 6 | 66.7% |
 | `src/fragments/16/fragment16_code.c` | 10 | 29 | 65.5% |
 | `src/fragments/17/fragment17_10F9E0.c` | 5 | 5 | 0.0% |
-| `src/fragments/17/fragment17_10FFC0.c` | 22 | 56 | 60.7% |
+| `src/fragments/17/fragment17_10FFC0.c` | 20 | 56 | 64.3% |
 | `src/fragments/17/fragment17_113A60.c` | 39 | 82 | 52.4% |
 | `src/fragments/17/fragment17_11A7F0.c` | 4 | 5 | 20.0% |
 | `src/fragments/17/fragment17_11B210.c` | 10 | 28 | 64.3% |
@@ -89,7 +89,7 @@
 | `src/fragments/23/fragment23_code.c` | 9 | 20 | 55.0% |
 | `src/fragments/24/fragment24_14FE20.c` | 8 | 10 | 20.0% |
 | `src/fragments/24/fragment24_150C10.c` | 48 | 92 | 47.8% |
-| `src/fragments/25/fragment25_15A060.c` | 12 | 30 | 60.0% |
+| `src/fragments/25/fragment25_15A060.c` | 11 | 30 | 63.3% |
 | `src/fragments/25/fragment25_15BBC0.c` | 7 | 10 | 30.0% |
 | `src/fragments/25/fragment25_15C920.c` | 1 | 1 | 0.0% |
 | `src/fragments/26/fragment26_162710.c` | 6 | 10 | 40.0% |
@@ -183,7 +183,7 @@
 | `src/fragments/44/fragment44_1F5F20.c` | 5 | 14 | 64.3% |
 | `src/fragments/44/fragment44_1F6BF0.c` | 3 | 12 | 75.0% |
 | `src/fragments/44/fragment44_1F7DD0.c` | 3 | 7 | 57.1% |
-| `src/fragments/44/fragment44_1F85B0.c` | 10 | 16 | 37.5% |
+| `src/fragments/44/fragment44_1F85B0.c` | 9 | 16 | 43.8% |
 | `src/fragments/44/fragment44_1F9DB0.c` | 14 | 20 | 30.0% |
 | `src/fragments/44/fragment44_1FD260.c` | 4 | 38 | 89.5% |
 | `src/fragments/44/fragment44_201DA0.c` | 5 | 6 | 16.7% |
@@ -226,7 +226,7 @@
 | `src/fragments/50/fragment50_26E4C0.c` | 5 | 5 | 0.0% |
 | `src/fragments/51/fragment51_275E40.c` | 21 | 38 | 44.7% |
 | `src/fragments/51/fragment51_279A20.c` | 2 | 3 | 33.3% |
-| `src/fragments/51/fragment51_279D70.c` | 6 | 6 | 0.0% |
+| `src/fragments/51/fragment51_279D70.c` | 5 | 6 | 16.7% |
 | `src/fragments/51/fragment51_27A440.c` | 2 | 5 | 60.0% |
 | `src/fragments/51/fragment51_27A740.c` | 4 | 4 | 0.0% |
 | `src/fragments/51/fragment51_27AC10.c` | 9 | 12 | 25.0% |
@@ -249,7 +249,7 @@
 | `src/fragments/62/fragment62_code.c` | 1 | 6 | 83.3% |
 | `src/fragments/63/fragment63_303990.c` | 13 | 40 | 67.5% |
 | `src/fragments/63/fragment63_305090.c` | 7 | 21 | 66.7% |
-| `src/fragments/63/fragment63_306150.c` | 14 | 28 | 50.0% |
+| `src/fragments/63/fragment63_306150.c` | 13 | 28 | 53.6% |
 | `src/fragments/63/fragment63_307D60.c` | 9 | 17 | 47.1% |
 | `src/fragments/63/fragment63_308D70.c` | 15 | 39 | 61.5% |
 | `src/fragments/63/fragment63_30B540.c` | 15 | 51 | 70.6% |
@@ -265,7 +265,7 @@
 | `src/fragments/64/fragment64_3235A0.c` | 8 | 11 | 27.3% |
 | `src/fragments/64/fragment64_324A10.c` | 4 | 6 | 33.3% |
 | `src/fragments/64/fragment64_324FB0.c` | 5 | 15 | 66.7% |
-| `src/fragments/64/fragment64_325920.c` | 5 | 7 | 28.6% |
+| `src/fragments/64/fragment64_325920.c` | 4 | 7 | 42.9% |
 | `src/fragments/64/fragment64_326160.c` | 4 | 6 | 33.3% |
 | `src/fragments/64/fragment64_326820.c` | 4 | 5 | 20.0% |
 | `src/fragments/64/fragment64_326ED0.c` | 8 | 17 | 52.9% |
@@ -293,7 +293,7 @@
 | `src/fragments/67/fragment67_342DB0.c` | 5 | 6 | 16.7% |
 | `src/fragments/67/fragment67_343510.c` | 2 | 13 | 84.6% |
 | `src/fragments/67/fragment67_344D70.c` | 35 | 90 | 61.1% |
-| `src/fragments/67/fragment67_34AB40.c` | 6 | 6 | 0.0% |
+| `src/fragments/67/fragment67_34AB40.c` | 2 | 6 | 66.7% |
 | `src/fragments/67/fragment67_34B0F0.c` | 9 | 15 | 40.0% |
 | `src/fragments/67/fragment67_34C8B0.c` | 1 | 16 | 93.8% |
 | `src/fragments/68/fragment68_code.c` | 2 | 8 | 75.0% |
@@ -307,7 +307,7 @@
 | `src/fragments/75/fragment75_code.c` | 9 | 16 | 43.8% |
 | `src/fragments/77/fragment77_code.c` | 5 | 30 | 83.3% |
 | `src/fragments/78/fragment78_code.c` | 8 | 18 | 55.6% |
-| `src/fragments/79/fragment79_36F8B0.c` | 24 | 42 | 42.9% |
+| `src/fragments/79/fragment79_36F8B0.c` | 23 | 42 | 45.2% |
 | `src/fragments/79/fragment79_372DE0.c` | 6 | 27 | 77.8% |
 | `src/fragments/79/fragment79_373F70.c` | 5 | 15 | 66.7% |
 | `src/fragments/79/fragment79_374840.c` | 1 | 3 | 66.7% |

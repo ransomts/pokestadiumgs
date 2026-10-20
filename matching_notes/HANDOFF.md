@@ -3,7 +3,7 @@
 Paste-ready prompt for the next session. Repo: /home/tsranso/Code/pokestadiumgs,
 branch farm-port. Last verified state: 177 functions matched this campaign
 (65.5% function coverage, 3,634 owners left; progress.py code baseline 32.1819%),
-31 evidenced renames total, ROM byte-identical at every gate, tree extract-stable.
+35 evidenced renames total, ROM byte-identical at every gate, tree extract-stable. Overnight fleets: farms b/c/e + tranche-D drafting + 5-agent D_structural night wave (33 PLAIN targets); morning: sweep SAVE_DIR zeros, integrate wave spools via adopt_wave.py (first live test), re-cut tranche D on a seed branch (7 drafts reverted for agent safety).
 
 ---
 
