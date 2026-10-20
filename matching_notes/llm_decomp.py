@@ -109,7 +109,7 @@ def build_user_prompt(func, asm_text, context, region_note=""):
     return "\n".join(parts)
 
 
-def call_llm(endpoint, model, system, user, temperature, max_tokens):
+def call_llm(endpoint, model, system, user, temperature, max_tokens, api_key=None):
     body = json.dumps({
         "model": model,
         "messages": [
@@ -119,14 +119,19 @@ def call_llm(endpoint, model, system, user, temperature, max_tokens):
         "temperature": temperature,
         "max_tokens": max_tokens,
     }).encode()
+    headers = {"Content-Type": "application/json"}
+    if api_key:
+        headers["Authorization"] = f"Bearer {api_key}"
     req = urllib.request.Request(
         endpoint.rstrip("/") + "/chat/completions",
         data=body,
-        headers={"Content-Type": "application/json"},
+        headers=headers,
     )
-    with urllib.request.urlopen(req, timeout=120) as resp:
+    with urllib.request.urlopen(req, timeout=180) as resp:
         data = json.loads(resp.read())
-    return data["choices"][0]["message"]["content"]
+    msg = data["choices"][0]["message"]
+    # reasoning models put output in "reasoning" when content is null
+    return msg.get("content") or msg.get("reasoning") or ""
 
 
 def clean_candidate(text):
@@ -181,8 +186,12 @@ def load_targets(spec):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--endpoint", required=True, help="http://node:8000/v1")
-    ap.add_argument("--model", default="decomp", help="served model name")
+    ap.add_argument("--endpoint", default="https://llm.rcd.clemson.edu/v1",
+                    help="OpenAI-compatible endpoint (default: RCD gateway)")
+    ap.add_argument("--api-key-file",
+                    default=os.path.expanduser("~/.config/rcd-llm/api-key"))
+    ap.add_argument("--model", default="gptoss-120b",
+                    help="model name on the endpoint")
     ap.add_argument("--targets", required=True,
                     help="comma list, 'm2c-fail', or 'd-structural'")
     ap.add_argument("--samples", type=int, default=4)
@@ -194,6 +203,10 @@ def main():
                          "or run without --verify to just generate)")
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
+    api_key = ""
+    if os.path.exists(args.api_key_file):
+        with open(args.api_key_file) as f:
+            api_key = f.read().strip()
 
     targets = load_targets(args.targets)
     if args.limit:
@@ -220,7 +233,7 @@ def main():
         for i in range(args.samples):
             try:
                 raw = call_llm(args.endpoint, args.model, SYSTEM_PROMPT,
-                               user, args.temperature, args.max_tokens)
+                               user, args.temperature, args.max_tokens, api_key)
             except Exception as e:
                 print(f"  {func} sample {i}: LLM error {e}")
                 continue
